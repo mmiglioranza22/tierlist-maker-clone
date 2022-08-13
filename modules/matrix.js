@@ -1,6 +1,6 @@
 class Matrix {
    constructor(){
-       this.name = 'tierliest'
+       this.name = 'Matrix'
 
    } 
     
