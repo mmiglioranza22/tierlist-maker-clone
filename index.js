@@ -1,6 +1,6 @@
-import m from './modules/Matrix.js'
+import Matrix from './modules/Matrix.js'
 console.log(window);
-const matrix = new m 
+const matrix = new Matrix
 console.log(
     matrix.name
 );

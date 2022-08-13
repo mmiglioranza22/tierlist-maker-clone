@@ -3,7 +3,6 @@ class Node {
         this.data = data
         this.previous = null
         this.next = null
-
     }
 }
 
