@@ -13,9 +13,11 @@ body {
 }
 
 .container-tierlist {
-  background-color: green;
-  width: 850px;
+  display: flex;
+  flex-direction: column;
   height: 70%;
+  width: 850px;
+  background-color: green;
 }
 
 .container-options {
@@ -25,4 +27,8 @@ body {
 p {
   padding: 0px 16px;
   margin: 0px 8px;
+}
+input {
+  height: 20%;
+  width: 20%;
 }
