@@ -34,5 +34,21 @@ input {
 }
 
 #S {
-  background-color: coral;
+  background-color: rgb(255, 127, 127);
+}
+
+#A {
+  background-color: rgb(255, 191, 127);
+}
+
+#B {
+  background-color: rgb(255, 223, 127);
+}
+
+#C {
+  background-color: rgb(255, 255, 127);
+}
+
+#D {
+  background-color: rgb(191, 255, 127);
 }

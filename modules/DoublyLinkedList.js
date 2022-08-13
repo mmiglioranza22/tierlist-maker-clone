@@ -1,7 +1,7 @@
 import Node from './Node.js'
 class DoublyLinkedList {
-   constructor(){
-       this.name = 'LinkedList'
+   constructor(name){
+       this.name = `${name}-tier`
        this.head = null
        this.tail = null
        this._length = 0
@@ -20,7 +20,7 @@ class DoublyLinkedList {
    }
 
    remove() {
-       
+
    }
     
 }
