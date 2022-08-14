@@ -9,24 +9,20 @@ class DoublyLinkedList {
 
 	prepend(value) {
 		const node = new Node(value)
-		let pointer = this.head
+		let headPointer = this.head
+		let tailPointer = this.tail
 		
-		if (pointer === null) {
-			this.head = node
+		if (headPointer === null) {
+			this.head = node // tail references node by default
 			this._length++
-			return this
+			return  // ? usefull for chaining ?
 		}
+		// when node > 0, head and tail point to the same node
+		node.next = headPointer
+		headPointer.previous = node
+		this.head = node // * tail points to head, gets updated
+		this.tail = tailPointer // the node already in the list is now the tail
 		
-		node.next = pointer
-		pointer.previous = node
-		this.head = node // ? does this.tail point the new node ?
-
-		while (pointer.next !== null) {
-			pointer = pointer.next
-		}
-		
-		this.tail = pointer
-
 		this._length++
 		return this
 	}
