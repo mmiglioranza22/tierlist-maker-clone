@@ -3,7 +3,7 @@ class DoublyLinkedList {
 	constructor(name){
 		this.name = `${name}-tier`
 		this.head = null
-		this.tail = this.head // * this works only when length === 0
+		this.tail = null
 		this._length = 0
 	} 
 
@@ -13,29 +13,36 @@ class DoublyLinkedList {
 		let tailPointer = this.tail
 		
 		if (headPointer === null) {
-			this.head = node // tail references node by default
+			this.head = node
+			this.tail = node
 			this._length++
-			return  // ? usefull for chaining ?
+			return
 		}
-		// when node > 0, head and tail point to the same node
+		// when node === 1, head and tail point to the same node
 		node.next = headPointer
 		headPointer.previous = node
-		this.head = node // * tail points to head, gets updated
+		this.head = node
 		this.tail = tailPointer // the node already in the list is now the tail
-		
+
 		this._length++
 		return this
 	}
 
 	append(value){
 		const node = new Node(value)
-		let pointer = this.tail
+		let headPointer = this.head
+		let tailPointer = this.tail
 
-		node.previous = pointer
-		pointer.next = node
-		this.tail = node
+		if (tailPointer === null) {
+			this.head = node // tail references node by default
+			this._length++
+			return  // ? usefull for chaining ?
+		}
+		// node.previous = pointer
+		// pointer.next = node
+		// this.tail = node
 
-		this._length++
+		// this._length++
 		return
 	}
 
@@ -48,4 +55,5 @@ class DoublyLinkedList {
 	}
 
 }
+
 export default DoublyLinkedList
