@@ -10,19 +10,25 @@ class DoublyLinkedList {
    prepend(value) {
        const node = new Node(value)
        let pointer = this.head
-       if (pointer === null) {
-           this.head = node
-        } else {
-           node.next = pointer
-           pointer.previous = node
-           this.head = node
-        }
-        this._length++
-       
+
+       node.next = pointer
+       pointer.previous = node
+       this.head = node
+
+       this._length++
+       return
    }
 
    append(value){
+       const node = new Node(value)
+       let pointer = this.tail
 
+       node.tail = pointer
+       pointer.next = node
+       this.tail = node
+      
+       this._length++
+       return
    }
 
    insert(value) {
