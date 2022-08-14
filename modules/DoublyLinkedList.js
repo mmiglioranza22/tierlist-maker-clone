@@ -3,7 +3,7 @@ class DoublyLinkedList {
    constructor(name){
        this.name = `${name}-tier`
        this.head = null
-       this.tail = null
+       this.tail = this.head // * this solves prepending when nodes > 0
        this._length = 0
    } 
 
@@ -23,10 +23,10 @@ class DoublyLinkedList {
        const node = new Node(value)
        let pointer = this.tail
 
-       node.tail = pointer
+       node.previous = pointer
        pointer.next = node
        this.tail = node
-      
+       
        this._length++
        return
    }
