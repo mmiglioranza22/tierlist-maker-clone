@@ -1,4 +1,12 @@
 import Node from './Node.js'
+// testing purposes
+class Node {
+	constructor(data) {
+			this.data = data
+			this.previous = null
+			this.next = null
+	}
+}
 class DoublyLinkedList {
 	constructor(name){
 		this.name = `${name}-tier`
@@ -12,13 +20,14 @@ class DoublyLinkedList {
 		let headPointer = this.head
 		let tailPointer = this.tail
 		
+		// when node === 0, head and tail point to the same node...
 		if (headPointer === null) {
 			this.head = node
 			this.tail = node
 			this._length++
-			return
+			return this
 		}
-		// when node === 1, head and tail point to the same node
+		// node >= 1...
 		node.next = headPointer
 		headPointer.previous = node
 		this.head = node
@@ -34,15 +43,18 @@ class DoublyLinkedList {
 		let tailPointer = this.tail
 
 		if (tailPointer === null) {
-			this.head = node // tail references node by default
+			this.head = node
+			this.tail = node
 			this._length++
-			return  // ? usefull for chaining ?
+			return this
 		}
-		// node.previous = pointer
-		// pointer.next = node
-		// this.tail = node
 
-		// this._length++
+		node.previous = tailPointer
+		tailPointer.next = node
+		this.tail = node
+		this.head = headPointer
+
+		this._length++
 		return
 	}
 
@@ -56,4 +68,4 @@ class DoublyLinkedList {
 
 }
 
-export default DoublyLinkedList
+// export default DoublyLinkedList
