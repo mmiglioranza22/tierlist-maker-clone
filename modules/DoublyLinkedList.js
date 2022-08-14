@@ -1,4 +1,4 @@
-import Node from './Node.js'
+// import Node from './Node.js'
 // testing purposes
 class Node {
 	constructor(data) {
@@ -59,7 +59,42 @@ class DoublyLinkedList {
 	}
 
 	insert(index, value) {
+		if(index < 0 || index > this._length) {
+			console.error(`Index must be positive integer less or equal to the list's length`)
+			return 1
+		}
+		const node = new Node(value)
+		let current = 0
+		let len = this._length
+		let headPointer = this.head
+		let tailPointer = this.tail
+		let prevPointer = headPointer
+		
+		// no prior nodes or index = 0
+		if (this.head === null || index === 0) {
+			this.prepend(value)
+			return this
+		}
+		// traverse list from start
+		while (current < index) {
+			if (headPointer.next !== null) {
+				headPointer = headPointer.next
+				prevPointer = headPointer.previous
+				current++
+			} else {
+				//has reached the end of the list
+				this.append(value)
+				return this
+			}
+		}
 
+		// if it exits the while loop because current === index, then 
+		// headPointer references the node that should be replaced/shifted forward
+		node.next = headPointer
+		node.previous = prevPointer
+		prevPointer.next = node
+		headPointer.previous = node
+		this._length++
 	}
 
 	remove(index) {
@@ -67,5 +102,7 @@ class DoublyLinkedList {
 	}
 
 }
+
+
 
 // export default DoublyLinkedList
