@@ -164,10 +164,31 @@ class DoublyLinkedList {
 	 * @returns { DoublyLinkedList } instance
 	 */
 	shift() {
+		if (this.head === null) {
+			console.error('ERROR: No nodes on the list')
+			return 1
+		}
+		let headPointer = this.head
+		let prevPointer = headPointer.next
+		let temp
 
+		// only 1 node
+		if (this.head === this.tail) {
+			temp = this.head
+			this.head = null
+			this.tail = this.head
+			this._length--
+			return temp
+		}
+
+		temp = headPointer
+		// headPointer.next = null -> check for this later in DOM implementation use cases
+		prevPointer.previous = null
+		this.head = prevPointer
+		this._length--
+		return temp
 	}
-
+	
 }
-
 
 // export default DoublyLinkedList
