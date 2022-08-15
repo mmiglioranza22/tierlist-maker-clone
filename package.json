@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/mmiglioranza22/tierlist-maker-clone/issues"
   },
-  "homepage": "https://github.com/mmiglioranza22/tierlist-maker-clone#readme"
+  "homepage": "https://github.com/mmiglioranza22/tierlist-maker-clone#readme",
+  "devDependencies": {
+    "chai": "^4.3.6"
+  }
 }
