@@ -76,37 +76,31 @@ class DoublyLinkedList {
 	 * @returns 
 	 */
 	insert(index, value) {
-		if(index < 0 || index > this._length) {
-			console.error(`Index must be positive integer less or equal to the list's length`)
+		// empty list has specific logic if index is 0 (should prepend)
+		if (index !== 0 && (index < 0 || index >= this._length)) {
+			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
 			return 1
 		}
 
 		const node = new Node(value)
-		let current
-		let len = this._length
 		let headPointer = this.head
 		let tailPointer = this.tail
-		let prevPointer = headPointer
+		let current
+		let prevPointer
 		
 		// no prior nodes or index = 0
-		if (this.head === null || index === 0) {
+		if (index === 0) {
 			this.prepend(value)
 			return this
 		}
-
-		// insert at last index
-		if (index === this._length - 1) {
-			this.append(value)
-			return
-		}
-
+		
 		// traverse list from head or tail
-		if (Math.floor(this._length / 2) < index) { // rounding but how ?
+		if (Math.floor(this._length / 2) > index) { // || this._length === 2
 			current = 0
 			while (current < index) {
-					headPointer = headPointer.next
-					prevPointer = headPointer.previous
-					current++
+				prevPointer = headPointer
+				headPointer = headPointer.next
+				current++
 			}
 			// if it exits the while loop because current === index, then 
 			// headPointer references the node that should be replaced/shifted forward
@@ -118,13 +112,14 @@ class DoublyLinkedList {
 
 		} else {
 			current = this._length
-			while (current >= index) {
+			while (current > index) {
 					prevPointer = tailPointer
 					tailPointer = tailPointer.previous
 					current--
 			}
 			// if it exits the while loop because current === index, then 
-			// headPointer references the node that should be replaced/shifted forward
+			// tailPointer references the node that is previous to new node 
+			// and prevPointer the node to be replaced/shifted forward
 			node.next = prevPointer
 			node.previous = tailPointer
 			prevPointer.previous = node
@@ -143,7 +138,6 @@ class DoublyLinkedList {
 	}
 
 }
-
 
 
 // export default DoublyLinkedList
