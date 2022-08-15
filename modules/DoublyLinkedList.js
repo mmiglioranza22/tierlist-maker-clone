@@ -18,7 +18,7 @@ class DoublyLinkedList {
 	/**
 	 * Add a node at the beginning of the list
 	 * @param { Node } value 
-	 * @returns 
+	 * @returns { DoublyLinkedList } instance 
 	 */
 	prepend(value) {
 		const node = new Node(value)
@@ -45,7 +45,7 @@ class DoublyLinkedList {
 	/**
 	 * Add a node at the end of the list
 	 * @param { Node } value 
-	 * @returns 
+	 * @returns { DoublyLinkedList } instance
 	 */
 	append(value){
 		const node = new Node(value)
@@ -95,7 +95,7 @@ class DoublyLinkedList {
 		}
 		
 		// traverse list from head or tail
-		if (Math.floor(this._length / 2) > index) { // || this._length === 2
+		if (Math.floor(this._length / 2) > index) { 
 			current = 0
 			while (current < index) {
 				prevPointer = headPointer
@@ -128,12 +128,42 @@ class DoublyLinkedList {
 		}
 	}
 
-	remove(index) {
-		if (this.head === null) {
-			console.error('No nodes in list')
+	
+	/**
+	 * Removes last node from list
+	 * @returns { DoublyLinkedList } instance
+	 */
+	pop() {
+		if (this.tail === null) {
+			console.error('ERROR: No nodes on the list')
 			return 1
 		}
+		let tailPointer = this.tail
+		let prevPointer = tailPointer.previous
+		let temp
 
+		// only 1 node
+		if (this.head === this.tail) {
+			temp = this.head
+			this.head = null
+			this.tail = this.head
+			this._length--
+			return temp
+		}
+
+		temp = tailPointer
+		// tailPointer.previous = null -> check for this later in DOM implementation use cases
+		prevPointer.next = null
+		this.tail = prevPointer
+		this._length--
+		return temp
+	}
+
+	/**
+	 * Removes first node from list
+	 * @returns { DoublyLinkedList } instance
+	 */
+	shift() {
 
 	}
 
