@@ -103,6 +103,11 @@ class DoublyLinkedList {
 	}
 
 	remove(index) {
+		if (this.head === null) {
+			console.error('No nodes in list')
+			return 1
+		}
+
 
 	}
 
