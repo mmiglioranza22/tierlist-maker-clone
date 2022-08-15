@@ -206,7 +206,7 @@ class DoublyLinkedList {
 		let prevPointer
 
 		if (index === 0) {
-			const value = this.pop()
+			const value = this.shift()
 			return value
 		}
 
@@ -216,6 +216,7 @@ class DoublyLinkedList {
 		}
 
 		if (Math.floor(this._length / 2) > index) { 
+			console.log(' ==== Forwards ====');
 			current = 0
 			while (current < index) {
 				prevPointer = headPointer
@@ -230,6 +231,7 @@ class DoublyLinkedList {
 			this._length--
 
 		} else {
+			console.log(' ==== Backwards ====');
 			current = this._length
 			while (current > index) {
 					prevPointer = tailPointer
