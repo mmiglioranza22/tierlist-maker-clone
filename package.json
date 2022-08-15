@@ -1,0 +1,28 @@
+{
+  "name": "tierlist-maker-clone",
+  "version": "1.0.0",
+  "description": "A very simple tierlist-maker-clone with vanilla javascript and pure HTML CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmiglioranza22/tierlist-maker-clone.git"
+  },
+  "keywords": [
+    "tierlist",
+    "tierlistmaker",
+    "tierlist-maker",
+    "tierlist",
+    "maker",
+    "clone",
+    "tierlistmaker-clone"
+  ],
+  "author": "Manuel Miglioranza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmiglioranza22/tierlist-maker-clone/issues"
+  },
+  "homepage": "https://github.com/mmiglioranza22/tierlist-maker-clone#readme"
+}
