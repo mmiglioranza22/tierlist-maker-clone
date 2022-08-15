@@ -188,6 +188,62 @@ class DoublyLinkedList {
 		this._length--
 		return temp
 	}
+
+	remove(index) {
+		if (index !== 0 && (index < 0 || index >= this._length)) {
+			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
+			return 1
+		}
+
+		if (this.head === null ) {
+			console.error('ERROR: No nodes in list\n')
+			return 1
+		}
+
+		let headPointer = this.head
+		let tailPointer = this.tail
+		let current
+		let prevPointer
+
+		if (index === 0) {
+			const value = this.pop()
+			return value
+		}
+
+		if (index === this._length - 1) {
+			const value = this.pop()
+			return value
+		}
+
+		if (Math.floor(this._length / 2) > index) { 
+			current = 0
+			while (current < index) {
+				prevPointer = headPointer
+				headPointer = headPointer.next
+				current++
+			}
+			
+			node.next = headPointer
+			node.previous = prevPointer
+			prevPointer.next = node
+			headPointer.previous = node
+			this._length--
+
+		} else {
+			current = this._length
+			while (current > index) {
+					prevPointer = tailPointer
+					tailPointer = tailPointer.previous
+					current--
+			}
+			
+			node.next = prevPointer
+			node.previous = tailPointer
+			prevPointer.previous = node
+			tailPointer.next = node
+			this._length--
+		}
+	}
 	
 }
 
