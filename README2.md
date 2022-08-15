@@ -1,1 +1,0 @@
-# tierlist-maker-clone
