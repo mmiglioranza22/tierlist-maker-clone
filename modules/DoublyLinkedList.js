@@ -75,26 +75,31 @@ class DoublyLinkedList {
 			this.prepend(value)
 			return this
 		}
-		// traverse list from start
-		while (current < index) {
-			if (headPointer.next !== null) {
-				headPointer = headPointer.next
-				prevPointer = headPointer.previous
-				current++
-			} else {
-				//has reached the end of the list
-				this.append(value)
-				return this
-			}
-		}
 
-		// if it exits the while loop because current === index, then 
-		// headPointer references the node that should be replaced/shifted forward
-		node.next = headPointer
-		node.previous = prevPointer
-		prevPointer.next = node
-		headPointer.previous = node
-		this._length++
+		// traverse list from head
+		if ((this._length / 2) > index) {
+			while (current < index) {
+				if (headPointer.next !== null) {
+					headPointer = headPointer.next
+					prevPointer = headPointer.previous
+					current++
+				} else {
+					//has reached the end of the list
+					this.append(value)
+					return this
+				}
+			}
+			// if it exits the while loop because current === index, then 
+			// headPointer references the node that should be replaced/shifted forward
+			node.next = headPointer
+			node.previous = prevPointer
+			prevPointer.next = node
+			headPointer.previous = node
+			this._length++
+
+		} else {
+			// traverse list from tail
+		}
 	}
 
 	remove(index) {
