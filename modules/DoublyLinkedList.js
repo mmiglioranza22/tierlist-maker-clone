@@ -15,6 +15,11 @@ class DoublyLinkedList {
 		this._length = 0
 	} 
 
+	/**
+	 * Add a node at the beginning of the list
+	 * @param { Node } value 
+	 * @returns 
+	 */
 	prepend(value) {
 		const node = new Node(value)
 		let headPointer = this.head
@@ -37,6 +42,11 @@ class DoublyLinkedList {
 		return this
 	}
 
+	/**
+	 * Add a node at the end of the list
+	 * @param { Node } value 
+	 * @returns 
+	 */
 	append(value){
 		const node = new Node(value)
 		let headPointer = this.head
@@ -57,14 +67,22 @@ class DoublyLinkedList {
 		this._length++
 		return
 	}
-
+	
+	/**
+	 * Add a node at a given place(index) of the list.
+	 * The node that previously occupied that index will be moved forward.
+	 * @param { Number } index 
+	 * @param { Node } value 
+	 * @returns 
+	 */
 	insert(index, value) {
 		if(index < 0 || index > this._length) {
 			console.error(`Index must be positive integer less or equal to the list's length`)
 			return 1
 		}
+
 		const node = new Node(value)
-		let current = 0
+		let current
 		let len = this._length
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -76,18 +94,19 @@ class DoublyLinkedList {
 			return this
 		}
 
-		// traverse list from head
-		if ((this._length / 2) > index) {
+		// insert at last index
+		if (index === this._length - 1) {
+			this.append(value)
+			return
+		}
+
+		// traverse list from head or tail
+		if (Math.floor(this._length / 2) < index) { // rounding but how ?
+			current = 0
 			while (current < index) {
-				if (headPointer.next !== null) {
 					headPointer = headPointer.next
 					prevPointer = headPointer.previous
 					current++
-				} else {
-					//has reached the end of the list
-					this.append(value)
-					return this
-				}
 			}
 			// if it exits the while loop because current === index, then 
 			// headPointer references the node that should be replaced/shifted forward
@@ -98,7 +117,19 @@ class DoublyLinkedList {
 			this._length++
 
 		} else {
-			// traverse list from tail
+			current = this._length
+			while (current >= index) {
+					prevPointer = tailPointer
+					tailPointer = tailPointer.previous
+					current--
+			}
+			// if it exits the while loop because current === index, then 
+			// headPointer references the node that should be replaced/shifted forward
+			node.next = prevPointer
+			node.previous = tailPointer
+			prevPointer.previous = node
+			tailPointer.next = node
+			this._length++
 		}
 	}
 
