@@ -1,12 +1,8 @@
-// import Node from './Node.js'
-// testing purposes
-class Node {
-	constructor(data) {
-			this.data = data
-			this.previous = null
-			this.next = null
-	}
-}
+import Node from './Node.js'
+/**
+ * Basic stucture of each tier
+ * @class DoublyLinkedList
+ */
 class DoublyLinkedList {
 	constructor(name){
 		this.name = `${name}-tier`
@@ -256,4 +252,4 @@ class DoublyLinkedList {
 	}
 }
 
-// export default DoublyLinkedList
+export default DoublyLinkedList
