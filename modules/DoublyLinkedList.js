@@ -211,17 +211,18 @@ class DoublyLinkedList {
 		let temp
 
 		if (index === 0) {
+			console.log('should shift');
 			const value = this.shift()
 			return value
 		}
 
 		if (index === this._length - 1) {
+			console.log('should pop');
 			const value = this.pop()
 			return value
 		}
 
 		if (Math.floor(this._length / 2) > index) { 
-			console.log('\n==== Forwards ====\n');
 			current = 0
 			while (current < index) {
 				prevPointer = headPointer
@@ -236,13 +237,8 @@ class DoublyLinkedList {
 			// headPointer.next = null
 			// headPointer.previous = null
 			return headPointer
-//                 x             remove(3)  len = 6 .  5/2 == 2.5 -> 2
-//	|----0----1----2----3----4---|
-// LL -> 1 <> 2 <> 3 <> 4 <> 5 <-|		
-//            PP   HP   t
 		} else {
-			console.log('\n==== Backwards ====\n');
-			current = this._length // ? - 1 would make one less operation
+			current = this._length 
 			while (current > index) {
 				prevPointer = tailPointer
 				tailPointer = tailPointer.previous
@@ -258,7 +254,6 @@ class DoublyLinkedList {
 			return prevPointer
 		}
 	}
-	
 }
 
 // export default DoublyLinkedList
