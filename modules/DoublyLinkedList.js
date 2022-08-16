@@ -221,27 +221,27 @@ class DoublyLinkedList {
 		}
 
 		if (Math.floor(this._length / 2) > index) { 
-			console.log(' ==== Forwards ====');
+			console.log('\n==== Forwards ====\n');
 			current = 0
 			while (current < index) {
 				prevPointer = headPointer
 				headPointer = headPointer.next
 				current++
 			}
-//                 x         remove(2)  len = 6 .  6/2 == 3
-//	|----0----1----2----3----4----5---|
-// LL -> 1 <> 2 <> 3 <> 4 <> 5 <> 6 <-|		
-//  PP   HP   
-//
-			
-			node.next = headPointer
-			node.previous = prevPointer
-			prevPointer.next = node
-			headPointer.previous = node
-			this._length--
 
+			temp = headPointer.next
+			prevPointer.next = temp
+			temp.previous = prevPointer
+			this._length--
+			// headPointer.next = null
+			// headPointer.previous = null
+			return headPointer
+//                 x             remove(3)  len = 6 .  5/2 == 2.5 -> 2
+//	|----0----1----2----3----4---|
+// LL -> 1 <> 2 <> 3 <> 4 <> 5 <-|		
+//            PP   HP   t
 		} else {
-			console.log(' ==== Backwards ====');
+			console.log('\n==== Backwards ====\n');
 			current = this._length // ? - 1 would make one less operation
 			while (current > index) {
 				prevPointer = tailPointer
