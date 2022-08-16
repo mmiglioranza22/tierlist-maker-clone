@@ -73,7 +73,7 @@ class DoublyLinkedList {
 	 * The node that previously occupied that index will be moved forward.
 	 * @param { Number } index 
 	 * @param { Node } value 
-	 * @returns 
+	 * @returns { DoublyLinkedList } instance 
 	 */
 	insert(index, value) {
 		// empty list has specific logic if index is 0 (should prepend)
@@ -113,9 +113,9 @@ class DoublyLinkedList {
 		} else {
 			current = this._length
 			while (current > index) {
-					prevPointer = tailPointer
-					tailPointer = tailPointer.previous
-					current--
+				prevPointer = tailPointer
+				tailPointer = tailPointer.previous
+				current--
 			}
 			// if it exits the while loop because current === index, then 
 			// tailPointer references the node that is previous to new node 
@@ -127,11 +127,10 @@ class DoublyLinkedList {
 			this._length++
 		}
 	}
-
 	
 	/**
 	 * Removes last node from list
-	 * @returns { DoublyLinkedList } instance
+	 * @returns { Node }
 	 */
 	pop() {
 		if (this.tail === null) {
@@ -161,7 +160,7 @@ class DoublyLinkedList {
 
 	/**
 	 * Removes first node from list
-	 * @returns { DoublyLinkedList } instance
+	 * @returns { Node }
 	 */
 	shift() {
 		if (this.head === null) {
@@ -189,6 +188,11 @@ class DoublyLinkedList {
 		return temp
 	}
 
+	/**
+	 * Remove a node at a given place/index
+	 * @param { Number } index
+	 * @return { Node } 
+	 */
 	remove(index) {
 		if (index !== 0 && (index < 0 || index >= this._length)) {
 			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
@@ -204,6 +208,7 @@ class DoublyLinkedList {
 		let tailPointer = this.tail
 		let current
 		let prevPointer
+		let temp
 
 		if (index === 0) {
 			const value = this.shift()
@@ -223,6 +228,11 @@ class DoublyLinkedList {
 				headPointer = headPointer.next
 				current++
 			}
+//                 x         remove(2)  len = 6 .  6/2 == 3
+//	|----0----1----2----3----4----5---|
+// LL -> 1 <> 2 <> 3 <> 4 <> 5 <> 6 <-|		
+//  PP   HP   
+//
 			
 			node.next = headPointer
 			node.previous = prevPointer
@@ -232,18 +242,20 @@ class DoublyLinkedList {
 
 		} else {
 			console.log(' ==== Backwards ====');
-			current = this._length
+			current = this._length // ? - 1 would make one less operation
 			while (current > index) {
-					prevPointer = tailPointer
-					tailPointer = tailPointer.previous
-					current--
+				prevPointer = tailPointer
+				tailPointer = tailPointer.previous
+				current--
 			}
-			
-			node.next = prevPointer
-			node.previous = tailPointer
-			prevPointer.previous = node
-			tailPointer.next = node
+
+			temp = prevPointer.next
+			tailPointer.next = temp
+			temp.previous = tailPointer
 			this._length--
+			// prevPointer.next = null
+			// prevPointer.previous = null
+			return prevPointer
 		}
 	}
 	
