@@ -5,4 +5,4 @@ class Matrix {
    } 
     
 }
-export default Matrix
+module.exports = Matrix
