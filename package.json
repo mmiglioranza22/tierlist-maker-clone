@@ -4,7 +4,7 @@
   "description": "A very simple tierlist-maker-clone with vanilla javascript and pure HTML CSS",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/mmiglioranza22/tierlist-maker-clone#readme",
   "devDependencies": {
-    "chai": "^4.3.6"
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
   }
 }
