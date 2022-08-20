@@ -19,16 +19,27 @@ describe('Test suite:', function () {
       expect(node.previous).to.be.null
       expect(node.data).to.not.be.null
 
- 
-      
     })
   })
   describe('- Doubly linked list', function () {
     it('it should create a linked list from scratch with a tier name', function () {
-      
+      expect(list).to.exist
+      expect(list).to.have.all.keys('name', 'head', 'tail', '_length')
+      expect(list.head).to.be.null
+      expect(list.tail).to.be.null
+      expect(list.name).to.not.be.null
     })
     it('it should prepend nodes to the head of the list', function () {
-      
+
+      list.prepend('A')
+      expect(list._length).to.equal(1)
+      expect(list.head).to.deep.equal(list.tail)
+      list.prepend('B')
+      expect(list.head.next).to.deep.equal(list.tail)
+      expect(list.tail.previous).to.deep.equal(list.head)
+      list.prepend('C')
+      expect(list.head.next).to.deep.equal(list.tail.previous)
+      expect(list._length).to.equal(3)
     })
 
     it('it should append nodes to the tail of the list', function () {
