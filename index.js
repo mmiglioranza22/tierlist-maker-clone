@@ -1,4 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
+import images from './public'
 console.log(new DoublyLinkedList('s'));
 /** 
  * TODO: load script that: 
@@ -18,6 +19,7 @@ console.log(new DoublyLinkedList('s'));
 
 
 const node_a = document.createElement('div')
+node_a.setAttribute('draggable', true)
 const content_a = document.createTextNode('epa')
 node_a.appendChild(content_a)
 document.querySelector('.container-options').appendChild(node_a)
