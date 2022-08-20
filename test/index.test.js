@@ -218,8 +218,20 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should pop nodes from the tail of the list and return them', function () {
-        
+       list.append('A')
+       const node1 = list.pop() 
+
+       expect(node1.data).to.equal('A')
+       expect(list._length).to.equal(0)
+
+       list.append('B')
+       list.append('C')
+       const node2 = list.pop() 
+       expect(node2.data).to.equal('C')
+       expect(list._length).to.equal(1)
+       expect(list.head).to.deep.equal(list.tail)
       })
+
     }) 
     describe('# Shift:', function () {
       it('it should do nothing and throw an error if list is empty', function () {
