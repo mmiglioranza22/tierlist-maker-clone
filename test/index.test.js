@@ -220,7 +220,6 @@ describe('Test suite:', function () {
       it('it should pop nodes from the tail of the list and return them', function () {
        list.append('A')
        const node1 = list.pop() 
-
        expect(node1.data).to.equal('A')
        expect(list._length).to.equal(0)
 
@@ -231,7 +230,6 @@ describe('Test suite:', function () {
        expect(list._length).to.equal(1)
        expect(list.head).to.deep.equal(list.tail)
       })
-
     }) 
     describe('# Shift:', function () {
       it('it should do nothing and throw an error if list is empty', function () {
@@ -245,8 +243,18 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      xit('it should shift nodes from the head of the list and return them', function () {
-        
+      it('it should shift nodes from the head of the list and return them', function () {
+        list.prepend('A')
+        const node1 = list.shift() 
+        expect(node1.data).to.equal('A')
+        expect(list._length).to.equal(0)
+ 
+        list.prepend('B')
+        list.prepend('C')
+        const node2 = list.shift() 
+        expect(node2.data).to.equal('C')
+        expect(list._length).to.equal(1)
+        expect(list.head).to.deep.equal(list.tail)
       })
     })
     describe('# Remove:', function () {
