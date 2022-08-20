@@ -44,6 +44,8 @@ describe('Test suite:', function () {
         }
         expect(wrapper).to.throw()
         expect(list1).to.be.undefined
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
       
       })
       it('it should initialize a linked list from scratch with a tier name', function () {
@@ -64,6 +66,8 @@ describe('Test suite:', function () {
         }
         expect(wrapper).to.throw()
         expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
       })
       it('it should prepend nodes to the head of the list', function () {
   
@@ -92,6 +96,8 @@ describe('Test suite:', function () {
         }
         expect(wrapper).to.throw()
         expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
       })
       it('it should append nodes to the tail of the list', function () {
   
@@ -110,15 +116,15 @@ describe('Test suite:', function () {
         expect(list._length).to.equal(3)
       })
     })
-    describe('- Insert:', function () {
-      it('it should do nothing and throw an error if no value is passed', function () {
+    describe('# Insert:', function () {
+      it('it should do nothing and throw an error if an invalid value is passed', function () {
         expect(list.insert.bind(list)).to.throw()
 
         function wrapper1(){
           list.insert()
         }
         function wrapper2(){
-          list.insert(undefined,'A')
+          list.insert(null,'A')
         }
         function wrapper3(){
           list.insert(0, )
@@ -127,32 +133,52 @@ describe('Test suite:', function () {
         expect(wrapper2).to.throw()
         expect(wrapper3).to.throw()
         expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
       })
-      xit(`Insert: Index must be positive integer smaller than the list's length`, function() {
-  // check for tests if correct
-        list.insert(null, 'something')
-        list.insert('0', 2)
-        list.insert('string', 2)
+      it('it should do nothing and throw an error if an invalid index is passed (more than _length, negative)', function() {
+        expect(list.insert.bind(list)).to.throw()
+
+        function wrapper1(){
+          list.insert(-1, 'A')
+        }
+        function wrapper2(){
+          list.insert(1,'B')
+        }
+        function wrapper3(){
+          list.insert(null, 'C')
+        }
+        function wrapper4(){
+          list.insert('string', 'D')
+        }
+
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-    })
-    xit('it should not insert nodes if list is empty and index different than 0', function () {
-
-      list.insert(-1, 'will not be inserted')
-      list.insert(4, 'same thing')
-      expect(list._length).to.equal(0)
-      expect(list.head).to.be.null
-      expect(list.tail).to.be.null
-
-      list.insert(0,'A')
-      expect(list.head).to.deep.equal(list.tail)
-      expect(list._length).to.equal(1)
-
-      list.insert(1,'B')
-      expect(list.head).to.deep.equal(list.tail)
-      expect(list._length).to.equal(1)
+      it('it should prepend nodes if index - 1 === _length', function () {
+  
+        list.insert(0,'A')
+        expect(list.head).to.deep.equal(list.tail)
+        expect(list._length).to.equal(1)
+        
+        function wrapper1(){
+          list.insert(1, 'B')
+        } 
+        expect(wrapper1).to.throw()
+        
+        list.insert(0,'B')
+        expect(list.head.data).to.equal('B')
+        expect(list.head.next).to.deep.equal(list.tail)
+        expect(list.tail.previous).to.deep.equal(list.head)
+        expect(list._length).to.equal(2)
+        expect(list.tail.next).to.be.null
+        expect(list.head.previous).to.be.null
+      })
     })
     
     xit('it should insert nodes in any slot/index of the list', function() {
