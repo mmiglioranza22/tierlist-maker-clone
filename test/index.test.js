@@ -5,8 +5,6 @@ const DoublyLinkedList = require('../modules/DoublyLinkedList')
 
 let list
 
-
-
 describe('Test suite:', function () {
   beforeEach(function() {
     list = new DoublyLinkedList('Test')
