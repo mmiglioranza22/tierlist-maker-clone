@@ -258,6 +258,44 @@ describe('Test suite:', function () {
       })
     })
     describe('# Remove:', function () {
+      it('it should do nothing and throw an error if list is empty', function () {
+        expect(list.remove.bind(list)).to.throw()
+
+        function wrapper(){
+          list.remove(0)
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should do nothing and throw an error if index is invalid', function () {
+        expect(list.remove.bind(list)).to.throw()
+
+        function wrapper1(){
+          list.remove()
+        }
+        function wrapper2(){
+          list.remove(-1)
+        }
+        function wrapper3(){
+          list.remove(1)
+        }
+        function wrapper4(){
+          list.remove(null)
+        }
+        function wrapper5(){
+          list.remove('string')
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
+        expect(wrapper5).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
       xit('it should remove nodes from any slot/index of the list and return them', function () {
         
       })
