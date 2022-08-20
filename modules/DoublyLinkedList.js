@@ -5,11 +5,36 @@ const Node = require('./Node')
  */
 class DoublyLinkedList {
 	constructor(name){
+		if(name === undefined) {
+			throw new Error('No argument passed to constructor');
+		}
 		this.name = `${name}-tier`
 		this.head = null
 		this.tail = null
 		this._length = 0
-	} 
+	}
+	
+	// utility methods
+	_checkValue(value){
+		if (value === undefined) {
+			throw new Error('Value is undefined')
+		}
+	}
+
+	_checkIndex(index){
+		if (index === undefined || typeof index !== 'number' || isNaN(index)) {
+			throw new Error('Index has to be a positive integer number or 0')
+		}
+		if ((index < 0 || index >= this._length) && index !==0) {
+			throw new Error(`Index must be smaller than the list's length`)
+		}
+	}
+
+	_checkNodes(){
+		if (this.tail === null || this.head === null) {
+			throw new Error('No nodes on the list')
+		}
+	}
 
 	/**
 	 * Add a node at the beginning of the list
@@ -17,6 +42,7 @@ class DoublyLinkedList {
 	 * @returns { DoublyLinkedList } instance 
 	 */
 	prepend(value) {
+		this._checkValue(value)
 		const node = new Node(value)
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -44,6 +70,7 @@ class DoublyLinkedList {
 	 * @returns { DoublyLinkedList } instance
 	 */
 	append(value){
+		this._checkValue(value)
 		const node = new Node(value)
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -73,14 +100,10 @@ class DoublyLinkedList {
 	 */
 	insert(index, value) {
 		// empty list has specific logic if index is 0 (should prepend)
-		
-		if (typeof index === 'number' &&
-				index !== 0 && 
-				(index < 0 || index >= this._length)) {
-			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
-			return 1
-		}
 
+		this._checkValue(value)
+		this._checkIndex(index)
+		
 		const node = new Node(value)
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -132,10 +155,7 @@ class DoublyLinkedList {
 	 * @returns { Node }
 	 */
 	pop() {
-		if (this.tail === null) {
-			console.error('ERROR: No nodes on the list')
-			return 1
-		}
+		this._checkNodes()
 		let tailPointer = this.tail
 		let prevPointer = tailPointer.previous
 		let temp
@@ -162,10 +182,7 @@ class DoublyLinkedList {
 	 * @returns { Node }
 	 */
 	shift() {
-		if (this.head === null) {
-			console.error('ERROR: No nodes on the list')
-			return 1
-		}
+		this._checkNodes()	
 		let headPointer = this.head
 		let prevPointer = headPointer.next
 		let temp
@@ -193,15 +210,8 @@ class DoublyLinkedList {
 	 * @return { Node } 
 	 */
 	remove(index) {
-		if (index !== 0 && (index < 0 || index >= this._length)) {
-			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
-			return 1
-		}
-
-		if (this.head === null ) {
-			console.error('ERROR: No nodes in list\n')
-			return 1
-		}
+		this._checkNodes()
+		this._checkIndex(index)
 
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -210,13 +220,11 @@ class DoublyLinkedList {
 		let temp
 
 		if (index === 0) {
-			console.log('should shift');
 			const value = this.shift()
 			return value
 		}
 
 		if (index === this._length - 1) {
-			console.log('should pop');
 			const value = this.pop()
 			return value
 		}

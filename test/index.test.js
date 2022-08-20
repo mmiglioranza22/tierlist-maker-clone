@@ -5,12 +5,28 @@ const DoublyLinkedList = require('../modules/DoublyLinkedList')
 
 let list
 
+// describe('- Prepend:', function () {
+   
+// })
+
 describe('Test suite:', function () {
   beforeEach(function() {
     list = new DoublyLinkedList('Test')
   })
   describe('- Node', function () {
+    it('it should do nothing and throw an error if no value is passed', function () {
+      
+      let node
+      function wrapper(){
+        node = new Node()
+      }
+      expect(wrapper).to.throw()
+      expect(node).to.be.undefined
+    
+    })
+   
     it('it should create a node with data', function () {
+
       const node = new Node('Some node')
       expect(node).to.exist
       expect(node).to.have.all.keys('next', 'previous', 'data')
@@ -20,59 +36,82 @@ describe('Test suite:', function () {
     })
   })
   describe('- Doubly linked list', function () {
-    it('it should create a linked list from scratch with a tier name', function () {
-      expect(list).to.exist
-      expect(list).to.have.all.keys('name', 'head', 'tail', '_length')
-      expect(list.head).to.be.null
-      expect(list.tail).to.be.null
-      expect(list.name).to.not.be.null
+    describe('# Initialization:', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        let list1
+        function wrapper(){
+          list1 = new DoublyLinkedList()
+        }
+        expect(wrapper).to.throw()
+        expect(list1).to.be.undefined
+      
+      })
+      it('it should initialize a linked list from scratch with a tier name', function () {
+        
+        expect(list).to.exist
+        expect(list).to.have.all.keys('name', 'head', 'tail', '_length')
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+        expect(list.name).to.not.be.null
+      })
     })
-
-    it('Prepend: it should prepend nodes to the head of the list', function () {
-
-      list.prepend('A')
-      expect(list._length).to.equal(1)
-      expect(list.head).to.deep.equal(list.tail)
-      expect(list.head.next).to.be.null
-      expect(list.tail.previous).to.be.null
-
-      list.prepend('B')
-      expect(list.head.next).to.deep.equal(list.tail)
-      expect(list.tail.previous).to.deep.equal(list.head)
-
-      list.prepend('C')
-      expect(list.head.next).to.deep.equal(list.tail.previous)
-      expect(list._length).to.equal(3)
+    describe('# Prepend:', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.prepend.bind(list)).to.throw()
+      })
+      it('it should prepend nodes to the head of the list', function () {
+  
+        list.prepend('A')
+        expect(list._length).to.equal(1)
+        expect(list.head).to.deep.equal(list.tail)
+        expect(list.head.next).to.be.null
+        expect(list.tail.previous).to.be.null
+  
+        list.prepend('B')
+        expect(list.head.next).to.deep.equal(list.tail)
+        expect(list.tail.previous).to.deep.equal(list.head)
+  
+        list.prepend('C')
+        expect(list.head.next).to.deep.equal(list.tail.previous)
+        expect(list._length).to.equal(3)
+      })
     })
-
-    it('Append: it should append nodes to the tail of the list', function () {
-
-      list.append('A')
-      expect(list._length).to.equal(1)
-      expect(list.head).to.deep.equal(list.tail)
-      expect(list.head.next).to.be.null
-      expect(list.tail.previous).to.be.null
-
-      list.append('B')
-      expect(list.head.next).to.deep.equal(list.tail)
-      expect(list.tail.previous).to.deep.equal(list.head)
-
-      list.append('C')
-      expect(list.head.next).to.deep.equal(list.tail.previous)
-      expect(list._length).to.equal(3)
+    describe('# Append:', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.append.bind(list)).to.throw()
+      })
+      it('it should append nodes to the tail of the list', function () {
+  
+        list.append('A')
+        expect(list._length).to.equal(1)
+        expect(list.head).to.deep.equal(list.tail)
+        expect(list.head.next).to.be.null
+        expect(list.tail.previous).to.be.null
+  
+        list.append('B')
+        expect(list.head.next).to.deep.equal(list.tail)
+        expect(list.tail.previous).to.deep.equal(list.head)
+  
+        list.append('C')
+        expect(list.head.next).to.deep.equal(list.tail.previous)
+        expect(list._length).to.equal(3)
+      })
     })
-
-    it(`Insert: Index must be positive integer smaller than the list's length`, function() {
-
-      // list.insert(null, 'something')
-      // list.insert('0', 2)
-      // list.insert('string', 2)
-      expect(list._length).to.equal(0)
-      expect(list.head).to.be.null
-      expect(list.tail).to.be.null
+    describe('- Insert:', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.insert.bind(list)).to.throw()
+      })
+      xit(`Insert: Index must be positive integer smaller than the list's length`, function() {
+  
+        list.insert(null, 'something')
+        list.insert('0', 2)
+        list.insert('string', 2)
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
     })
-
-    it('it should not insert nodes if list is empty and index different than 0', function () {
+    xit('it should not insert nodes if list is empty and index different than 0', function () {
 
       list.insert(-1, 'will not be inserted')
       list.insert(4, 'same thing')
@@ -89,7 +128,7 @@ describe('Test suite:', function () {
       expect(list._length).to.equal(1)
     })
     
-    it('it should insert nodes in any slot/index of the list', function() {
+    xit('it should insert nodes in any slot/index of the list', function() {
 
       list.insert(0,'A')
       expect(list.head).to.deep.equal(list.tail)
@@ -116,35 +155,26 @@ describe('Test suite:', function () {
       expect(list.tail.previous.next).to.deep.equal(list.tail)
 
     })
-    
-    it('it should prepend, append and insert nodes seamlessly ', function () {
+    xit('it should prepend, append and insert nodes seamlessly ', function () {
       
     })
-
-    it('it should pop nodes from the tail of the list and return them', function () {
+    xit('it should pop nodes from the tail of the list and return them', function () {
       
     })
-
-    it('it should shift nodes from the head of the list and return them', function () {
+    xit('it should shift nodes from the head of the list and return them', function () {
       
     })
-
-    it('it should remove nodes from any slot/index of the list and return them', function () {
+    xit('it should remove nodes from any slot/index of the list and return them', function () {
       
     })
-
-    it('it should pop, shift and remove nodes from any slot/index of the list seamlessly', function () {
+    xit('it should pop, shift and remove nodes from any slot/index of the list seamlessly', function () {
       
     })
-
-    it('impossible operations should be omitted and log correct error', function () {
+    xit('impossible operations should be omitted and log correct error', function () {
       
     })
-
-    it('different combinations of operations should work seamlessly', function () {
+    xit('different combinations of operations should work seamlessly', function () {
       
     })
-
-
   })
 })
