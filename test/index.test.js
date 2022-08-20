@@ -34,6 +34,8 @@ describe('Test suite:', function () {
       list.prepend('A')
       expect(list._length).to.equal(1)
       expect(list.head).to.deep.equal(list.tail)
+      expect(list.head.next).to.be.null
+      expect(list.tail.previous).to.be.null
       list.prepend('B')
       expect(list.head.next).to.deep.equal(list.tail)
       expect(list.tail.previous).to.deep.equal(list.head)
