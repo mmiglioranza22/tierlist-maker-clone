@@ -1,9 +1,7 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
-import images from './public'
 console.log(new DoublyLinkedList('s'));
 /** 
  * TODO: load script that: 
- * - creates 3 dumb node components (see in future to use fixed size images)
  * - creates 5 empty tiers as containers
  * - add event listeners on click/grab/pinch, move and drop
  *   grab+move should remove nodes
@@ -17,9 +15,13 @@ console.log(new DoublyLinkedList('s'));
  *   (sample)
  */
 
-
 const node_a = document.createElement('div')
 node_a.setAttribute('draggable', true)
 const content_a = document.createTextNode('epa')
 node_a.appendChild(content_a)
 document.querySelector('.container-options').appendChild(node_a)
+
+const img = document.createElement('img')
+img.setAttribute('src', './public/img/naruto.jpeg')
+document.querySelector('.container-options').appendChild(img)
+

@@ -32,6 +32,9 @@ input {
   height: 20%;
   width: 20%;
 }
+.dumb-item {
+  width: 50%;
+}
 
 #S {
   background-color: rgb(255, 127, 127);
