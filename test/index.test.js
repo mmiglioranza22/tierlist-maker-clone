@@ -2,13 +2,12 @@ const { assert, expect } = require('chai')
 
 const Node = require('../modules/Node')
 const DoublyLinkedList = require('../modules/DoublyLinkedList')
-let list
 
+let list
 
 describe('Test suite:', function () {
   beforeEach(function() {
     list = new DoublyLinkedList('Test')
-
   })
   describe('- Node', function () {
     it('it should create a node with data', function () {
@@ -18,7 +17,6 @@ describe('Test suite:', function () {
       expect(node.next).to.be.null
       expect(node.previous).to.be.null
       expect(node.data).to.not.be.null
-
     })
   })
   describe('- Doubly linked list', function () {
@@ -29,36 +27,77 @@ describe('Test suite:', function () {
       expect(list.tail).to.be.null
       expect(list.name).to.not.be.null
     })
+
     it('it should prepend nodes to the head of the list', function () {
+
       list.prepend('A')
       expect(list._length).to.equal(1)
       expect(list.head).to.deep.equal(list.tail)
       expect(list.head.next).to.be.null
       expect(list.tail.previous).to.be.null
+
       list.prepend('B')
       expect(list.head.next).to.deep.equal(list.tail)
       expect(list.tail.previous).to.deep.equal(list.head)
+
       list.prepend('C')
       expect(list.head.next).to.deep.equal(list.tail.previous)
       expect(list._length).to.equal(3)
     })
 
     it('it should append nodes to the tail of the list', function () {
+
       list.append('A')
       expect(list._length).to.equal(1)
       expect(list.head).to.deep.equal(list.tail)
       expect(list.head.next).to.be.null
       expect(list.tail.previous).to.be.null
+
       list.append('B')
       expect(list.head.next).to.deep.equal(list.tail)
       expect(list.tail.previous).to.deep.equal(list.head)
+
       list.append('C')
       expect(list.head.next).to.deep.equal(list.tail.previous)
       expect(list._length).to.equal(3)
     })
 
     it('it should insert nodes in any slot/index of the list', function () {
+
+      list.insert(-1, 'will not be inserted')
+      list.insert(4, 'same thing')
+      expect(list._length).to.equal(0)
+      expect(list.head).to.be.null
+      expect(list.tail).to.be.null
+
+      list.insert(0,'A')
+      expect(list.head).to.deep.equal(list.tail)
+      expect(list._length).to.equal(1)
+
+      list.insert(1,'A')
+      expect(list.head).to.deep.equal(list.tail)
+      expect(list._length).to.equal(1)
+
+      list.insert(0,'B')
+      expect(list.head.data).to.equal('B')
+      expect(list.tail.data).to.equal('A')
+      expect(list.head.data).to.equal('B')
+      expect(list.head.next).to.deep.equal(list.tail)
+      expect(list.tail.previous).to.deep.equal(list.head)
+
+      list.insert(1,'C')
+      expect(list.head.next.data).to.equal('C')
+      expect(list.head.next).to.deep.equal(list.tail.previous)
+
+      list.insert(1,'D')
+      expect(list.head.next.data).to.equal('D')
+      expect(list.head.next).to.deep.equal(list.tail.previous.previous)
       
+      list.insert(3, 'Z') 
+      expect(list.tail.data).to.equal('A')
+      expect(list.tail.previous.data).to.equal('Z')
+      expect(list.tail.previous.next).to.deep.equal(list.tail)
+
     })
     
     it('it should prepend, append and insert nodes seamlessly ', function () {
