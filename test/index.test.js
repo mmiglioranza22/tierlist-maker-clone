@@ -286,7 +286,26 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should remove nodes from any slot/index of the list and return them', function () {
-
+        list.append('Z')
+        const z = list.remove(0)
+        expect(z.data).to.equal('Z')
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+        
+        list.prepend('Y')
+        list.prepend('X')
+        list.append('Z')
+        list.append('W')
+        list.append('V')
+        const y = list.remove(1)
+        expect(y.data).to.equal('Y')
+        const w = list.remove(2)
+        expect(w.data).to.equal('W')
+        expect(list.head.data).to.equal('X')
+        expect(list.tail.data).to.equal('V')
+        expect(list.head.next.data).to.equal('Z')
+        expect(list.head.next).to.deep.equal(list.tail.previous) 
       })
     })
     describe('# Complex combinations:', function () {
