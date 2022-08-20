@@ -30,7 +30,6 @@ describe('Test suite:', function () {
       expect(list.name).to.not.be.null
     })
     it('it should prepend nodes to the head of the list', function () {
-
       list.prepend('A')
       expect(list._length).to.equal(1)
       expect(list.head).to.deep.equal(list.tail)
@@ -45,7 +44,17 @@ describe('Test suite:', function () {
     })
 
     it('it should append nodes to the tail of the list', function () {
-      
+      list.append('A')
+      expect(list._length).to.equal(1)
+      expect(list.head).to.deep.equal(list.tail)
+      expect(list.head.next).to.be.null
+      expect(list.tail.previous).to.be.null
+      list.append('B')
+      expect(list.head.next).to.deep.equal(list.tail)
+      expect(list.tail.previous).to.deep.equal(list.head)
+      list.append('C')
+      expect(list.head.next).to.deep.equal(list.tail.previous)
+      expect(list._length).to.equal(3)
     })
 
     it('it should insert nodes in any slot/index of the list', function () {
