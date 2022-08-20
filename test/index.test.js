@@ -206,11 +206,33 @@ describe('Test suite:', function () {
       })
     })
     describe('# Pop:', function () {
-      xit('it should pop nodes from the tail of the list and return them', function () {
+      it('it should do nothing and throw an error if list is empty', function () {
+        expect(list.pop.bind(list)).to.throw()
+
+        function wrapper(){
+          list.pop()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should pop nodes from the tail of the list and return them', function () {
         
       })
     }) 
     describe('# Shift:', function () {
+      it('it should do nothing and throw an error if list is empty', function () {
+        expect(list.shift.bind(list)).to.throw()
+
+        function wrapper(){
+          list.shift()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
       xit('it should shift nodes from the head of the list and return them', function () {
         
       })
