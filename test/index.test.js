@@ -12,19 +12,15 @@ describe('Test suite:', function () {
     list = new DoublyLinkedList('Test')
   })
   describe('1) Node', function () {
-    it('it should do nothing and throw an error if no value is passed', function () {
-      
+    it('it should do nothing and throw an error if no value is passed', function () {    
       let node
       function wrapper(){
         node = new Node()
       }
       expect(wrapper).to.throw()
       expect(node).to.be.undefined
-    
     })
-   
     it('it should create a node with data', function () {
-
       const node = new Node('Some node')
       expect(node).to.exist
       expect(node).to.have.all.keys('next', 'previous', 'data')
@@ -44,10 +40,8 @@ describe('Test suite:', function () {
         expect(list1).to.be.undefined
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
-      
       })
       it('it should initialize a linked list from scratch with a tier name', function () {
-        
         expect(list).to.exist
         expect(list).to.have.all.keys('name', 'head', 'tail', '_length')
         expect(list.head).to.be.null
@@ -68,7 +62,6 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should prepend nodes to the head of the list', function () {
-  
         list.prepend('A')
         expect(list._length).to.equal(1)
         expect(list.head).to.deep.equal(list.tail)
@@ -98,7 +91,6 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should append nodes to the tail of the list', function () {
-  
         list.append('A')
         expect(list._length).to.equal(1)
         expect(list.head).to.deep.equal(list.tail)
@@ -159,7 +151,6 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should prepend nodes if index - 1 === _length', function () {
-  
         list.insert(0,'A')
         expect(list.head).to.deep.equal(list.tail)
         expect(list._length).to.equal(1)
@@ -178,7 +169,6 @@ describe('Test suite:', function () {
         expect(list.head.previous).to.be.null
       })
       it('it should insert nodes in any slot/index of the list', function() {
-  
         list.insert(0,'A')
         expect(list.head).to.deep.equal(list.tail)
         expect(list._length).to.equal(1)
@@ -202,7 +192,6 @@ describe('Test suite:', function () {
         expect(list.tail.data).to.equal('A')
         expect(list.tail.previous.data).to.equal('Z')
         expect(list.tail.previous.next).to.deep.equal(list.tail)
-  
       })
     })
     describe('# Pop:', function () {
@@ -296,8 +285,8 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      xit('it should remove nodes from any slot/index of the list and return them', function () {
-        
+      it('it should remove nodes from any slot/index of the list and return them', function () {
+
       })
     })
     describe('# Complex combinations:', function () {
