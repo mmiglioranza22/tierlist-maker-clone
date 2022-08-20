@@ -1,4 +1,5 @@
-const Node = require('./Node')
+// const Node = require('./Node')
+import Node from './Node.js'
 /**
  * Basic stucture of each tier
  * @class DoublyLinkedList
@@ -263,4 +264,5 @@ class DoublyLinkedList {
 	}
 }
 
-module.exports = DoublyLinkedList
+// module.exports = DoublyLinkedList
+export default DoublyLinkedList

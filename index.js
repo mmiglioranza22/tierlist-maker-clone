@@ -1,10 +1,9 @@
-import Matrix from './modules/Matrix.js'
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
+console.log(new DoublyLinkedList('s'));
 /** 
  * TODO: load script that: 
- * - check all imports are good
- * - creates 5 empty tiers as containers
  * - creates 3 dumb node components (see in future to use fixed size images)
+ * - creates 5 empty tiers as containers
  * - add event listeners on click/grab/pinch, move and drop
  *   grab+move should remove nodes
  *   drop should insert nodes
@@ -17,8 +16,8 @@ import DoublyLinkedList from './modules/DoublyLinkedList.js'
  *   (sample)
  */
 
-console.log(window);
-const matrix = new Matrix
-console.log(
-    matrix.name
-);
+
+const node_a = document.createElement('div')
+const content_a = document.createTextNode('epa')
+node_a.appendChild(content_a)
+document.querySelector('.container-options').appendChild(node_a)
