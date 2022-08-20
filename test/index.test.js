@@ -58,6 +58,12 @@ describe('Test suite:', function () {
     describe('# Prepend:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.prepend.bind(list)).to.throw()
+
+        function wrapper(){
+          list.prepend()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
       })
       it('it should prepend nodes to the head of the list', function () {
   
@@ -79,6 +85,13 @@ describe('Test suite:', function () {
     describe('# Append:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.append.bind(list)).to.throw()
+        expect(list.prepend.bind(list)).to.throw()
+
+        function wrapper(){
+          list.append()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
       })
       it('it should append nodes to the tail of the list', function () {
   
@@ -100,9 +113,23 @@ describe('Test suite:', function () {
     describe('- Insert:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.insert.bind(list)).to.throw()
+
+        function wrapper1(){
+          list.insert()
+        }
+        function wrapper2(){
+          list.insert(undefined,'A')
+        }
+        function wrapper3(){
+          list.insert(0, )
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(list._length).to.equal(0)
       })
       xit(`Insert: Index must be positive integer smaller than the list's length`, function() {
-  
+  // check for tests if correct
         list.insert(null, 'something')
         list.insert('0', 2)
         list.insert('string', 2)
