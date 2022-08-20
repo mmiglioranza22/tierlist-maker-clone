@@ -73,7 +73,10 @@ class DoublyLinkedList {
 	 */
 	insert(index, value) {
 		// empty list has specific logic if index is 0 (should prepend)
-		if (index !== 0 && (index < 0 || index >= this._length)) {
+		
+		if (typeof index === 'number' &&
+				index !== 0 && 
+				(index < 0 || index >= this._length)) {
 			console.error(`ERROR: Index must be positive integer smaller than the list's length\n`)
 			return 1
 		}

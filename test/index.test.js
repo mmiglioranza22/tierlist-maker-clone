@@ -28,7 +28,7 @@ describe('Test suite:', function () {
       expect(list.name).to.not.be.null
     })
 
-    it('it should prepend nodes to the head of the list', function () {
+    it('Prepend: it should prepend nodes to the head of the list', function () {
 
       list.prepend('A')
       expect(list._length).to.equal(1)
@@ -45,7 +45,7 @@ describe('Test suite:', function () {
       expect(list._length).to.equal(3)
     })
 
-    it('it should append nodes to the tail of the list', function () {
+    it('Append: it should append nodes to the tail of the list', function () {
 
       list.append('A')
       expect(list._length).to.equal(1)
@@ -62,7 +62,17 @@ describe('Test suite:', function () {
       expect(list._length).to.equal(3)
     })
 
-    it('it should insert nodes in any slot/index of the list', function () {
+    it(`Insert: Index must be positive integer smaller than the list's length`, function() {
+
+      // list.insert(null, 'something')
+      // list.insert('0', 2)
+      // list.insert('string', 2)
+      expect(list._length).to.equal(0)
+      expect(list.head).to.be.null
+      expect(list.tail).to.be.null
+    })
+
+    it('it should not insert nodes if list is empty and index different than 0', function () {
 
       list.insert(-1, 'will not be inserted')
       list.insert(4, 'same thing')
@@ -74,7 +84,14 @@ describe('Test suite:', function () {
       expect(list.head).to.deep.equal(list.tail)
       expect(list._length).to.equal(1)
 
-      list.insert(1,'A')
+      list.insert(1,'B')
+      expect(list.head).to.deep.equal(list.tail)
+      expect(list._length).to.equal(1)
+    })
+    
+    it('it should insert nodes in any slot/index of the list', function() {
+
+      list.insert(0,'A')
       expect(list.head).to.deep.equal(list.tail)
       expect(list._length).to.equal(1)
 
