@@ -5,15 +5,13 @@ const DoublyLinkedList = require('../modules/DoublyLinkedList')
 
 let list
 
-// describe('- Prepend:', function () {
-   
-// })
+
 
 describe('Test suite:', function () {
   beforeEach(function() {
     list = new DoublyLinkedList('Test')
   })
-  describe('- Node', function () {
+  describe('1) Node', function () {
     it('it should do nothing and throw an error if no value is passed', function () {
       
       let node
@@ -35,7 +33,7 @@ describe('Test suite:', function () {
       expect(node.data).to.not.be.null
     })
   })
-  describe('- Doubly linked list', function () {
+  describe('2) Doubly linked list', function () {
     describe('# Initialization:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         let list1
@@ -179,55 +177,59 @@ describe('Test suite:', function () {
         expect(list.tail.next).to.be.null
         expect(list.head.previous).to.be.null
       })
+      it('it should insert nodes in any slot/index of the list', function() {
+  
+        list.insert(0,'A')
+        expect(list.head).to.deep.equal(list.tail)
+        expect(list._length).to.equal(1)
+  
+        list.insert(0,'B')
+        expect(list.head.data).to.equal('B')
+        expect(list.tail.data).to.equal('A')
+        expect(list.head.data).to.equal('B')
+        expect(list.head.next).to.deep.equal(list.tail)
+        expect(list.tail.previous).to.deep.equal(list.head)
+  
+        list.insert(1,'C')
+        expect(list.head.next.data).to.equal('C')
+        expect(list.head.next).to.deep.equal(list.tail.previous)
+  
+        list.insert(1,'D')
+        expect(list.head.next.data).to.equal('D')
+        expect(list.head.next).to.deep.equal(list.tail.previous.previous)
+        
+        list.insert(3, 'Z') 
+        expect(list.tail.data).to.equal('A')
+        expect(list.tail.previous.data).to.equal('Z')
+        expect(list.tail.previous.next).to.deep.equal(list.tail)
+  
+      })
     })
-    
-    xit('it should insert nodes in any slot/index of the list', function() {
-
-      list.insert(0,'A')
-      expect(list.head).to.deep.equal(list.tail)
-      expect(list._length).to.equal(1)
-
-      list.insert(0,'B')
-      expect(list.head.data).to.equal('B')
-      expect(list.tail.data).to.equal('A')
-      expect(list.head.data).to.equal('B')
-      expect(list.head.next).to.deep.equal(list.tail)
-      expect(list.tail.previous).to.deep.equal(list.head)
-
-      list.insert(1,'C')
-      expect(list.head.next.data).to.equal('C')
-      expect(list.head.next).to.deep.equal(list.tail.previous)
-
-      list.insert(1,'D')
-      expect(list.head.next.data).to.equal('D')
-      expect(list.head.next).to.deep.equal(list.tail.previous.previous)
-      
-      list.insert(3, 'Z') 
-      expect(list.tail.data).to.equal('A')
-      expect(list.tail.previous.data).to.equal('Z')
-      expect(list.tail.previous.next).to.deep.equal(list.tail)
-
+    describe('# Pop:', function () {
+      xit('it should pop nodes from the tail of the list and return them', function () {
+        
+      })
+    }) 
+    describe('# Shift:', function () {
+      xit('it should shift nodes from the head of the list and return them', function () {
+        
+      })
     })
-    xit('it should prepend, append and insert nodes seamlessly ', function () {
-      
+    describe('# Remove:', function () {
+      xit('it should remove nodes from any slot/index of the list and return them', function () {
+        
+      })
     })
-    xit('it should pop nodes from the tail of the list and return them', function () {
-      
-    })
-    xit('it should shift nodes from the head of the list and return them', function () {
-      
-    })
-    xit('it should remove nodes from any slot/index of the list and return them', function () {
-      
-    })
-    xit('it should pop, shift and remove nodes from any slot/index of the list seamlessly', function () {
-      
-    })
-    xit('impossible operations should be omitted and log correct error', function () {
-      
-    })
-    xit('different combinations of operations should work seamlessly', function () {
-      
+    describe('# Complex combinations:', function () {
+      xit('it should prepend, append and insert nodes seamlessly ', function () {
+        
+      })
+      xit('it should pop, shift and remove nodes from any slot/index of the list seamlessly', function () {
+        
+      })
+      xit('different combinations of operations should work seamlessly', function () {
+        
+      })
     })
   })
 })
