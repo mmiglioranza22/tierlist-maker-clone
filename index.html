@@ -6,17 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./index.js"></script>
-    <title>Document</title>
+    <title>TierList clone</title>
   </head>
   <body>
     <div class="main">
-      <div class="container-tierlist">
-        <input type="text" name="" id="S" />
-        <input type="text" name="" id="A" />
-        <input type="text" name="" id="B" />
-        <input type="text" name="" id="C" />
-        <input type="text" name="" id="D" />
+      <div class="container">
+        <input type="text" name="S" class="tiers" id="S" value="S" />
+        <div class="container-tierlist" id="'drop-area S">
+        </div>
+        <input type="text" name="A" class="tiers" id="A" value="A" />
+        <div class="container-tierlist" id="drop-area A">
+        </div>
+        <input type="text" name="B" class="tiers" id="B" value="B" />
+        <div class="container-tierlist" id="drop-area B">
+        </div>
+        <input type="text" name="C" class="tiers" id="C" value="C" />
+        <div class="container-tierlist" id="drop-area C">
+        </div>
+        <input type="text" name="D" class="tiers" id="D" value="D" />
+        <div class="container-tierlist" id="drop-area D">
+        </div>
       </div>
+    </div>
       <div class="container-options"></div>
     </div>
   </body>
