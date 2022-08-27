@@ -19,13 +19,16 @@ body {
   width: 65%;
   display: grid;
   grid-template-columns: 20% 80%;
+  color: #000;
 }
 
 .container-tierlist {
   display: flex;
   flex-direction: row;
   height: auto;
-  background-color: green;
+  background-color: #000;
+  border-bottom: 2px solid #333;
+  padding: 4px 0px;
 }
 
 .container-options {
@@ -38,7 +41,7 @@ p {
 }
 
 input {
-  font-size: 2rem;
+  font-size: 1rem;
   text-align: center;
 }
 

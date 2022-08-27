@@ -1,13 +1,10 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
 import { handleDragStart, handleDragOver, handleDrop } from './handlers/index.js';
-console.log(new DoublyLinkedList('s'));
+
 /** 
  * TODO: load script that: 
- * - creates 5 empty tiers as containers
- * - add event listeners on click/grab/pinch, move and drop
- *   grab+move should remove nodes
- *   drop should insert nodes
  * - solution approach with matrix on hold, DLL meets is the MVP
+ * - fn to print ALL DLL
  * TODO: once FE logic is done: 
  * - check for basic APIs to capture images (get api keys for future deploy)
  * - check if this can be turn into a npm package: 
@@ -16,10 +13,18 @@ console.log(new DoublyLinkedList('s'));
  */
 
 
-
-// event handlers
-
 // get elements and add attr
+
+
+const shinobis = []
+await fetch('https://naruto-api.herokuapp.com/api/v1/characters')
+  .then((response) => response.json())
+  .then((data) => data.forEach(el => {
+    shinobis.push({images: el.images, name: el.name})
+  }))
+
+console.log(shinobis);
+
 const img1 = document.createElement('img')
 const img2 = document.createElement('img')
 const img3 = document.createElement('img')

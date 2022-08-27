@@ -14,7 +14,11 @@ class DoublyLinkedList {
 		this.tail = null
 		this._length = 0
 	}
+
 	
+	// TODO: instance method to print DLL structure
+
+
 	// utility methods
 	_checkValue(value){
 		if (value === undefined) {

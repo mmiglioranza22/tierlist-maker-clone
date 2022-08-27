@@ -1,3 +1,5 @@
+// best explanation: https://developer.mozilla.org/en-US/docs/Web/API/Document/drop_event
+
 let dragged = null;
 
 export function handleDragStart(event) {
