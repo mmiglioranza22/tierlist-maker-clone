@@ -17,35 +17,6 @@ console.log(new DoublyLinkedList('s'));
 
 
 // event handlers
-let draggedEl = null
-
-function handleDragStart(event) {
-  console.log('drag start');
-  // store a ref. on the dragged elem
-  dragged = event.target;
-}
-
-function handleDragOver(event) {
-   // prevent default to allow drop
-   event.preventDefault();
-}
-
-function handleDragEnd(e) {
-  console.log('drag end');
-  this.style.opacity = '1';
-}
-
-function handleDrop(event) {
-  console.log('drop event', event.target);
- // prevent default action (open as link for some elements)
- event.preventDefault();
- // move dragged element to the selected drop target
-
- if (event.target.className === "container-tierlist") {
-   draggedEl.parentNode.removeChild(dragged);
-   event.target.appendChild(dragged);
- }
-}
 
 // get elements and add attr
 const img1 = document.createElement('img')
@@ -92,25 +63,35 @@ document.querySelector('.container-options').appendChild(img3)
 
 let dragged = null;
 
-document.addEventListener("dragstart", (event) => {
+
+function handleDragStart(event) {
+  console.log('drag start');
   // store a ref. on the dragged elem
   dragged = event.target;
-});
+}
 
-document.addEventListener("dragover", (event) => {
-  // prevent default to allow drop
-  event.preventDefault();
-});
+function handleDragOver(event) {
+   // prevent default to allow drop
+   event.preventDefault();
+}
 
-document.addEventListener("drop", (event) => {
-  // prevent default action (open as link for some elements)
+function handleDrop(event) {
+  console.log('drop event', event.target);
+ // prevent default action (open as link for some elements)
   event.preventDefault();
   // move dragged element to the selected drop target
-  if (event.target.className === "container-tierlist") {
-    dragged.parentNode.removeChild(dragged);
-    event.target.appendChild(dragged);
-  }
-});
+
+ if (event.target.className === "container-tierlist") {
+   dragged.parentNode.removeChild(dragged);
+   event.target.appendChild(dragged);
+ }
+}
+
+document.addEventListener("dragstart", handleDragStart);
+
+document.addEventListener("dragover", handleDragOver);
+
+document.addEventListener("drop", handleDrop);
 
 
 //add event listeners
