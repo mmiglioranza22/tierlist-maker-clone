@@ -1,4 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
+import { handleDragStart, handleDragOver, handleDrop } from './handlers/index.js';
 console.log(new DoublyLinkedList('s'));
 /** 
  * TODO: load script that: 
@@ -61,54 +62,6 @@ document.querySelector('.container-options').appendChild(img3)
 //   console.log(event.dataTransfer);
 // });
 
-let dragged = null;
-
-
-function handleDragStart(event) {
-  console.log('drag start');
-  // store a ref. on the dragged elem
-  dragged = event.target;
-}
-
-function handleDragOver(event) {
-   // prevent default to allow drop
-   event.preventDefault();
-}
-
-function handleDrop(event) {
-  console.log('drop event', event.target);
- // prevent default action (open as link for some elements)
-  event.preventDefault();
-  // move dragged element to the selected drop target
-
- if (event.target.className === "container-tierlist") {
-   dragged.parentNode.removeChild(dragged);
-   event.target.appendChild(dragged);
- }
-}
-
 document.addEventListener("dragstart", handleDragStart);
-
 document.addEventListener("dragover", handleDragOver);
-
 document.addEventListener("drop", handleDrop);
-
-
-//add event listeners
-// document.addEventListener('dragstart', handleDragStart);
-// document.addEventListener('dragOver', handleDragOver);
-// document.addEventListener('drop', handleDrop);
-
-// img2.addEventListener('dragstart', handleDragStart);
-// img2.addEventListener('dragover', handleDragOver);
-// img2.addEventListener('drop', handleDrop);
-
-// img3.addEventListener('dragstart', handleDragStart);
-// img3.addEventListener('dragover', handleDragOver);
-// img3.addEventListener('drop', handleDrop);
-
-
-
-
-
-
