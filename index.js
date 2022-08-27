@@ -8,36 +8,46 @@ console.log(new DoublyLinkedList('s'));
  *   drop should insert nodes
  * - solution approach with matrix on hold, DLL meets is the MVP
  * TODO: once FE logic is done: 
- * - check for DLL tests with chai
  * - check for basic APIs to capture images (get api keys for future deploy)
  * - check if this can be turn into a npm package: 
  *   (client provides entities from JSON. Additional tiers. Changeable styles)
  *   (sample)
  */
 
-const dropArea = document.getElementById('drop-area');
 
-dropArea.addEventListener('dragover', (event) => {
-  console.log('drag over');
-  event.stopPropagation();
-  event.preventDefault();
-  // Style the drag-and-drop as a "copy file" operation.
-  event.dataTransfer.dropEffect = 'move';
-});
 
-dropArea.addEventListener('drop', (event) => {
-  event.stopPropagation();
-  event.preventDefault();
-  // const fileList = event.dataTransfer.files;
-  console.log(event.dataTransfer);
-});
+// event handlers
+let draggedEl = null
 
-const node_a = document.createElement('span')
-node_a.setAttribute('draggable', true)
-const content_a = document.createTextNode('epa')
-node_a.appendChild(content_a)
-document.querySelector('.container-options').appendChild(node_a)
+function handleDragStart(event) {
+  console.log('drag start');
+  // store a ref. on the dragged elem
+  dragged = event.target;
+}
 
+function handleDragOver(event) {
+   // prevent default to allow drop
+   event.preventDefault();
+}
+
+function handleDragEnd(e) {
+  console.log('drag end');
+  this.style.opacity = '1';
+}
+
+function handleDrop(event) {
+  console.log('drop event', event.target);
+ // prevent default action (open as link for some elements)
+ event.preventDefault();
+ // move dragged element to the selected drop target
+
+ if (event.target.className === "container-tierlist") {
+   draggedEl.parentNode.removeChild(dragged);
+   event.target.appendChild(dragged);
+ }
+}
+
+// get elements and add attr
 const img1 = document.createElement('img')
 const img2 = document.createElement('img')
 const img3 = document.createElement('img')
@@ -45,10 +55,6 @@ const img3 = document.createElement('img')
 img1.setAttribute('src', './public/img/naruto.jpeg')
 img2.setAttribute('src', './public/img/sasuke.webp')
 img3.setAttribute('src', './public/img/sakura.jpeg')
-
-img1.setAttribute('draggable', true)
-img2.setAttribute('draggable', true)
-img3.setAttribute('draggable', true)
 
 
 img1.setAttribute('height', '100px')
@@ -58,45 +64,70 @@ img2.setAttribute('width', '100px')
 img3.setAttribute('height', '100px')
 img3.setAttribute('width', '100px')
 
-img1.classList.add("container-options");
-img2.classList.add("container-options");
-img3.classList.add("container-options");
+img1.setAttribute('draggable', true)
+img2.setAttribute('draggable', true)
+img3.setAttribute('draggable', true)
 
 document.querySelector('.container-options').appendChild(img1)
 document.querySelector('.container-options').appendChild(img2)
 document.querySelector('.container-options').appendChild(img3)
 
 
-function handleDragStart(e) {
-  console.log('drag start');
-  
-  this.style.opacity = '0.4';
+// drop area
+// const dropArea = document.getElementById('drop-area S');
 
-  dragSrcEl = this;
+// dropArea.addEventListener('dragover', (event) => {
+//   console.log('drag over');
+//   event.stopPropagation();
+//   event.preventDefault();
+//   event.dataTransfer.dropEffect = 'move';
+// });
 
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.innerHTML);
-}
+// dropArea.addEventListener('drop', (event) => {
+//   event.stopPropagation();
+//   event.preventDefault();
+//   // const fileList = event.dataTransfer.files;
+//   console.log(event.dataTransfer);
+// });
 
-function handleDragEnd(e) {
-  console.log('drag end');
-  this.style.opacity = '1';
-}
+let dragged = null;
 
-function handleDrop(e) {
-  console.log('drop event');
-  e.stopPropagation(); // stops the browser from redirecting.
-  if (dragSrcEl !== this) {
-    dragSrcEl.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData('text/html');
+document.addEventListener("dragstart", (event) => {
+  // store a ref. on the dragged elem
+  dragged = event.target;
+});
+
+document.addEventListener("dragover", (event) => {
+  // prevent default to allow drop
+  event.preventDefault();
+});
+
+document.addEventListener("drop", (event) => {
+  // prevent default action (open as link for some elements)
+  event.preventDefault();
+  // move dragged element to the selected drop target
+  if (event.target.className === "container-tierlist") {
+    dragged.parentNode.removeChild(dragged);
+    event.target.appendChild(dragged);
   }
-
-  return false;
-}
+});
 
 
+//add event listeners
+// document.addEventListener('dragstart', handleDragStart);
+// document.addEventListener('dragOver', handleDragOver);
+// document.addEventListener('drop', handleDrop);
 
-node_a.addEventListener('dragstart', handleDragStart);
-node_a.addEventListener('dragend', handleDragEnd);
-node_a.addEventListener('drop', handleDrop);
+// img2.addEventListener('dragstart', handleDragStart);
+// img2.addEventListener('dragover', handleDragOver);
+// img2.addEventListener('drop', handleDrop);
+
+// img3.addEventListener('dragstart', handleDragStart);
+// img3.addEventListener('dragover', handleDragOver);
+// img3.addEventListener('drop', handleDrop);
+
+
+
+
+
 

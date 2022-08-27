@@ -70,3 +70,16 @@ input {
 #D {
   background-color: rgb(191, 255, 127);
 }
+
+#draggable {
+  text-align: center;
+  background: white;
+}
+
+.dropzone {
+  width: 200px;
+  height: 20px;
+  background: blueviolet;
+  margin: 10px;
+  padding: 10px;
+}
