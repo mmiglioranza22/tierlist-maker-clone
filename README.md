@@ -8,7 +8,7 @@ A basic tierlist-maker clone with vanilla JS and pure HTML/CSS. No frameworks.
 
 Have you ever googled how does a double linked list works with a tierlist but got no results?
 
-![google search]('/public/google.png')
+![google search](/public/google.png)
 
 Well, now you will have exactly that! 🤣
 
