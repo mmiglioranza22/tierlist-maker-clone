@@ -14,7 +14,7 @@ body {
 }
 .container {
   /* height: 70%; */
-  width: 65%;
+  width: 39.5%;
   display: grid;
   grid-template-columns: 20% 80%;
   color: #000;

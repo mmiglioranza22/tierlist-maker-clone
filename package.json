@@ -17,10 +17,17 @@
     "tierlist",
     "maker",
     "clone",
-    "tierlistmaker-clone"
+    "tierlistmaker-clone",
+    "doubly linked list",
+    "doubly link list",
+    "double link list",
+    "liked list",
+    "double linked list",
+    "doubly link",
+    "double link"
   ],
   "author": "Manuel Miglioranza",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/mmiglioranza22/tierlist-maker-clone/issues"
   },
