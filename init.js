@@ -1,71 +1,59 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
 import { handleDragStart, handleDragOver, handleDrop } from './handlers/index.js';
+import { parseName } from './utils/index.js'
 
 /** 
  * TODO: load script that: 
  * - solution approach with matrix on hold, DLL meets is the MVP
  * - fn to print ALL DLL
- * TODO: once FE logic is done: 
- * - check for basic APIs to capture images (get api keys for future deploy)
- * - check if this can be turn into a npm package: 
- *   (client provides entities from JSON. Additional tiers. Changeable styles)
- *   (sample)
  */
 
 
-// get elements and add attr
-
-
+// API call
 const shinobis = []
-await fetch('https://naruto-api.herokuapp.com/api/v1/characters')
-  .then((response) => response.json())
-  .then((data) => data.forEach(el => {
-    shinobis.push({images: el.images, name: el.name})
-  }))
-
-console.log(shinobis);
-
-const img1 = document.createElement('img')
-const img2 = document.createElement('img')
-const img3 = document.createElement('img')
-
-img1.setAttribute('src', './public/img/naruto.jpeg')
-img2.setAttribute('src', './public/img/sasuke.webp')
-img3.setAttribute('src', './public/img/sakura.jpeg')
+try {
+  await fetch('https://naruto-api.herokuapp.com/api/v1/characters')
+    .then((response) => response.json())
+    .then((data) => data.forEach(el => {
+      shinobis.push({images: el.images, name: el.name})
+    }))
+    console.log('Data fetch from API OK')
+    // console.log(shinobis);
+} catch (error) {
+   console.error(`Oops, something wrong happened while fetching the data from the API: ${error}`);
+}
 
 
-img1.setAttribute('height', '100px')
-img1.setAttribute('width', '100px')
-img2.setAttribute('height', '100px')
-img2.setAttribute('width', '100px')
-img3.setAttribute('height', '100px')
-img3.setAttribute('width', '100px')
+// create API & default imgs
+const assets = [
+  './public/img/Naruto_Uzumaki.jpeg',
+  './public/img/Sasuke_Uchiha.webp',
+  './public/img/Sakura_Haruno.jpeg'
+]
 
-img1.setAttribute('draggable', true)
-img2.setAttribute('draggable', true)
-img3.setAttribute('draggable', true)
+function createImgElements() {
+  let element
+  if (shinobis.length) {
+    for (let shinobi of shinobis) {
+      if (shinobi.images[0] || shinobi.images[1]) {
+        element = document.createElement('img')
+        element.setAttribute('src', shinobi.images[1] || shinobi.images[0]|| './public/placeholder.png')
+        element.setAttribute('alt', shinobi.name || 'Nameless shinobi 🥷')
+        element.setAttribute('draggable', true)
+        document.querySelector('.container-options').appendChild(element) 
+      }
+    }
+  }
+  for (let img of assets) {
+    element = document.createElement('img')
+        element.setAttribute('src', img)
+        element.setAttribute('alt', parseName(img))
+        element.setAttribute('draggable', true)
+        document.querySelector('.container-options').appendChild(element)  
+  }
+}
 
-document.querySelector('.container-options').appendChild(img1)
-document.querySelector('.container-options').appendChild(img2)
-document.querySelector('.container-options').appendChild(img3)
-
-
-// drop area
-// const dropArea = document.getElementById('drop-area S');
-
-// dropArea.addEventListener('dragover', (event) => {
-//   console.log('drag over');
-//   event.stopPropagation();
-//   event.preventDefault();
-//   event.dataTransfer.dropEffect = 'move';
-// });
-
-// dropArea.addEventListener('drop', (event) => {
-//   event.stopPropagation();
-//   event.preventDefault();
-//   // const fileList = event.dataTransfer.files;
-//   console.log(event.dataTransfer);
-// });
+createImgElements()
 
 document.addEventListener("dragstart", handleDragStart);
 document.addEventListener("dragover", handleDragOver);

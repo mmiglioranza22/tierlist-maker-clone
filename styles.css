@@ -3,16 +3,14 @@ body {
   padding: 0;
   font-size: 62.5%;
   box-sizing: border-box;
+  background-color: grey;
 }
 
 .main {
   width: auto;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: grey;
 }
 .container {
   /* height: 70%; */
@@ -20,6 +18,7 @@ body {
   display: grid;
   grid-template-columns: 20% 80%;
   color: #000;
+  padding: 20px 0px 40px;
 }
 
 .container-tierlist {
@@ -32,7 +31,7 @@ body {
 }
 
 .container-options {
-  margin: 2px 2px;
+  margin: 20px;
 }
 
 p {
@@ -43,6 +42,11 @@ p {
 input {
   font-size: 1rem;
   text-align: center;
+}
+
+img {
+  height: 100px;
+  width: 100px;
 }
 
 .dumb-item {
