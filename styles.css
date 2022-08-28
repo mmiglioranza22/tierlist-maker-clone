@@ -12,12 +12,8 @@ body {
   padding: 0;
   font-size: 62.5%;
   box-sizing: border-box;
-  /* 
-  background-image: url("./public/akatsuki-background.jpg");
-  background-repeat: repeat;
-  background-size: contain;
-  background-size: cover; */
 }
+
 p {
   background-color: cornsilk;
   font-size: 1rem;
@@ -25,10 +21,12 @@ p {
   padding: 2px 0px;
   font-family: "Source Code Pro", monospace;
 }
+
 input {
   font-size: 1rem;
   text-align: center;
 }
+
 input[type="text"] {
   border: 1px solid rgb(17 17 19);
   border-bottom: 2px solid #333;
@@ -45,8 +43,38 @@ img {
   flex-direction: column;
   /* align-items: center; */
 }
+
+.loader {
+  /* width: 100%; */
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: fixed; */
+  background: rgba(0, 0, 0, 0.5);
+  /* z-index: 1; */
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  /* border: 8px solid; */
+  /* border-color: #3d5af1 transparent #3d5af1 transparent; */
+  /* border-radius: 50%; */
+  background: url("./public/uzumaki.svg");
+  animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .container {
-  /* height: 70%; */
   width: 39.5%;
   display: grid;
   grid-template-columns: 20% 80%;
@@ -67,6 +95,8 @@ img {
 
 .container-options {
   margin: 20px;
+  border: 2px solid red;
+  width: 95%;
 }
 
 .tiers {
@@ -84,18 +114,14 @@ img {
 }
 
 .scroll-title {
-  /* position: fixed; */
-  /* width: inherit; */
-  /* margin: inherit; */
-  /* width: max-content; */
   background-color: rgba(41, 42, 45, 1);
   color: white;
-  /* font-weight: 700; */
   text-align: center;
   padding: 0.5rem 0px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
+
 .scroll-content {
   max-height: 546px;
   overflow-y: scroll;

@@ -9,6 +9,16 @@ import { parseName } from './utils/index.js'
  */
 
 
+// loading flag
+let isLoading = true
+
+const containerOptionsEl = document.querySelector('.container-options')
+const spinner = document.createElement('div')
+spinner.classList.add('spinner')
+
+containerOptionsEl.classList.add('loader')
+containerOptionsEl.appendChild(spinner)
+
 // API call
 const shinobis = []
 try {
@@ -18,7 +28,6 @@ try {
       shinobis.push({images: el.images, name: el.name})
     }))
     console.log('Data fetch from API OK')
-    // console.log(shinobis);
 } catch (error) {
    console.error(`Oops, something wrong happened while fetching the data from the API: ${error}`);
 }
@@ -51,9 +60,17 @@ function createImgElements() {
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element)  
   }
+
+  isLoading = false
+
 }
 
 createImgElements()
+
+if(!isLoading) {
+  containerOptionsEl.removeChild(spinner)
+  containerOptionsEl.classList.remove('loader')
+}
 
 document.addEventListener("dragstart", handleDragStart);
 document.addEventListener("dragover", handleDragOver);
