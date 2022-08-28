@@ -1,9 +1,38 @@
+html {
+  background-color: black;
+  background: url("./public/akatsuki-background.jpg") repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-size: 62.5%;
   box-sizing: border-box;
-  background-color: grey;
+  /* 
+  background-image: url("./public/akatsuki-background.jpg");
+  background-repeat: repeat;
+  background-size: contain;
+  background-size: cover; */
+}
+p {
+  background-color: cornsilk;
+  font-size: 1.5rem;
+  margin: auto;
+  padding: 2px 0px;
+  font-family: "Source Code Pro", monospace;
+}
+input {
+  font-size: 1rem;
+  text-align: center;
+}
+
+img {
+  height: 100px;
+  width: 100px;
 }
 
 .main {
@@ -22,19 +51,12 @@ body {
   margin-left: 10rem;
   margin-right: 5rem;
 }
-.scroll-container {
-  width: 39.5%;
-  max-height: 580px;
-  margin: 1rem 10rem 3rem 5rem;
-  border: 2px solid red;
-  background-color: white;
-}
 
 .container-tierlist {
   display: flex;
   flex-direction: row;
   height: auto;
-  background-color: #000;
+  background-color: rgb(17 17 19);
   border-bottom: 2px solid #333;
   padding: 8px 0px;
 }
@@ -43,12 +65,18 @@ body {
   margin: 20px;
 }
 
-p {
-  background-color: cornsilk;
-  font-size: 1.5rem;
-  margin: auto;
-  padding: 2px 0px;
-  font-family: "Source Code Pro", monospace;
+.tiers {
+  height: 7rem;
+  width: auto;
+}
+
+.scroll-container {
+  width: 39.5%;
+  max-height: 580px;
+  margin: 1.3rem 10rem 3rem 5rem;
+  background-color: rgb(32 33 36);
+  border: 1px solid rgb(111 113 115);
+  border-radius: 10px;
 }
 
 .scroll-title {
@@ -56,33 +84,17 @@ p {
   /* width: inherit; */
   /* margin: inherit; */
   /* width: max-content; */
-  background-color: rgb(67, 67, 67);
+  background-color: rgba(41, 42, 45, 1);
   color: white;
   font-weight: 700;
   text-align: center;
+  padding: 0.5rem 0px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .scroll-content {
   max-height: 546px;
   overflow-y: scroll;
-}
-
-input {
-  font-size: 1rem;
-  text-align: center;
-}
-
-img {
-  height: 100px;
-  width: 100px;
-}
-
-.dumb-item {
-  width: 50%;
-}
-
-.tiers {
-  height: 7rem;
-  width: auto;
 }
 
 #S {
@@ -103,17 +115,4 @@ img {
 
 #D {
   background-color: rgb(191, 255, 127);
-}
-
-#draggable {
-  text-align: center;
-  background: white;
-}
-
-.dropzone {
-  width: 200px;
-  height: 20px;
-  background: blueviolet;
-  margin: 10px;
-  padding: 10px;
 }
