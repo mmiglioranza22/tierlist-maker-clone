@@ -6,7 +6,7 @@ A basic tierlist-maker clone with vanilla JS and pure HTML/CSS. No frameworks.
 
 ## About
 
-Have you ever googled how does a **doubly linked list** works with a tierlist without any luck?
+Have you ever googled an example of how does a **doubly linked list** works with a tierlist without any luck?
 
 ![google search](/public/google.png)
 
