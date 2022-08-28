@@ -1,6 +1,6 @@
 html {
   background-color: black;
-  background: url("./public/akatsuki-background.jpg") repeat;
+  background: url("./public/akatsuki-background.jpg") repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
