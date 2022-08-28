@@ -14,8 +14,21 @@ class DoublyLinkedList {
 		this._length = 0
 	}
 
-	
-	// TODO: instance method to print DLL structure
+	printList() {
+		this._checkNodes()
+		const nodes = []
+		let current = 0
+		let headPointer = this.head
+		let currentNode
+		while (current < this._length) {
+			currentNode = headPointer
+			nodes.push(currentNode.data)
+			headPointer = headPointer.next
+			current++
+		}
+		console.log(`DDL: ${this.name}`)
+		console.log(nodes.join(' <==> '));
+	}
 
 
 	// utility methods
@@ -268,3 +281,17 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
+
+function main() {
+
+	const dll = new DoublyLinkedList('manu')
+
+	dll.prepend('A')
+	dll.prepend('B')
+	dll.append('C')
+	dll.printList()
+
+
+}
+
+main()
