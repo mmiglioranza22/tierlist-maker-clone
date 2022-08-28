@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A very simple tierlist-maker-clone with vanilla javascript and pure HTML CSS",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha"
   },

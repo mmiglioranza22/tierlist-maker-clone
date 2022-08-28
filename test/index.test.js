@@ -1,7 +1,6 @@
-const { assert, expect } = require('chai')
-
-const Node = require('../modules/Node')
-const DoublyLinkedList = require('../modules/DoublyLinkedList')
+import { expect } from "chai"
+import Node from "../modules/Node.js"
+import DoublyLinkedList from "../modules/DoublyLinkedList.js"
 
 let list
 

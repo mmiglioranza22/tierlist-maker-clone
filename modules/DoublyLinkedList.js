@@ -1,4 +1,3 @@
-// const Node = require('./Node')
 import Node from './Node.js'
 /**
  * Basic stucture of each tier
@@ -268,5 +267,4 @@ class DoublyLinkedList {
 	}
 }
 
-// module.exports = DoublyLinkedList
 export default DoublyLinkedList
