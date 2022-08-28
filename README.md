@@ -24,11 +24,11 @@ A `DoublyLinkedList` data structure is created for every tier with which you can
 
 ## Demo
 
-(gif/photo)
+(gif/photo) pending
 
 ## Aditional info
 
-API used for examples: https://naruto-api.herokuapp.com/api/v1/characters 
+API used: https://naruto-api.herokuapp.com/api/v1/characters 
 (Credits: https://github.com/Gustavonobreza/naruto-api) 🙌
 
 Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms)
