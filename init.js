@@ -57,6 +57,8 @@ const assets = [
 function createImgElements() {
   let element
   if (shinobis.length) {
+    // this is done to make elements fit correctly in container
+    shinobis.shift()
     for (let shinobi of shinobis) {
       if (shinobi.images[0] || shinobi.images[1]) {
         element = document.createElement('img')
