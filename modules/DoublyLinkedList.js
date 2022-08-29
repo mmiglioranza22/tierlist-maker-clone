@@ -39,7 +39,6 @@ class DoublyLinkedList {
 		return nodes
 	}
 
-
 	_checkValue(value){
 		if (value === undefined) {
 			throw new Error('Value is undefined')
@@ -75,15 +74,13 @@ class DoublyLinkedList {
 
 		while (headPointer.data !== nodeName) {
 			headPointer = headPointer.next
-			if (headPointer.next === null) {
-				break 
+			if (headPointer === null) {
+				return exists 
 			}
 		}
 		exists = true
 		return exists
-
 	}
-	
 
 	/**
 	 * Add a node at the beginning of the list
@@ -313,3 +310,17 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
+
+
+function main() {
+
+	const dll = new DoublyLinkedList('manu')
+	// dll.append('A')
+	// eslint-disable-next-line no-console
+	// console.log(dll.hasNode('A'))
+	dll.prepend('B')
+	// eslint-disable-next-line no-console
+	console.log(dll.hasNode('B'))
+}
+
+main()
