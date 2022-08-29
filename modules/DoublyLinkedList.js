@@ -1,5 +1,4 @@
 import Node from './Node.js'
-import { createElements } from '../utils/index.js'
 /**
  * Basic stucture of each tier
  * @class DoublyLinkedList
