@@ -29,6 +29,7 @@ class DoublyLinkedList {
 			current++
 		}
 
+		// debugger
 		if(log) {
 			console.log(`DDL: ${this.name}`)
 			// nodes.push('null')
