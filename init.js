@@ -1,5 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
-import { handleDragStart, handleDragOver, handleDrop } from './handlers/index.js';
+import { handleDragStart, handleDragOver, handleDrop, handleDrag } from './handlers/index.js'
 import { parseName } from './utils/index.js'
 
 /** 
@@ -7,6 +7,20 @@ import { parseName } from './utils/index.js'
  * - solution approach with matrix on hold, DLL meets is the MVP
  * - fn to print ALL DLL
  */
+
+// create data structures for each tier
+
+const TIERS = 'SABCD'
+let S_Tier, A_Tier, B_Tier, C_tier, D_tier
+export const tiers = [S_Tier, A_Tier, B_Tier, C_tier, D_tier]
+
+for (let i = 0; i < TIERS.length; i++) {
+  let tierEl = document.getElementById(TIERS[i])
+  tiers[i] = new DoublyLinkedList(tierEl.id)
+}
+
+tiers.forEach(el => console.log(el))
+
 
 
 // loading flag
@@ -48,6 +62,7 @@ function createImgElements() {
         element = document.createElement('img')
         element.setAttribute('src', shinobi.images[1] || shinobi.images[0]|| './public/placeholder.png')
         element.setAttribute('alt', shinobi.name || 'Nameless shinobi 🥷')
+        element.setAttribute('name', shinobi.name || 'Nameless shinobi 🥷')
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element) 
       }
@@ -57,6 +72,7 @@ function createImgElements() {
     element = document.createElement('img')
         element.setAttribute('src', img)
         element.setAttribute('alt', parseName(img))
+        element.setAttribute('name', parseName(img))
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element)  
   }
@@ -72,6 +88,7 @@ if(!isLoading) {
   containerOptionsEl.classList.remove('loader')
 }
 
-document.addEventListener("dragstart", handleDragStart);
-document.addEventListener("dragover", handleDragOver);
-document.addEventListener("drop", handleDrop);
+document.addEventListener('drag', handleDrag)
+document.addEventListener('dragstart', handleDragStart)
+document.addEventListener('dragover', handleDragOver)
+document.addEventListener('drop', handleDrop)

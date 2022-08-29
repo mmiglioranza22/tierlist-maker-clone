@@ -1,4 +1,5 @@
 import Node from './Node.js'
+import { createElements } from '../utils/index.js'
 /**
  * Basic stucture of each tier
  * @class DoublyLinkedList
@@ -6,7 +7,7 @@ import Node from './Node.js'
 class DoublyLinkedList {
 	constructor(name){
 		if(name === undefined) {
-			throw new Error('No argument passed to constructor');
+			throw new Error('No argument passed to constructor')
 		}
 		this.name = `${name}-tier`
 		this.head = null
@@ -14,24 +15,31 @@ class DoublyLinkedList {
 		this._length = 0
 	}
 
-	printList() {
+	// utility methods
+	printList(log = false) {
 		this._checkNodes()
 		const nodes = []
 		let current = 0
 		let headPointer = this.head
 		let currentNode
+
 		while (current < this._length) {
 			currentNode = headPointer
 			nodes.push(currentNode.data)
 			headPointer = headPointer.next
 			current++
 		}
-		console.log(`DDL: ${this.name}`)
-		console.log(nodes.join(' <==> '));
+
+		if(log) {
+			console.log(`DDL: ${this.name}`)
+			// nodes.push('null')
+			console.log(nodes.join(' <==> '))
+		}
+
+		return nodes
 	}
 
 
-	// utility methods
 	_checkValue(value){
 		if (value === undefined) {
 			throw new Error('Value is undefined')
@@ -52,6 +60,30 @@ class DoublyLinkedList {
 			throw new Error('No nodes on the list')
 		}
 	}
+
+	/**
+	 *
+	 *
+	 * @param { String } nodeName
+	 * @returns { Boolean }
+	 */
+	// TODO: tests pending
+	hasNode(nodeName) {
+		this._checkNodes()
+		let exists = false
+		let headPointer = this.head
+
+		while (headPointer.data !== nodeName) {
+			headPointer = headPointer.next
+			if (headPointer.next === null) {
+				break 
+			}
+		}
+		exists = true
+		return exists
+
+	}
+	
 
 	/**
 	 * Add a node at the beginning of the list
@@ -281,17 +313,3 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
-
-function main() {
-
-	const dll = new DoublyLinkedList('manu')
-
-	dll.prepend('A')
-	dll.prepend('B')
-	dll.append('C')
-	dll.printList()
-
-
-}
-
-main()
