@@ -15,7 +15,7 @@ body {
 }
 
 p {
-  background-color: cornsilk;
+  color: cornsilk;
   font-size: 1rem;
   margin: auto;
   padding: 2px 0px;
@@ -121,22 +121,22 @@ img {
   overflow-y: scroll;
 }
 
-#S {
+#S-tier {
   background-color: rgb(255, 127, 127);
 }
 
-#A {
+#A-tier {
   background-color: rgb(255, 191, 127);
 }
 
-#B {
+#B-tier {
   background-color: rgb(255, 223, 127);
 }
 
-#C {
+#C-tier {
   background-color: rgb(255, 255, 127);
 }
 
-#D {
+#D-tier {
   background-color: rgb(191, 255, 127);
 }

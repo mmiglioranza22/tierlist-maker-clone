@@ -5,7 +5,7 @@
 class Node {
 	constructor(data) {
 		if(data === undefined) {
-			throw new Error('No argument passed to constructor');
+			throw new Error('No argument passed to constructor')
 		}
 		this.data = data
 		this.previous = null
