@@ -90,7 +90,7 @@ if(!isLoading) {
   containerOptionsEl.classList.remove('loader')
 }
 
-document.addEventListener('drag', handleDrag)
+// document.addEventListener('drag', handleDrag)
 document.addEventListener('dragstart', handleDragStart)
 document.addEventListener('dragover', handleDragOver)
 document.addEventListener('drop', handleDrop)

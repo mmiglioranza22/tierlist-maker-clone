@@ -45,6 +45,7 @@ export function handleDrop(event, list) {
       if (tier.name.includes(listDS.id)) {
         // TODO: only append is being supported, check for HTML api to insert images in between
         tier.append(dragged.name)
+        console.log(tier)
       }
     })
     

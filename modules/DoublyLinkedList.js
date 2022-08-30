@@ -62,12 +62,12 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 *
-	 *
+	 * Checks for a given node in the list and returns a boolean for either case.
 	 * @param { String } nodeName
 	 * @returns { Boolean }
 	 */
 	hasNode(nodeName) {
+		this._checkValue(nodeName)
 		this._checkNodes()
 		let exists = false
 		let headPointer = this.head
@@ -80,6 +80,48 @@ class DoublyLinkedList {
 		}
 		exists = true
 		return exists
+	}
+
+	/**
+	 * Looks for a given node by its name and returns the index it occupies
+	 * This DS is 0-indexed
+	 * @param { String } nodeName
+	 * @return { Number } 
+	 * @memberof DoublyLinkedList
+	 */
+	// TODO: tests pending
+	search(nodeName) {
+		this._checkValue(nodeName)	
+		this._checkNodes()
+		let headPointer = this.head
+
+		while (headPointer.data !== nodeName) {
+			headPointer = headPointer.next
+			if (headPointer === null) {
+				throw new Error('There is no such node in the list.')	
+			}
+		}
+		return headPointer
+	}
+
+	/**
+	 * Checks a given index and returns the node placed there.
+	 * @param { Number } index
+	 * @return { String } Node name
+	 */
+	// TODO: tests pending. 
+	checkIndex(index) {
+		this._checkIndex(index)
+		this._checkNodes()
+
+		let current = 0
+		let headPointer = this.head
+		// This method could be optimized to N/2 like remove or insert.
+		while (current !== index) {
+			headPointer = headPointer.next
+			current++
+		}
+		return headPointer
 	}
 
 	/**
@@ -310,3 +352,16 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
+
+// function main () {
+// 	const dll = new DoublyLinkedList('test')
+// 	dll.append('A')
+// 	dll.append('B')
+// 	dll.append('C')
+// 	dll.append('D')
+	
+// 	// console.log(dll.checkIndex(1));
+	
+// 	console.log(dll.search('C'))
+// }
+// main()
