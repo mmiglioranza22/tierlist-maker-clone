@@ -15,6 +15,7 @@ class DoublyLinkedList {
 	}
 
 	// utility methods
+	// ? add tests for this? Extra credit
 	printList(log = false) {
 		this._checkNodes()
 		const nodes = []
@@ -309,17 +310,3 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
-
-
-function main() {
-
-	const dll = new DoublyLinkedList('manu')
-	// dll.append('A')
-	// eslint-disable-next-line no-console
-	// console.log(dll.hasNode('A'))
-	dll.prepend('B')
-	// eslint-disable-next-line no-console
-	console.log(dll.hasNode('B'))
-}
-
-main()
