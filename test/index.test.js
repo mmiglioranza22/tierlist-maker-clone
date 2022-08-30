@@ -30,7 +30,7 @@ describe('Test suite:', function () {
     describe('# Initialization:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         let list1
-        function wrapper(){
+        function wrapper() {
           list1 = new DoublyLinkedList()
         }
         expect(wrapper).to.throw()
@@ -50,7 +50,7 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.prepend.bind(list)).to.throw()
 
-        function wrapper(){
+        function wrapper() {
           list.prepend()
         }
         expect(wrapper).to.throw()
@@ -79,7 +79,7 @@ describe('Test suite:', function () {
         expect(list.append.bind(list)).to.throw()
         expect(list.prepend.bind(list)).to.throw()
 
-        function wrapper(){
+        function wrapper() {
           list.append()
         }
         expect(wrapper).to.throw()
@@ -107,13 +107,13 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if an invalid value is passed', function () {
         expect(list.insert.bind(list)).to.throw()
 
-        function wrapper1(){
+        function wrapper1() {
           list.insert()
         }
-        function wrapper2(){
+        function wrapper2() {
           list.insert(null,'A')
         }
-        function wrapper3(){
+        function wrapper3() {
           list.insert(0, )
         }
         expect(wrapper1).to.throw()
@@ -126,13 +126,13 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if an invalid index is passed (more than _length, negative)', function() {
         expect(list.insert.bind(list)).to.throw()
 
-        function wrapper1(){
+        function wrapper1() {
           list.insert(-1, 'A')
         }
-        function wrapper2(){
+        function wrapper2() {
           list.insert(1,'B')
         }
-        function wrapper3(){
+        function wrapper3() {
           list.insert(null, 'C')
         }
         function wrapper4(){
@@ -195,7 +195,7 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.pop.bind(list)).to.throw()
 
-        function wrapper(){
+        function wrapper() {
           list.pop()
         }
         expect(wrapper).to.throw()
@@ -221,7 +221,7 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.shift.bind(list)).to.throw()
 
-        function wrapper(){
+        function wrapper() {
           list.shift()
         }
         expect(wrapper).to.throw()
@@ -247,7 +247,7 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.remove.bind(list)).to.throw()
 
-        function wrapper(){
+        function wrapper() {
           list.remove(0)
         }
         expect(wrapper).to.throw()
@@ -258,16 +258,16 @@ describe('Test suite:', function () {
       it('it should do nothing and throw an error if index is invalid', function () {
         expect(list.remove.bind(list)).to.throw()
 
-        function wrapper1(){
+        function wrapper1() {
           list.remove()
         }
-        function wrapper2(){
+        function wrapper2() {
           list.remove(-1)
         }
-        function wrapper3(){
+        function wrapper3() {
           list.remove(1)
         }
-        function wrapper4(){
+        function wrapper4() {
           list.remove(null)
         }
         function wrapper5(){
@@ -345,6 +345,22 @@ describe('Test suite:', function () {
         list.shift()
         expect(list.head.data).to.equal('X')
         expect(list._length).to.equal(4)
+      })
+    })
+
+    describe('# hasNode(nodeName) - Checks for a given node in list:', function () {
+      it('it should throw if there are no nodes in the list', function () {
+        expect(list.hasNode.bind(list)).to.throw()
+
+        function wrapper() {
+          list.hasNode()
+        }
+        expect(wrapper).to.throw()
+      })
+      it('it should return true or false when node exists or not in the list', function () {
+        list.prepend('A')
+        expect(list.hasNode('A')).to.be.true
+        expect(list.hasNode('B')).to.be.false
       })
     })
   })

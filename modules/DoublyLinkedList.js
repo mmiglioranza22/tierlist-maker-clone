@@ -66,7 +66,6 @@ class DoublyLinkedList {
 	 * @param { String } nodeName
 	 * @returns { Boolean }
 	 */
-	// TODO: tests pending
 	hasNode(nodeName) {
 		this._checkNodes()
 		let exists = false
