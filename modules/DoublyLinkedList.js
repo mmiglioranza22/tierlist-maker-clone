@@ -68,7 +68,6 @@ class DoublyLinkedList {
 	 */
 	hasNode(nodeName) {
 		this._checkValue(nodeName)
-		this._checkNodes()
 		let exists = false
 		let headPointer = this.head
 
@@ -108,7 +107,7 @@ class DoublyLinkedList {
 	 * @param { Number } index
 	 * @return { String } Node name
 	 */
-	checkIndex(index) {
+	getIndex(index) {
 		this._checkIndex(index)
 		this._checkNodes()
 
