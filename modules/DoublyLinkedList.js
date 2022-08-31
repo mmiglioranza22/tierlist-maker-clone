@@ -106,8 +106,7 @@ class DoublyLinkedList {
 	 * @param { Number } index
 	 * @return { Node }
 	 */
-	// todo: rename getNodeByIndex(index) : Node
-	getIndex(index) {
+	getNodeByIndex(index) {
 		this._checkIndex(index)
 		this._checkNodes()
 

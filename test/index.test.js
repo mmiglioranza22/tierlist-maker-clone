@@ -392,12 +392,12 @@ describe('Test suite:', function () {
         expect(wrapper).to.throw
       })
     })
-    describe('# getIndex(index):', function () {
+    describe('# getNodeByIndex(index):', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
-        expect(list.getIndex.bind(list)).to.throw()
+        expect(list.getNodeByIndex.bind(list)).to.throw()
 
         function wrapper() {
-          list.getIndex()
+          list.getNodeByIndex()
         }
         expect(wrapper).to.throw()
         expect(list._length).to.equal(0)
@@ -406,19 +406,19 @@ describe('Test suite:', function () {
       }) 
       it('it should do nothing and throw an error if invalid argument is passed', function () {
         function wrapper1() {
-          list.getIndex(undefined)
+          list.getNodeByIndex(undefined)
         }
         function wrapper2() {
-          list.getIndex(null)
+          list.getNodeByIndex(null)
         }
         function wrapper3() {
-          list.getIndex('A')
+          list.getNodeByIndex('A')
         }
         function wrapper4() {
-          list.getIndex('7')
+          list.getNodeByIndex('7')
         }
         function wrapper5() {
-          list.getIndex(-1)
+          list.getNodeByIndex(-1)
         }
         expect(wrapper1).to.throw()
         expect(wrapper2).to.throw()
@@ -439,12 +439,12 @@ describe('Test suite:', function () {
         const C = list.tail
 
         function wrapper() {
-          list.getIndex(4) 
+          list.getNodeByIndex(4) 
         }
 
-        expect(list.getIndex(0)).to.deep.equal(A)
-        expect(list.getIndex(1)).to.deep.equal(B)
-        expect(list.getIndex(2)).to.deep.equal(C)
+        expect(list.getNodeByIndex(0)).to.deep.equal(A)
+        expect(list.getNodeByIndex(1)).to.deep.equal(B)
+        expect(list.getNodeByIndex(2)).to.deep.equal(C)
         expect(list._length).to.equal(3)
         expect(wrapper).to.throw
       })
