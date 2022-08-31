@@ -413,13 +413,13 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should return a node that exists in the list', function () {
-        list.prepend('A')
+        list.append('A')
         list.append('B')
         list.append('C')
 
         const A = list.head
-        const B = list.tail
-        const C = list.head.next
+        const B = list.head.next
+        const C = list.tail
 
         function wrapper() {
           list.search('D') 
@@ -470,13 +470,13 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should return the node that exists in the index passed as argument', function () {
-        list.prepend('A')
+        list.append('A')
         list.append('B')
         list.append('C')
 
         const A = list.head
-        const B = list.tail
-        const C = list.head.next
+        const B = list.head.next
+        const C = list.tail
 
         function wrapper() {
           list.checkIndex(4) 
