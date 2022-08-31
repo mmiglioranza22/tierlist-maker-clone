@@ -82,7 +82,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Looks for a given node by its name and returns that node
+	 * Looks for a given node by its name and returns that node.
 	 * This DS is 0-indexed
 	 * @param { String } nodeName
 	 * @return { Node } 
@@ -120,11 +120,29 @@ class DoublyLinkedList {
 		return headPointer
 	}
 
-	// TODO getIndex(nodeName): index and do tests
-	// 
+	/**
+	 * Searchs a given node and returns its index.
+	 * @param {*} nodeName
+	 * @memberof DoublyLinkedList
+	 */
+	getIndex(nodeName) {
+		this._checkValue(nodeName)	
+		this._checkNodes()
+		let headPointer = this.head
+		let current = 0
+
+		while (headPointer.data !== nodeName) {
+			headPointer = headPointer.next
+			current++
+			if (headPointer === null) {
+				throw new Error('There is no such node in the list.')	
+			}
+		}
+		return current
+	} 
 
 	/**
-	 * Add a node at the beginning of the list
+	 * Add a node at the beginning of the list.
 	 * @param { Node } value 
 	 * @returns { DoublyLinkedList } instance 
 	 */
@@ -152,7 +170,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Add a node at the end of the list
+	 * Add a node at the end of the list.
 	 * @param { Node } value 
 	 * @returns { DoublyLinkedList } instance
 	 */
@@ -238,7 +256,7 @@ class DoublyLinkedList {
 	}
 	
 	/**
-	 * Removes last node from list
+	 * Removes last node from list.
 	 * @returns { Node }
 	 */
 	pop() {
@@ -265,7 +283,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Removes first node from list
+	 * Removes first node from list.
 	 * @returns { Node }
 	 */
 	shift() {
@@ -292,7 +310,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Remove a node at a given place/index
+	 * Remove a node at a given place/index.
 	 * @param { Number } index
 	 * @return { Node } 
 	 */

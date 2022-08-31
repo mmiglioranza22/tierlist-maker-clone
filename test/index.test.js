@@ -420,11 +420,15 @@ describe('Test suite:', function () {
         function wrapper5() {
           list.getNodeByIndex(-1)
         }
+        function wrapper6() {
+          list.getNodeByIndex(0)
+        }
         expect(wrapper1).to.throw()
         expect(wrapper2).to.throw()
         expect(wrapper3).to.throw()
         expect(wrapper4).to.throw()
         expect(wrapper5).to.throw()
+        expect(wrapper6).to.throw()
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
@@ -449,6 +453,69 @@ describe('Test suite:', function () {
         expect(wrapper).to.throw
       })
     })
+    describe('# getIndex(nodeName):', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.getIndex.bind(list)).to.throw()
+
+        function wrapper() {
+          list.getIndex()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      }) 
+      it('it should do nothing and throw an error if invalid argument is passed', function () {
+        function wrapper1() {
+          list.getIndex(undefined)
+        }
+        function wrapper2() {
+          list.getIndex(null)
+        }
+        function wrapper3() {
+          list.getIndex('A')
+        }
+        function wrapper4() {
+          list.getIndex('7')
+        }
+        function wrapper5() {
+          list.getIndex(-1)
+        }
+        function wrapper6() {
+          list.getIndex(0)
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
+        expect(wrapper5).to.throw()
+        expect(wrapper6).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should return the index that of the searched node', function () {
+        list.append('A')
+        list.append('B')
+        list.append('C')
+
+        const A = list.head
+        const B = list.head.next
+        const C = list.tail
+
+        function wrapper() {
+          list.getIndex(3) 
+        }
+
+        expect(list.getIndex('A')).to.deep.equal(0)
+        expect(list.getIndex('B')).to.deep.equal(1)
+        expect(list.getIndex('C')).to.deep.equal(2)
+        expect(list._length).to.equal(3)
+        expect(wrapper).to.throw
+      })
+    })
+
+
     describe('# Complex combinations:', function () {
       it('different combinations of operations should work seamlessly', function () {
         list.append('Z')
