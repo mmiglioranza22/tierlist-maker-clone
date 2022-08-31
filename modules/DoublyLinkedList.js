@@ -15,7 +15,7 @@ class DoublyLinkedList {
 	}
 
 	// utility methods
-	// ? add tests for this? Extra credit
+	// ? add tests for these? Extra credit
 	printList(log = false) {
 		this._checkNodes()
 		const nodes = []
@@ -89,7 +89,6 @@ class DoublyLinkedList {
 	 * @return { Number } 
 	 * @memberof DoublyLinkedList
 	 */
-	// TODO: tests pending
 	search(nodeName) {
 		this._checkValue(nodeName)	
 		this._checkNodes()
@@ -109,7 +108,6 @@ class DoublyLinkedList {
 	 * @param { Number } index
 	 * @return { String } Node name
 	 */
-	// TODO: tests pending. 
 	checkIndex(index) {
 		this._checkIndex(index)
 		this._checkNodes()
