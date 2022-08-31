@@ -77,7 +77,6 @@ describe('Test suite:', function () {
     describe('# Append:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.append.bind(list)).to.throw()
-        expect(list.prepend.bind(list)).to.throw()
 
         function wrapper() {
           list.append()
@@ -347,20 +346,147 @@ describe('Test suite:', function () {
         expect(list._length).to.equal(4)
       })
     })
-
     describe('# hasNode(nodeName) - Checks for a given node in list:', function () {
-      it('it should throw if there are no nodes in the list', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.hasNode.bind(list)).to.throw()
 
         function wrapper() {
           list.hasNode()
         }
         expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
       })
       it('it should return true or false when node exists or not in the list', function () {
         list.prepend('A')
         expect(list.hasNode('A')).to.be.true
         expect(list.hasNode('B')).to.be.false
+      })
+    })
+    describe('# search(nodeName):', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.hasNode.bind(list)).to.throw()
+
+        function wrapper() {
+          list.search()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+
+
+        function wrapper1() {
+          list.remove()
+        }
+        function wrapper2() {
+          list.remove(-1)
+        }
+        function wrapper3() {
+          list.remove(1)
+        }
+        function wrapper4() {
+          list.remove(null)
+        }
+        function wrapper5(){
+          list.remove('string')
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
+        expect(wrapper5).to.throw()
+
+
+
+
+
+      })
+      it('it should do nothing and throw an error if invalid argument is passed', function () {
+        function wrapper() {
+          list.search(undefined)
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should return a node that exists in the list', function () {
+        list.prepend('A')
+        list.append('B')
+        list.append('C')
+
+        const A = list.head
+        const B = list.tail
+        const C = list.head.next
+
+        function wrapper() {
+          list.search('D') 
+        }
+
+        expect(list.search('A')).to.deep.equal(A)
+        expect(list.search('B')).to.deep.equal(B)
+        expect(list.search('C')).to.deep.equal(C)
+        expect(list._length).to.equal(3)
+        expect(wrapper).to.throw
+      })
+    })
+    describe('# checkIndex(index):', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {
+        expect(list.checkIndex.bind(list)).to.throw()
+
+        function wrapper() {
+          list.checkIndex()
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      }) 
+      it('it should do nothing and throw an error if invalid argument is passed', function () {
+        function wrapper1() {
+          list.checkIndex(undefined)
+        }
+        function wrapper2() {
+          list.checkIndex(null)
+        }
+        function wrapper3() {
+          list.checkIndex('A')
+        }
+        function wrapper4() {
+          list.checkIndex('7')
+        }
+        function wrapper5() {
+          list.checkIndex(-1)
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
+        expect(wrapper5).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should return the node that exists in the index passed as argument', function () {
+        list.prepend('A')
+        list.append('B')
+        list.append('C')
+
+        const A = list.head
+        const B = list.tail
+        const C = list.head.next
+
+        function wrapper() {
+          list.checkIndex(4) 
+        }
+
+        expect(list.checkIndex(0)).to.deep.equal(A)
+        expect(list.checkIndex(1)).to.deep.equal(B)
+        expect(list.checkIndex(2)).to.deep.equal(C)
+        expect(list._length).to.equal(3)
+        expect(wrapper).to.throw
       })
     })
   })

@@ -352,16 +352,3 @@ class DoublyLinkedList {
 }
 
 export default DoublyLinkedList
-
-// function main () {
-// 	const dll = new DoublyLinkedList('test')
-// 	dll.append('A')
-// 	dll.append('B')
-// 	dll.append('C')
-// 	dll.append('D')
-	
-// 	// console.log(dll.checkIndex(1));
-	
-// 	console.log(dll.search('C'))
-// }
-// main()
