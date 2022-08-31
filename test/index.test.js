@@ -9,21 +9,23 @@ describe('Test suite:', function () {
     list = new DoublyLinkedList('Test')
   })
   describe('1) Node', function () {
-    it('it should do nothing and throw an error if no value is passed', function () {    
-      let node
-      function wrapper(){
-        node = new Node()
-      }
-      expect(wrapper).to.throw()
-      expect(node).to.be.undefined
-    })
-    it('it should create a node with data', function () {
-      const node = new Node('Some node')
-      expect(node).to.exist
-      expect(node).to.have.all.keys('next', 'previous', 'data')
-      expect(node.next).to.be.null
-      expect(node.previous).to.be.null
-      expect(node.data).to.not.be.null
+    describe('# Initialization:', function () {
+      it('it should do nothing and throw an error if no value is passed', function () {    
+        let node
+        function wrapper(){
+          node = new Node()
+        }
+        expect(wrapper).to.throw()
+        expect(node).to.be.undefined
+      })
+      it('it should create a node with data', function () {
+        const node = new Node('Some node')
+        expect(node).to.exist
+        expect(node).to.have.all.keys('next', 'previous', 'data')
+        expect(node.next).to.be.null
+        expect(node.previous).to.be.null
+        expect(node.data).to.not.be.null
+      })
     })
   })
   describe('2) Doubly linked list', function () {
