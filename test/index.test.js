@@ -46,7 +46,7 @@ describe('Test suite:', function () {
         expect(list.name).to.not.be.null
       })
     })
-    describe('# Prepend:', function () {
+    describe('# prepend(node):', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.prepend.bind(list)).to.throw()
 
@@ -74,7 +74,7 @@ describe('Test suite:', function () {
         expect(list._length).to.equal(3)
       })
     })
-    describe('# Append:', function () {
+    describe('# append(node):', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.append.bind(list)).to.throw()
 
@@ -102,7 +102,7 @@ describe('Test suite:', function () {
         expect(list._length).to.equal(3)
       })
     })
-    describe('# Insert:', function () {
+    describe('# insert(index, node):', function () {
       it('it should do nothing and throw an error if an invalid value is passed', function () {
         expect(list.insert.bind(list)).to.throw()
 
@@ -190,7 +190,7 @@ describe('Test suite:', function () {
         expect(list.tail.previous.next).to.deep.equal(list.tail)
       })
     })
-    describe('# Pop:', function () {
+    describe('# pop():', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.pop.bind(list)).to.throw()
 
@@ -216,7 +216,7 @@ describe('Test suite:', function () {
        expect(list.head).to.deep.equal(list.tail)
       })
     }) 
-    describe('# Shift:', function () {
+    describe('# shift():', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.shift.bind(list)).to.throw()
 
@@ -242,7 +242,7 @@ describe('Test suite:', function () {
         expect(list.head).to.deep.equal(list.tail)
       })
     })
-    describe('# Remove:', function () {
+    describe('# remove(index):', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.remove.bind(list)).to.throw()
 

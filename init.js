@@ -19,7 +19,7 @@ for (let i = 0; i < TIERS.length; i++) {
   tiers[i] = new DoublyLinkedList(tierEl.id)
 }
 
-tiers.forEach(el => console.log(el))
+// tiers.forEach(el => console.log(el))
 
 
 
