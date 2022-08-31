@@ -64,7 +64,7 @@ function createImgElements() {
         element = document.createElement('img')
         element.setAttribute('src', shinobi.images[1] || shinobi.images[0]|| './public/placeholder.png')
         element.setAttribute('alt', shinobi.name || 'Nameless shinobi 🥷')
-        element.setAttribute('name', shinobi.name || 'Nameless shinobi 🥷')
+        element.setAttribute('name', shinobi.name || 'Nameless shinobi 🥷') // ? or id ?
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element) 
       }
@@ -74,7 +74,7 @@ function createImgElements() {
     element = document.createElement('img')
         element.setAttribute('src', img)
         element.setAttribute('alt', parseName(img))
-        element.setAttribute('name', parseName(img))
+        element.setAttribute('name', parseName(img)) // ? or id ?
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element)  
   }
@@ -90,7 +90,7 @@ if(!isLoading) {
   containerOptionsEl.classList.remove('loader')
 }
 
-// document.addEventListener('drag', handleDrag)
+// document.addEventListener('dragleave', handleDrag)
 document.addEventListener('dragstart', handleDragStart)
 document.addEventListener('dragover', handleDragOver)
 document.addEventListener('drop', handleDrop)

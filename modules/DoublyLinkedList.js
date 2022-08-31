@@ -82,11 +82,10 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Looks for a given node by its name and returns the index it occupies
+	 * Looks for a given node by its name and returns that node
 	 * This DS is 0-indexed
 	 * @param { String } nodeName
-	 * @return { Number } 
-	 * @memberof DoublyLinkedList
+	 * @return { Node } 
 	 */
 	search(nodeName) {
 		this._checkValue(nodeName)	
@@ -105,8 +104,9 @@ class DoublyLinkedList {
 	/**
 	 * Checks a given index and returns the node placed there.
 	 * @param { Number } index
-	 * @return { String } Node name
+	 * @return { Node }
 	 */
+	// todo: rename getNodeByIndex(index) : Node
 	getIndex(index) {
 		this._checkIndex(index)
 		this._checkNodes()
@@ -120,6 +120,9 @@ class DoublyLinkedList {
 		}
 		return headPointer
 	}
+
+	// TODO getIndex(nodeName): index and do tests
+	// 
 
 	/**
 	 * Add a node at the beginning of the list
