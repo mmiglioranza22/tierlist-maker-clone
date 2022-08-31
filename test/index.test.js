@@ -304,48 +304,6 @@ describe('Test suite:', function () {
         expect(list.head.next).to.deep.equal(list.tail.previous) 
       })
     })
-    describe('# Complex combinations:', function () {
-      it('different combinations of operations should work seamlessly', function () {
-        list.append('Z')
-        const z = list.remove(0)
-        expect(z.data).to.equal('Z')
-        expect(list._length).to.equal(0)
-        expect(list.head).to.be.null
-        expect(list.tail).to.be.null
-        
-        list.prepend('Y')
-        list.prepend('X')
-        list.append('Z')
-        list.append('W')
-        list.append('V')
-        const y = list.remove(1)
-        expect(y.data).to.equal('Y')
-        expect(list._length).to.equal(4)
-        const w = list.remove(2)
-        expect(w.data).to.equal('W')
-        expect(list.head.data).to.equal('X')
-        expect(list.tail.data).to.equal('V')
-        expect(list.head.next.data).to.equal('Z')
-        expect(list.head.next).to.deep.equal(list.tail.previous) 
-
-        list.insert(0,'A')
-        expect(list.head.data).to.equal('A')
-        expect(list._length).to.equal(4)
-        
-        list.insert(2,'B')
-        expect(list.tail.previous.data).to.equal('Z')
-        expect(list.tail.data).to.equal('V')
-        
-        list.insert(4, 'J')
-        expect(list.tail.data).to.equal('V')
-        list.pop()
-        expect(list.tail.data).to.equal('J')
-        
-        list.shift()
-        expect(list.head.data).to.equal('X')
-        expect(list._length).to.equal(4)
-      })
-    })
     describe('# hasNode(nodeName) - Checks for a given node in list:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.hasNode.bind(list)).to.throw()
@@ -487,6 +445,48 @@ describe('Test suite:', function () {
         expect(list.getIndex(2)).to.deep.equal(C)
         expect(list._length).to.equal(3)
         expect(wrapper).to.throw
+      })
+    })
+    describe('# Complex combinations:', function () {
+      it('different combinations of operations should work seamlessly', function () {
+        list.append('Z')
+        const z = list.remove(0)
+        expect(z.data).to.equal('Z')
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+        
+        list.prepend('Y')
+        list.prepend('X')
+        list.append('Z')
+        list.append('W')
+        list.append('V')
+        const y = list.remove(1)
+        expect(y.data).to.equal('Y')
+        expect(list._length).to.equal(4)
+        const w = list.remove(2)
+        expect(w.data).to.equal('W')
+        expect(list.head.data).to.equal('X')
+        expect(list.tail.data).to.equal('V')
+        expect(list.head.next.data).to.equal('Z')
+        expect(list.head.next).to.deep.equal(list.tail.previous) 
+
+        list.insert(0,'A')
+        expect(list.head.data).to.equal('A')
+        expect(list._length).to.equal(4)
+        
+        list.insert(2,'B')
+        expect(list.tail.previous.data).to.equal('Z')
+        expect(list.tail.data).to.equal('V')
+        
+        list.insert(4, 'J')
+        expect(list.tail.data).to.equal('V')
+        list.pop()
+        expect(list.tail.data).to.equal('J')
+        
+        list.shift()
+        expect(list.head.data).to.equal('X')
+        expect(list._length).to.equal(4)
       })
     })
   })
