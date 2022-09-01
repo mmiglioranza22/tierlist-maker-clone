@@ -244,6 +244,9 @@ describe('Test suite:', function () {
         expect(list.head).to.deep.equal(list.tail)
       })
     })
+
+
+    
     describe('# removeByIndex(index):', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.removeByIndex.bind(list)).to.throw()
@@ -283,7 +286,7 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      it('it should removeByIndex nodes from any slot/index of the list and return them', function () {
+      it('it should remove nodes from any slot/index of the list and return them', function () {
         list.append('Z')
         const z = list.removeByIndex(0)
         expect(z.data).to.equal('Z')
@@ -306,6 +309,9 @@ describe('Test suite:', function () {
         expect(list.head.next).to.deep.equal(list.tail.previous) 
       })
     })
+    
+
+
     describe('# hasNode(nodeName) - Checks for a given node in list:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.hasNode.bind(list)).to.throw()
@@ -326,7 +332,7 @@ describe('Test suite:', function () {
     })
     describe('# search(nodeName):', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
-        expect(list.hasNode.bind(list)).to.throw()
+        expect(list.search.bind(list)).to.throw()
 
         function wrapper() {
           list.search()
@@ -338,30 +344,25 @@ describe('Test suite:', function () {
 
 
         function wrapper1() {
-          list.removeByIndex()
+          list.search()
         }
         function wrapper2() {
-          list.removeByIndex(-1)
+          list.search(-1)
         }
         function wrapper3() {
-          list.removeByIndex(1)
+          list.search(1)
         }
         function wrapper4() {
-          list.removeByIndex(null)
+          list.search(null)
         }
         function wrapper5(){
-          list.removeByIndex('string')
+          list.search('string')
         }
         expect(wrapper1).to.throw()
         expect(wrapper2).to.throw()
         expect(wrapper3).to.throw()
         expect(wrapper4).to.throw()
         expect(wrapper5).to.throw()
-
-
-
-
-
       })
       it('it should do nothing and throw an error if invalid argument is passed', function () {
         function wrapper() {
