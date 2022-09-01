@@ -124,7 +124,7 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      it('it should do nothing and throw an error if an invalid index is passed (more than _length, negative)', function() {
+      it('it should do nothing and throw an error if an invalid index is passed (ex: index < list length, index < 0)', function() {
         expect(list.insert.bind(list)).to.throw()
 
         function wrapper1() {
@@ -148,7 +148,7 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      it('it should prepend nodes if index - 1 === _length', function () {
+      it('it should prepend nodes if index - 1 equals list length', function () {
         list.insert(0,'A')
         expect(list.head).to.deep.equal(list.tail)
         expect(list._length).to.equal(1)
@@ -206,14 +206,18 @@ describe('Test suite:', function () {
       })
       it('it should pop nodes from the tail of the list and return them', function () {
        list.append('A')
+       const A = list.head
        const node1 = list.pop() 
        expect(node1.data).to.equal('A')
+       expect(node1).to.deep.equal(A)
        expect(list._length).to.equal(0)
 
        list.append('B')
        list.append('C')
+       const C = list.tail
        const node2 = list.pop() 
        expect(node2.data).to.equal('C')
+       expect(node2).to.deep.equal(C)
        expect(list._length).to.equal(1)
        expect(list.head).to.deep.equal(list.tail)
       })
@@ -232,14 +236,18 @@ describe('Test suite:', function () {
       })
       it('it should shift nodes from the head of the list and return them', function () {
         list.prepend('A')
+        const A = list.head
         const node1 = list.shift() 
         expect(node1.data).to.equal('A')
+        expect(node1).to.deep.equal(A)
         expect(list._length).to.equal(0)
  
         list.prepend('B')
         list.prepend('C')
+        const C = list.head
         const node2 = list.shift() 
         expect(node2.data).to.equal('C')
+        expect(node2).to.deep.equal(C)
         expect(list._length).to.equal(1)
         expect(list.head).to.deep.equal(list.tail)
       })
@@ -285,8 +293,10 @@ describe('Test suite:', function () {
       })
       it('it should remove nodes from any slot/index of the list and return them', function () {
         list.append('Z')
+        const head = list.head
         const z = list.remove('Z')
         expect(z.data).to.equal('Z')
+        expect(z).to.deep.equal(head)
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
@@ -306,9 +316,6 @@ describe('Test suite:', function () {
         expect(list.head.next).to.deep.equal(list.tail.previous) 
       })
     })
-
-
-    
     describe('# removeByIndex(index):', function () {
       it('it should do nothing and throw an error if list is empty', function () {
         expect(list.removeByIndex.bind(list)).to.throw()
@@ -350,8 +357,10 @@ describe('Test suite:', function () {
       })
       it('it should remove nodes from any slot/index of the list and return them', function () {
         list.append('Z')
+        const head = list.head
         const z = list.removeByIndex(0)
         expect(z.data).to.equal('Z')
+        expect(z).to.deep.equal(head) 
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
@@ -371,9 +380,6 @@ describe('Test suite:', function () {
         expect(list.head.next).to.deep.equal(list.tail.previous) 
       })
     })
-    
-
-
     describe('# hasNode(nodeName) - Checks for a given node in list:', function () {
       it('it should do nothing and throw an error if no value is passed', function () {
         expect(list.hasNode.bind(list)).to.throw()
@@ -577,8 +583,6 @@ describe('Test suite:', function () {
         expect(wrapper).to.throw
       })
     })
-
-
     describe('# Complex combinations:', function () {
       it('different combinations of operations should work seamlessly', function () {
         list.append('Z')
