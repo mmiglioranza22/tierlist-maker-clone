@@ -244,6 +244,68 @@ describe('Test suite:', function () {
         expect(list.head).to.deep.equal(list.tail)
       })
     })
+    describe('# remove(index):', function () {
+      it('it should do nothing and throw an error if list is empty', function () {
+        expect(list.remove.bind(list)).to.throw()
+
+        function wrapper() {
+          list.remove(0)
+        }
+        expect(wrapper).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should do nothing and throw an error if index is invalid', function () {
+        expect(list.remove.bind(list)).to.throw()
+
+        function wrapper1() {
+          list.remove()
+        }
+        function wrapper2() {
+          list.remove(-1)
+        }
+        function wrapper3() {
+          list.remove(1)
+        }
+        function wrapper4() {
+          list.remove(null)
+        }
+        function wrapper5(){
+          list.remove('string')
+        }
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(wrapper4).to.throw()
+        expect(wrapper5).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should remove nodes from any slot/index of the list and return them', function () {
+        list.append('Z')
+        const z = list.remove('Z')
+        expect(z.data).to.equal('Z')
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+        
+        list.prepend('Y')
+        list.prepend('X')
+        list.append('Z')
+        list.append('W')
+        list.append('V')
+        const y = list.remove('Y')
+        expect(y.data).to.equal('Y')
+        const w = list.remove('W')
+        expect(w.data).to.equal('W')
+        expect(list.head.data).to.equal('X')
+        expect(list.tail.data).to.equal('V')
+        expect(list.head.next.data).to.equal('Z')
+        expect(list.head.next).to.deep.equal(list.tail.previous) 
+      })
+    })
 
 
     
