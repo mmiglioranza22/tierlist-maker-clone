@@ -1,5 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
-import { handleDragStart, handleDragOver, handleDrop, handleDrag } from './handlers/index.js'
+import { handleDragStart, handleDragOver, handleDrop, handleDragEnter } from './handlers/index.js'
 import { parseName } from './utils/index.js'
 
 /** 
@@ -12,15 +12,17 @@ import { parseName } from './utils/index.js'
 
 const TIERS = 'SABCD'
 let S_Tier, A_Tier, B_Tier, C_tier, D_tier
+const colors = ['#ff7f7f','#ffbf7f', '#ffdf7f', '#ffff7f', '#bfff7f']
 export const tiers = [S_Tier, A_Tier, B_Tier, C_tier, D_tier]
 
 for (let i = 0; i < TIERS.length; i++) {
   let tierEl = document.getElementById(TIERS[i])
-  tiers[i] = new DoublyLinkedList(tierEl.id)
+  tiers[i] = [new DoublyLinkedList(tierEl.id), colors[i]]
 }
-
-// tiers.forEach(el => console.log(el))
-
+// logging for console
+console.log('Initializing tiers data structures...')
+tiers.forEach((el, i) => console.log(`%c${tiers[i][0].name} done`, `background: #111113; color: ${tiers[i][1]}`))
+console.log('Completed.')
 
 
 // loading flag
@@ -43,7 +45,7 @@ try {
     }))
     console.log('Data fetch from API OK')
 } catch (error) {
-   console.error(`Oops, something wrong happened while fetching the data from the API: ${error}`);
+   console.error(`Oops, something wrong happened while fetching the data from the API: ${error}`)
 }
 
 
@@ -90,7 +92,7 @@ if(!isLoading) {
   containerOptionsEl.classList.remove('loader')
 }
 
-// document.addEventListener('dragleave', handleDrag)
+document.addEventListener('dragenter', handleDragEnter)
 document.addEventListener('dragstart', handleDragStart)
 document.addEventListener('dragover', handleDragOver)
 document.addEventListener('drop', handleDrop)

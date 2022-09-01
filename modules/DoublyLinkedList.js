@@ -389,7 +389,8 @@ class DoublyLinkedList {
 			return this.pop()
 		}
 
-		while (headPointer.data !== nodeName) {
+		// todo: check this for certain cases with drag drop api
+		while (headPointer && headPointer.data !== nodeName) {
 			prevPointer = headPointer
 			headPointer = headPointer.next
 			if (headPointer === null) {
