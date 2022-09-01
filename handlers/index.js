@@ -26,16 +26,17 @@ export function handleDragStart(event) {
          // identify the list the node is dragged from
         if (tier.name.includes(draggedParent.id)) {
 
-          // is tail -> pop()
-          // will apply always that length is 1, 
-          // tier.tail.data === dragged.name
-          // tier.pop()
+          if (tier._length === 1) {
+            tier.pop()
+          } else if (tier.head.data === dragged.name) {
+            tier.shift()
+          } else {
+            const index = tier.getIndex(dragged.name)
+            tier.remove(index)
+            
 
-          // is head -> shift()
-          // tier.head.data === dragged.name
-          // tier.shift()
+          }
 
-          // default or else
 
           // tier.getIndex(dragged.name)
           // tier.remove(dragged.name)

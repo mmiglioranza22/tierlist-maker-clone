@@ -314,7 +314,7 @@ class DoublyLinkedList {
 	 * @param { Number } index
 	 * @return { Node } 
 	 */
-	remove(index) {
+	removeByIndex(index) {
 		this._checkNodes()
 		this._checkIndex(index)
 

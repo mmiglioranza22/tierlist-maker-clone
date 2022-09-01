@@ -244,12 +244,12 @@ describe('Test suite:', function () {
         expect(list.head).to.deep.equal(list.tail)
       })
     })
-    describe('# remove(index):', function () {
+    describe('# removeByIndex(index):', function () {
       it('it should do nothing and throw an error if list is empty', function () {
-        expect(list.remove.bind(list)).to.throw()
+        expect(list.removeByIndex.bind(list)).to.throw()
 
         function wrapper() {
-          list.remove(0)
+          list.removeByIndex(0)
         }
         expect(wrapper).to.throw()
         expect(list._length).to.equal(0)
@@ -257,22 +257,22 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should do nothing and throw an error if index is invalid', function () {
-        expect(list.remove.bind(list)).to.throw()
+        expect(list.removeByIndex.bind(list)).to.throw()
 
         function wrapper1() {
-          list.remove()
+          list.removeByIndex()
         }
         function wrapper2() {
-          list.remove(-1)
+          list.removeByIndex(-1)
         }
         function wrapper3() {
-          list.remove(1)
+          list.removeByIndex(1)
         }
         function wrapper4() {
-          list.remove(null)
+          list.removeByIndex(null)
         }
         function wrapper5(){
-          list.remove('string')
+          list.removeByIndex('string')
         }
         expect(wrapper1).to.throw()
         expect(wrapper2).to.throw()
@@ -283,9 +283,9 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      it('it should remove nodes from any slot/index of the list and return them', function () {
+      it('it should removeByIndex nodes from any slot/index of the list and return them', function () {
         list.append('Z')
-        const z = list.remove(0)
+        const z = list.removeByIndex(0)
         expect(z.data).to.equal('Z')
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
@@ -296,9 +296,9 @@ describe('Test suite:', function () {
         list.append('Z')
         list.append('W')
         list.append('V')
-        const y = list.remove(1)
+        const y = list.removeByIndex(1)
         expect(y.data).to.equal('Y')
-        const w = list.remove(2)
+        const w = list.removeByIndex(2)
         expect(w.data).to.equal('W')
         expect(list.head.data).to.equal('X')
         expect(list.tail.data).to.equal('V')
@@ -338,19 +338,19 @@ describe('Test suite:', function () {
 
 
         function wrapper1() {
-          list.remove()
+          list.removeByIndex()
         }
         function wrapper2() {
-          list.remove(-1)
+          list.removeByIndex(-1)
         }
         function wrapper3() {
-          list.remove(1)
+          list.removeByIndex(1)
         }
         function wrapper4() {
-          list.remove(null)
+          list.removeByIndex(null)
         }
         function wrapper5(){
-          list.remove('string')
+          list.removeByIndex('string')
         }
         expect(wrapper1).to.throw()
         expect(wrapper2).to.throw()
@@ -519,7 +519,7 @@ describe('Test suite:', function () {
     describe('# Complex combinations:', function () {
       it('different combinations of operations should work seamlessly', function () {
         list.append('Z')
-        const z = list.remove(0)
+        const z = list.removeByIndex(0)
         expect(z.data).to.equal('Z')
         expect(list._length).to.equal(0)
         expect(list.head).to.be.null
@@ -530,10 +530,10 @@ describe('Test suite:', function () {
         list.append('Z')
         list.append('W')
         list.append('V')
-        const y = list.remove(1)
+        const y = list.removeByIndex(1)
         expect(y.data).to.equal('Y')
         expect(list._length).to.equal(4)
-        const w = list.remove(2)
+        const w = list.removeByIndex(2)
         expect(w.data).to.equal('W')
         expect(list.head.data).to.equal('X')
         expect(list.tail.data).to.equal('V')
