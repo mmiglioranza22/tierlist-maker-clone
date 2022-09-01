@@ -122,7 +122,7 @@ class DoublyLinkedList {
 
 	/**
 	 * Searchs a given node and returns its index.
-	 * @param {*} nodeName
+	 * @param { String } nodeName
 	 * @memberof DoublyLinkedList
 	 */
 	getIndex(nodeName) {
@@ -310,13 +310,13 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Remove a node at a given place/index.
+	 * Remove a node at a given place/index and returns it.
 	 * @param { Number } index
 	 * @return { Node } 
 	 */
 	removeByIndex(index) {
-		this._checkNodes()
 		this._checkIndex(index)
+		this._checkNodes()
 
 		let headPointer = this.head
 		let tailPointer = this.tail
@@ -365,6 +365,45 @@ class DoublyLinkedList {
 			// prevPointer.previous = null
 			return prevPointer
 		}
+	}
+
+	/**
+	 * Remove a node and returns it.
+	 * @param { String } 
+	 * @return { Node } 
+	 */
+	 remove(nodeName) {
+		this._checkValue(nodeName)
+		this._checkNodes()
+
+		let headPointer = this.head
+		let prevPointer
+		let temp
+		let removed
+
+		if (this.head.data === nodeName) {
+			return this.shift()
+		}
+
+		if (this.tail.data === nodeName) {
+			return this.pop()
+		}
+
+		while (headPointer.data !== nodeName) {
+			prevPointer = headPointer
+			headPointer = headPointer.next
+			if (headPointer === null) {
+				throw new Error('There is no such node in the list.')	
+			}
+		}
+
+		removed = headPointer
+		temp = headPointer.next
+		prevPointer.next = temp
+		temp.previous = prevPointer
+		this._length--
+
+		return removed
 	}
 }
 
