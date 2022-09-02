@@ -8,6 +8,8 @@ import { parseName } from './utils/index.js'
  * - fn to print ALL DLL
  */
 
+export const scrollContent = document.getElementsByClassName('scroll-content')
+
 // create data structures for each tier
 
 const TIERS = 'SABCD'

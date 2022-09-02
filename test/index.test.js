@@ -2,11 +2,23 @@ import { expect } from "chai"
 import Node from "../modules/Node.js"
 import DoublyLinkedList from "../modules/DoublyLinkedList.js"
 
-let list
+let list, objA, objB, objC
 
 describe('Test suite:', function () {
   beforeEach(function() {
     list = new DoublyLinkedList('Test')
+    objA = {
+      name: 'A',
+      data: 'I am the first letter'
+    }
+    objB = {
+      name: 'B',
+      data: 'I am the second letter'
+    }
+    objC = {
+      name: 'C',
+      data: 'I am the third letter'
+    }
   })
   describe('1) Node', function () {
     describe('# Initialization:', function () {
@@ -19,12 +31,12 @@ describe('Test suite:', function () {
         expect(node).to.be.undefined
       })
       it('it should create a node with data', function () {
-        const node = new Node('Some node')
-        expect(node).to.exist
-        expect(node).to.have.all.keys('next', 'previous', 'data')
-        expect(node.next).to.be.null
-        expect(node.previous).to.be.null
-        expect(node.data).to.not.be.null
+        const objNode = new Node(objA)
+        expect(objNode).to.exist
+        expect(objNode).to.have.all.keys('next', 'previous', 'data')
+        expect(objNode.next).to.be.null
+        expect(objNode.previous).to.be.null
+        expect(objNode.data).to.deep.equal(objA)
       })
     })
   })
@@ -61,17 +73,17 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should prepend nodes to the head of the list', function () {
-        list.prepend('A')
+        list.prepend(objA)
         expect(list._length).to.equal(1)
         expect(list.head).to.deep.equal(list.tail)
         expect(list.head.next).to.be.null
         expect(list.tail.previous).to.be.null
   
-        list.prepend('B')
+        list.prepend(objB)
         expect(list.head.next).to.deep.equal(list.tail)
         expect(list.tail.previous).to.deep.equal(list.head)
   
-        list.prepend('C')
+        list.prepend(objC)
         expect(list.head.next).to.deep.equal(list.tail.previous)
         expect(list._length).to.equal(3)
       })
@@ -89,17 +101,17 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should append nodes to the tail of the list', function () {
-        list.append('A')
+        list.append(objA)
         expect(list._length).to.equal(1)
         expect(list.head).to.deep.equal(list.tail)
         expect(list.head.next).to.be.null
         expect(list.tail.previous).to.be.null
   
-        list.append('B')
+        list.append(objB)
         expect(list.head.next).to.deep.equal(list.tail)
         expect(list.tail.previous).to.deep.equal(list.head)
   
-        list.append('C')
+        list.append(objC)
         expect(list.head.next).to.deep.equal(list.tail.previous)
         expect(list._length).to.equal(3)
       })
@@ -112,7 +124,7 @@ describe('Test suite:', function () {
           list.insert()
         }
         function wrapper2() {
-          list.insert(null,'A')
+          list.insert(null, objA)
         }
         function wrapper3() {
           list.insert(0, )
@@ -128,13 +140,13 @@ describe('Test suite:', function () {
         expect(list.insert.bind(list)).to.throw()
 
         function wrapper1() {
-          list.insert(-1, 'A')
+          list.insert(-1, objA)
         }
         function wrapper2() {
-          list.insert(1,'B')
+          list.insert(1, objB)
         }
         function wrapper3() {
-          list.insert(null, 'C')
+          list.insert(null, {})
         }
         function wrapper4(){
           list.insert('string', 'D')
@@ -149,17 +161,17 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should prepend nodes if index - 1 equals list length', function () {
-        list.insert(0,'A')
+        list.insert(0, objA)
         expect(list.head).to.deep.equal(list.tail)
         expect(list._length).to.equal(1)
         
         function wrapper1(){
-          list.insert(1, 'B')
+          list.insert(1, objB)
         } 
         expect(wrapper1).to.throw()
         
-        list.insert(0,'B')
-        expect(list.head.data).to.equal('B')
+        list.insert(0, objB)
+        expect(list.head.data).to.equal(objB)
         expect(list.head.next).to.deep.equal(list.tail)
         expect(list.tail.previous).to.deep.equal(list.head)
         expect(list._length).to.equal(2)
@@ -167,19 +179,19 @@ describe('Test suite:', function () {
         expect(list.head.previous).to.be.null
       })
       it('it should insert nodes in any slot/index of the list', function() {
-        list.insert(0,'A')
+        list.insert(0, objA)
         expect(list.head).to.deep.equal(list.tail)
         expect(list._length).to.equal(1)
   
-        list.insert(0,'B')
-        expect(list.head.data).to.equal('B')
-        expect(list.tail.data).to.equal('A')
-        expect(list.head.data).to.equal('B')
+        list.insert(0, objB)
+        expect(list.head.data).to.deep.equal(objB)
+        expect(list.tail.data).to.deep.equal(objA)
+        expect(list.head.data).to.deep.equal(objB)
         expect(list.head.next).to.deep.equal(list.tail)
         expect(list.tail.previous).to.deep.equal(list.head)
-  
-        list.insert(1,'C')
-        expect(list.head.next.data).to.equal('C')
+
+        list.insert(1, objC)
+        expect(list.head.next.data).to.deep.equal(objC)
         expect(list.head.next).to.deep.equal(list.tail.previous)
   
         list.insert(1,'D')
@@ -187,7 +199,7 @@ describe('Test suite:', function () {
         expect(list.head.next).to.deep.equal(list.tail.previous.previous)
         
         list.insert(3, 'Z') 
-        expect(list.tail.data).to.equal('A')
+        expect(list.tail.data).to.equal(objA)
         expect(list.tail.previous.data).to.equal('Z')
         expect(list.tail.previous.next).to.deep.equal(list.tail)
       })
@@ -205,18 +217,18 @@ describe('Test suite:', function () {
         expect(list.tail).to.be.null
       })
       it('it should pop nodes from the tail of the list and return them', function () {
-       list.append('A')
+       list.append(objA)
        const A = list.head
        const node1 = list.pop() 
-       expect(node1.data).to.equal('A')
+       expect(node1.data).to.deep.equal(objA)
        expect(node1).to.deep.equal(A)
        expect(list._length).to.equal(0)
 
-       list.append('B')
-       list.append('C')
+       list.append(objB)
+       list.append(objC)
        const C = list.tail
        const node2 = list.pop() 
-       expect(node2.data).to.equal('C')
+       expect(node2.data).to.deep.equal(objC)
        expect(node2).to.deep.equal(C)
        expect(list._length).to.equal(1)
        expect(list.head).to.deep.equal(list.tail)
