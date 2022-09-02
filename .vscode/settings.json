@@ -1,3 +1,4 @@
 {
-  "terminal.integrated.defaultLocation": "editor"
+  "terminal.integrated.defaultLocation": "editor",
+  "liveServer.settings.port": 5501
 }
