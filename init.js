@@ -18,6 +18,7 @@ export const tiers = [S_Tier, A_Tier, B_Tier, C_tier, D_tier]
 for (let i = 0; i < TIERS.length; i++) {
   let tierEl = document.getElementById(TIERS[i])
   tiers[i] = [new DoublyLinkedList(tierEl.id), colors[i]]
+  window[`${tierEl.id}_tier`] = tiers[i][0]
 }
 // logging for console
 console.log('Initializing tiers data structures...')
