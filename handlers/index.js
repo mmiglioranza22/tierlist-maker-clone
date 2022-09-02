@@ -1,5 +1,5 @@
 // best explanation: https://developer.mozilla.org/en-US/docs/Web/API/Document/drop_event
-import { tiers } from '../init.js'
+import { tiers, scrollContent } from '../init.js'
 let dragged
 let draggedParent
 
@@ -66,6 +66,11 @@ export function handleDrop(event) {
       dragged.parentNode.removeChild(dragged)
       event.target.appendChild(dragged)
       dropped = true
+      const p = document.createElement('p')
+      const span = document.createElement('span')
+      const tierName = document.createElement('span')
+
+     
       
       // append node to list
       // TODO: check for HTML api to insert images in between, different flow
@@ -87,10 +92,20 @@ export function handleDrop(event) {
         // tier[0].getIndex(dragged.name)
         // tier[0].insert(index, dragged.name)
 
-          tier[0].append(dragged.name) // ? or id ?
-          console.log(`${tier[0].name}.append(${dragged.name}) invoked!`)
+        tier[0].append(dragged.name) // ? or id ?
+        console.log(`${tier[0].name}.append(${dragged.name}) invoked!`)
 
-          console.log(tier[0])
+          //todo: logic to create this: 
+        // S-tier: N1 
+        // S-tier: N1 <=> N2
+
+        span.setAttribute('id', `${tier[0].name}-span`)
+        span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
+      
+        p.appendChild(span)
+
+        scrollContent.appendChild(p)
+
         }
       })
     }

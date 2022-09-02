@@ -15,10 +15,9 @@ body {
 }
 
 p {
-  color: cornsilk;
   font-size: 1rem;
   margin: auto;
-  padding: 2px 0px;
+  padding: 0px 0px 10px 8px;
   font-family: "Source Code Pro", monospace;
 }
 
@@ -144,4 +143,24 @@ img {
 
 #D-tier {
   background-color: #bfff7f;
+}
+
+#S-tier-span {
+  color: #ff7f7f;
+}
+
+#A-tier-span {
+  color: #ffbf7f;
+}
+
+#B-tier-span {
+  color: #ffdf7f;
+}
+
+#C-tier-span {
+  color: #ffff7f;
+}
+
+#D-tier-span {
+  color: #bfff7f;
 }

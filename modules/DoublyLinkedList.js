@@ -32,7 +32,7 @@ class DoublyLinkedList {
 
 		// debugger
 		if(log) {
-			console.log(`DDL: ${this.name}`)
+			console.log(`${this.name}:`)
 			// nodes.push('null')
 			console.log(nodes.join(' <==> '))
 		}
