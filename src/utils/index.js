@@ -14,6 +14,15 @@ export function initDataStructures(tiers, dataStructure) {
 
 export function createImgElements(array, assets) {
   let element
+  for (let item of assets) {
+    element = document.createElement('img')
+        element.setAttribute('src', item)
+        element.setAttribute('alt', parseName(item))
+        element.setAttribute('name', parseName(item))
+        element.setAttribute('class', 'container-item')
+        element.setAttribute('draggable', true)
+        document.querySelector('.container-options').appendChild(element)  
+  }
   if (array.length) {
     for (let item of array) {
       if (item.images[0] || item.images[1]) {
@@ -26,14 +35,5 @@ export function createImgElements(array, assets) {
         document.querySelector('.container-options').appendChild(element) 
       }
     }
-  }
-  for (let item of assets) {
-    element = document.createElement('img')
-        element.setAttribute('src', item)
-        element.setAttribute('alt', parseName(item))
-        element.setAttribute('name', parseName(item))
-        element.setAttribute('class', 'container-item')
-        element.setAttribute('draggable', true)
-        document.querySelector('.container-options').appendChild(element)  
   }
 }
