@@ -6,16 +6,6 @@ let belowDragged
 
 export function handleDragEnter(event) {
   event.preventDefault()
-  // dragged = event.target
-  // draggedParent = dragged.parentNode
-  // if (event.target.className === "container-tierlist") {
-  //   tiers.forEach(tier => {
-  //     // identify the list the node is dragged from
-  //     if (tier[0].name.includes(event.target.id)) {
-  //         console.log(`Selecting ${tier[0].name}...`)
-  //     }
-  //   })
-  // }
 }
 
 export function handleDragStart(event) {
