@@ -3,10 +3,6 @@ import { handleDragStart, handleDragOver, handleDrop, handleDragEnter } from './
 import { initDataStructures, createImgElements } from './utils/index.js'
 import { IMG_DIR } from './constants/constants.js'
 
-/** 
- * - solution approach with matrix on hold, DLL meets is the MVP
- */
-
 export const scrollContent = document.querySelector('.scroll-content')
 
 // create data structures for each tier
@@ -54,8 +50,8 @@ createImgElements(shinobis, assets)
 isLoading = false
 
 if(!isLoading) {
-  containerOptionsEl.removeChild(spinner)
   containerOptionsEl.classList.remove('loader')
+  containerOptionsEl.removeChild(spinner)
 }
 
 document.addEventListener('dragenter', handleDragEnter)
