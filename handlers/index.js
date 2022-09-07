@@ -8,14 +8,14 @@ export function handleDragEnter(event) {
   event.preventDefault()
   // dragged = event.target
   // draggedParent = dragged.parentNode
-  if (event.target.className === "container-tierlist") {
-    tiers.forEach(tier => {
-      // identify the list the node is dragged from
-      if (tier[0].name.includes(event.target.id)) {
-          console.log(`Selecting ${tier[0].name}...`)
-      }
-    })
-  }
+  // if (event.target.className === "container-tierlist") {
+  //   tiers.forEach(tier => {
+  //     // identify the list the node is dragged from
+  //     if (tier[0].name.includes(event.target.id)) {
+  //         console.log(`Selecting ${tier[0].name}...`)
+  //     }
+  //   })
+  // }
 }
 
 export function handleDragStart(event) {
@@ -32,13 +32,13 @@ export function handleDragStart(event) {
           // todo check for certain type errors, add && checks
         if (tier[0].tail && tier[0].tail.data === dragged.name) {
           tier[0].pop()
-          console.log(`${tier[0].name}.pop() invoked!`)
+          // console.log(`${tier[0].name}.pop() invoked!`)
         } else if (tier[0].head.data === dragged.name) {
           tier[0].shift()
-          console.log(`${tier[0].name}.shift() invoked!`)
+          // console.log(`${tier[0].name}.shift() invoked!`)
         } else {
           tier[0].remove(dragged.name)
-          console.log(`${tier[0].name}.remove(${dragged.name}) invoked!`)
+          // console.log(`${tier[0].name}.remove(${dragged.name}) invoked!`)
           // const index = tier[0].getIndex(dragged.name)
           // tier[0].removeByIndex(index)
         }
@@ -71,41 +71,46 @@ export function handleDrop(event) {
     // move dragged element to the selected drop target
     if (isContainer) {
       console.log('isContainer!!', {belowDragged})
-      if (belowDragged) {
-
-        const nodeNames = Array.from(event.target.childNodes).map(el => el.name)
-        // eslint-disable-next-line no-console
-        console.log(nodeNames)
+      const nodeNames = Array.from(event.target.childNodes).map(el => el.name)
+      console.log(nodeNames)
+      if (belowDragged && nodeNames.length) {
         const isOverLastChild = event.target.lastChild.name === belowDragged.name
         if (isOverLastChild) {
-          // eslint-disable-next-line no-console
-          console.log(event.target.lastChild.name === belowDragged.name)
-          if (event.target.children?.length !== 0) {
-            console.log('OVER --> appends to last child', event.target.children.length  )
+          if (event.target.children.length !== 0) {
+            console.log('1- OVER --> appends to last child', event.target.children.length  )
             dragged.parentNode.removeChild(dragged)
             event.target.appendChild(dragged)
           }
           if (event.target.children.length === 0) {
             // eslint-disable-next-line no-console
-            console.log('OVER --> no childs in list, appends', event.target.children.length  )
+            console.log('2- OVER --> no childs in list, appends', event.target.children.length  )
             dragged.parentNode.removeChild(dragged)
             event.target.appendChild(dragged)
           }
         }
       } else {
         if (event.target.children?.length !== 0) {
-          console.log('children! appends to last child', event.target.children.length  )
+          console.log('3 - children! appends to last child', event.target.children.length  )
           dragged.parentNode.removeChild(dragged)
           event.target.appendChild(dragged)
         }
         if (event.target.children.length === 0) {
           // eslint-disable-next-line no-console
-          console.log('no childs in list, appends', event.target.children.length  )
+          console.log('4 - no childs in list, appends', event.target.children.length  )
           dragged.parentNode.removeChild(dragged)
           event.target.appendChild(dragged)
         }
       }
     }
+    if (event.target.tagName === 'IMG')  {
+      // eslint-disable-next-line no-console
+      console.log('5 - le hizo hover a una imagen')
+      dragged.parentNode.removeChild(dragged)
+      event.target.parentNode.insertBefore(dragged, event.target)
+
+    }
+    belowDragged = undefined
+
    
       dropped = true
 
@@ -130,7 +135,7 @@ export function handleDrop(event) {
         // tier[0].insert(index, dragged.name)
 
         tier[0].append(dragged.name) // ? or id ?
-        console.log(`${tier[0].name}.append(${dragged.name}) invoked!`)
+        // console.log(`${tier[0].name}.append(${dragged.name}) invoked!`)
         // logic for scroll-container (resume operations)
         span.setAttribute('id', `${tier[0].name}-span`)
         span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
