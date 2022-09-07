@@ -68,8 +68,9 @@ function createImgElements() {
       if (shinobi.images[0] || shinobi.images[1]) {
         element = document.createElement('img')
         element.setAttribute('src', shinobi.images[1] || shinobi.images[0]|| './public/placeholder.png')
-        element.setAttribute('alt', shinobi.name || 'Nameless shinobi 🥷')
-        element.setAttribute('name', shinobi.name || 'Nameless shinobi 🥷') // ? or id ?
+        element.setAttribute('alt', shinobi.name || 'Nameless shinobi')
+        element.setAttribute('name', shinobi.name || 'Nameless shinobi')
+        element.setAttribute('class', 'container-item')
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element) 
       }
@@ -79,7 +80,8 @@ function createImgElements() {
     element = document.createElement('img')
         element.setAttribute('src', img)
         element.setAttribute('alt', parseName(img))
-        element.setAttribute('name', parseName(img)) // ? or id ?
+        element.setAttribute('name', parseName(img))
+        element.setAttribute('class', 'container-item')
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element)  
   }
