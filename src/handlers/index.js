@@ -60,55 +60,24 @@ export function handleDragOver(event) {
 export function handleDrop(event) {
   // prevent default action (open as link for some elements)
   event.preventDefault()
-  console.log('onDrop -> ')
   try {
     const list = document.getElementById(event.target.id)
     let dropped = false
-    const isContainer = event.target.className === "container-tierlist"
     
     const p = document.createElement('p')
     const span = document.createElement('span')
+    // flow control
     // move dragged element to the selected drop target
-    if (isContainer) {
-      console.log('isContainer!!', {belowDragged})
-      const nodeNames = Array.from(event.target.childNodes).map(el => el.name)
-      console.log(nodeNames)
-      if (belowDragged && nodeNames.length) {
-        const isOverLastChild = event.target.lastChild.name === belowDragged.name
-        if (isOverLastChild) {
-          if (event.target.children.length !== 0) {
-            console.log('1- OVER --> appends to last child', event.target.children.length  )
-            dragged.parentNode.removeChild(dragged)
-            event.target.appendChild(dragged)
-          }
-          if (event.target.children.length === 0) {
-            // eslint-disable-next-line no-console
-            console.log('2- OVER --> no childs in list, appends', event.target.children.length  )
-            dragged.parentNode.removeChild(dragged)
-            event.target.appendChild(dragged)
-          }
-        }
-      } else {
-        if (event.target.children?.length !== 0) {
-          console.log('3 - children! appends to last child', event.target.children.length  )
-          dragged.parentNode.removeChild(dragged)
-          event.target.appendChild(dragged)
-        }
-        if (event.target.children.length === 0) {
-          // eslint-disable-next-line no-console
-          console.log('4 - no childs in list, appends', event.target.children.length  )
-          dragged.parentNode.removeChild(dragged)
-          event.target.appendChild(dragged)
-        }
-      }
+    if (event.target.className === "container-tierlist") {
+      dragged.parentNode.removeChild(dragged)
+      event.target.appendChild(dragged)
     }
     if (event.target.tagName === 'IMG')  {
-      // eslint-disable-next-line no-console
-      console.log('5 - le hizo hover a una imagen')
       dragged.parentNode.removeChild(dragged)
       event.target.parentNode.insertBefore(dragged, event.target)
 
     }
+    // reset belowDragged to avoid conflicts on new hover over images
     belowDragged = undefined
 
    
