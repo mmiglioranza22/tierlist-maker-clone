@@ -12,13 +12,12 @@ export function handleDragStart(event) {
   // store a ref. on the dragged elem & direct parent
   dragged = event.target
   draggedParent = dragged.parentNode
-
 }
 
 export function handleDragEnd(event) {
     event.preventDefault()
-  
-    // check if the container the node is dragged from is a tierlist 
+    // check if the container the node is dragged from is a tierlist
+    // todo add logic if dropped over img? dont think so 
     if (draggedParent.className === "container-tierlist") {
       tiers.forEach((tier, i) => {
         // identify the list the node is dragged from
@@ -41,9 +40,7 @@ export function handleDragEnd(event) {
         }
       })
     }
- 
 }
-
 
 export function handleDragOver(event) {
   // prevent default to allow drop
