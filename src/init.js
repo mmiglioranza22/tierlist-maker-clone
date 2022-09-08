@@ -1,5 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
-import { handleDragStart, handleDragOver, handleDrop, handleDragEnter } from './handlers/index.js'
+import { handleDragStart, handleDragOver, handleDrop, handleDragEnter, handleDragEnd } from './handlers/index.js'
 import { initDataStructures, createImgElements } from './utils/index.js'
 import { IMG_DIR } from './constants/constants.js'
 
@@ -64,5 +64,6 @@ if(!isLoading) {
 
 document.addEventListener('dragenter', handleDragEnter)
 document.addEventListener('dragstart', handleDragStart)
+document.addEventListener('dragend', handleDragEnd)
 document.addEventListener('dragover', handleDragOver)
 document.addEventListener('drop', handleDrop)
