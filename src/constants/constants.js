@@ -1,0 +1,1 @@
+export const IMG_DIR = '../src/public/img'

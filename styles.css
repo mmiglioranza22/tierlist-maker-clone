@@ -1,6 +1,6 @@
 html {
   background-color: black;
-  background: url("./public/akatsuki-background.jpg") repeat center center;
+  background: url("./src/public/akatsuki-background.jpg") repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -52,7 +52,7 @@ img {
 .spinner {
   width: 100px;
   height: 100px;
-  background: url("./public/uzumaki.svg");
+  background: url("./src/public/uzumaki.svg");
   animation: spin-anim 1.2s linear infinite;
 }
 

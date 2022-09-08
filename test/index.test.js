@@ -1,6 +1,6 @@
 import { expect } from "chai"
-import Node from "../modules/Node.js"
-import DoublyLinkedList from "../modules/DoublyLinkedList.js"
+import Node from "../src/modules/Node.js"
+import DoublyLinkedList from "../src/modules/DoublyLinkedList.js"
 
 let list, objA, objB, objC
 
