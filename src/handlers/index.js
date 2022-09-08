@@ -9,33 +9,41 @@ export function handleDragEnter(event) {
 }
 
 export function handleDragStart(event) {
-  // store a ref. on the dragged elem
+  // store a ref. on the dragged elem & direct parent
   dragged = event.target
   draggedParent = dragged.parentNode
 
-  // check if the container the node is dragged from is a tierlist 
-  if (draggedParent.className === "container-tierlist") {
-    tiers.forEach((tier, i) => {
-      // identify the list the node is dragged from
-      if (tier[0].name.includes(draggedParent.id)) {
-          // console.log(`%cDragging node from ${tier[0].name}...`, `background: #111113; color: ${tier[1]}`)
-          // todo check for certain type errors, add && checks
-        if (tier[0].tail && tier[0].tail.data === dragged.name) {
-          tier[0].pop()
-          // console.log(`${tier[0].name}.pop() invoked!`)
-        } else if (tier[0].head.data === dragged.name) {
-          tier[0].shift()
-          // console.log(`${tier[0].name}.shift() invoked!`)
-        } else {
-          tier[0].remove(dragged.name)
-          // console.log(`${tier[0].name}.remove(${dragged.name}) invoked!`)
-          // const index = tier[0].getIndex(dragged.name)
-          // tier[0].removeByIndex(index)
-        }
-      }
-    })
-  }
 }
+
+export function handleDragEnd(event) {
+    event.preventDefault()
+  
+    // check if the container the node is dragged from is a tierlist 
+    if (draggedParent.className === "container-tierlist") {
+      tiers.forEach((tier, i) => {
+        // identify the list the node is dragged from
+        if (tier[0].name.includes(draggedParent.id)) {
+            // todo check for certain type errors, add && checks
+          if (tier[0].tail && tier[0].tail.data === dragged.name) {
+            tier[0].pop()
+            console.log(`${tier[0].name}.pop() invoked!`)
+          } else if (tier[0].head.data === dragged.name) {
+            tier[0].shift()
+            console.log(`${tier[0].name}.shift() invoked!`)
+          } else {
+            // eslint-disable-next-line no-console
+            console.log(tier[0])
+            tier[0].remove(dragged.name)
+            // const index = tier[0].getIndex(dragged.name)
+            // tier[0].removeByIndex(index)
+            console.log(`${tier[0].name}.remove(${dragged.name}) invoked!`)
+          }
+        }
+      })
+    }
+ 
+}
+
 
 export function handleDragOver(event) {
   // prevent default to allow drop
@@ -43,7 +51,6 @@ export function handleDragOver(event) {
   // store ref to the element below dragged
   if (event.target !== dragged && event.target.tagName === 'IMG') {
     belowDragged = event.target
-    // console.log({dragged, belowDragged})
   }
 }
 
@@ -56,29 +63,21 @@ export function handleDrop(event) {
     
     const p = document.createElement('p')
     const span = document.createElement('span')
-    // flow control
-    // move dragged element to the selected drop target
+    // flow control: move dragged element to the selected drop target
+    // append at the end of the list if dropped in drop area
     if (event.target.className === "container-tierlist") {
       dragged.parentNode.removeChild(dragged)
       event.target.appendChild(dragged)
     }
-    if (event.target.tagName === 'IMG')  {
+    // insert before last hovered node
+    if (event.target.tagName === 'IMG') {
       dragged.parentNode.removeChild(dragged)
       event.target.parentNode.insertBefore(dragged, event.target)
-
     }
-    // reset belowDragged to avoid conflicts on new hover over images
-    belowDragged = undefined
+    
+    dropped = true
 
-   
-      dropped = true
-
-      // append node to list
-      // TODO: check for HTML api to insert images in between, different flow
-      // * check inside tier -> 
-      // * if tier hasNode(dragged.name)
-      // * const node = search(dragged.name)
-      // *  if node is in the middle of others (node.next !== null) or something alike
+      // append node to list for data structures consoles
     if (list) {
       tiers.forEach(tier => {
         if (dropped && tier[0].name.includes(list.id)) {
@@ -93,8 +92,9 @@ export function handleDrop(event) {
         // tier[0].getIndex(dragged.name)
         // tier[0].insert(index, dragged.name)
 
-        tier[0].append(dragged.name) // ? or id ?
+        tier[0].append(dragged.name) 
         // console.log(`${tier[0].name}.append(${dragged.name}) invoked!`)
+
         // logic for scroll-container (resume operations)
         span.setAttribute('id', `${tier[0].name}-span`)
         span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
@@ -103,6 +103,8 @@ export function handleDrop(event) {
         }
       })
     }
+    // reset belowDragged to avoid conflicts on new hover over images
+    belowDragged = undefined
   } catch (error) {
     console.log('Element dropped outside drop area', error)
     return
