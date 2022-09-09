@@ -39,3 +39,8 @@ export function createImgElements(array, assets) {
     }
   }
 }
+
+// https://stackoverflow.com/questions/41898612/format-console-log-with-color-and-variables-surrounding-non-formatted-text
+export function opLogger(tier, operation) {
+  console.log(`%c${tier[0].name}.${operation}()`, `background: #111113; color: ${tier[1]}`)
+}

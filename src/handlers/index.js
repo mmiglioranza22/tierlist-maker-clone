@@ -1,8 +1,8 @@
 // best explanation: https://developer.mozilla.org/en-US/docs/Web/API/Document/drop_event
 import { tiers, scrollContent } from '../init.js'
+import { opLogger } from '../utils/index.js'
 // reference variables for API & DS logic
 let dragged
-let draggedParent
 let belowDragged
 let operation
 let previousNode
@@ -14,7 +14,6 @@ export function handleDragEnter(event) {
 export function handleDragStart(event) {
   // store a ref. on the dragged elem & direct parent
   dragged = event.target
-  draggedParent = dragged.parentNode
 }
 
 export function handleDragEnd(event) {
