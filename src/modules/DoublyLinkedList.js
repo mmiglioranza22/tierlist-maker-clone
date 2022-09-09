@@ -8,7 +8,7 @@ class DoublyLinkedList {
 		if(name === undefined) {
 			throw new Error('No argument passed to constructor')
 		}
-		this.name = `${name}-tier`
+		this.name = `${name}_tier`
 		this.head = null
 		this.tail = null
 		this._length = 0

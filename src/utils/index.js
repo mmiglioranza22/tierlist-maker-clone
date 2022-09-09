@@ -24,7 +24,7 @@ export function createImgElements(array, assets) {
         element.setAttribute('draggable', true)
         document.querySelector('.container-options').appendChild(element)  
   }
-  if (array.length) {
+  if (array?.length) {
     for (let item of array) {
       if (item.images[0] || item.images[1]) {
         element = document.createElement('img')

@@ -1,7 +1,7 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
 import { handleDragStart, handleDragOver, handleDrop, handleDragEnter, handleDragEnd } from './handlers/index.js'
 import { initDataStructures, createImgElements } from './utils/index.js'
-import { IMG_DIR } from './constants/constants.js'
+import { assets } from './constants/constants.js'
 
 export const scrollContent = document.querySelector('.scroll-content')
 
@@ -36,23 +36,8 @@ async function apiCall() {
 }
 const shinobis = await apiCall()
 
-// todo add more examples case API fails
-const assets = [
-  `${IMG_DIR}/Naruto_Uzumaki.jpeg`,
-  `${IMG_DIR}/Sasuke_Uchiha.webp`,
-  `${IMG_DIR}/Sakura_Haruno.jpeg`,
-  `${IMG_DIR}/Kushina_Uzumaki.jpeg`,
-  `${IMG_DIR}/Minato_Namikaze.jpeg`,
-  `${IMG_DIR}/Sakumo_Hatake.jpeg`,
-  `${IMG_DIR}/Shikamaru_Nara.webp`,
-  `${IMG_DIR}/Tsunade_Senju.jpeg`,
-  `${IMG_DIR}/Orochimaru.webp`,
-  `${IMG_DIR}/Tobirama_Senju.jpeg`,
-  `${IMG_DIR}/Killer_Bee.png`,
-]
-
-// create API & default imgs
-createImgElements(shinobis, assets)
+// create elements with API & default imgs
+await createImgElements(shinobis, assets)
 
 // todo check loading logic
 isLoading = false
