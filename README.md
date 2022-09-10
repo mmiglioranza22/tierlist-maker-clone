@@ -31,9 +31,9 @@ It gives a nice visual of how a doubly linked list structure can be applied to a
 When I started this project, I was convinced that I needed a _doubly linked list_ DS in addition to all the javascript code I needed to simulate a tierlist's behaviour, being that part the first I developed with the corresponding tests. I also wanted to work with good ol' vanilla javascript and try learn a couple new tricks along the process.
 However, the HTML [`Drag and Drop API`](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) provides all thats needed to create a fully functional tierlist, rendering all my previous code useless. (I will google stuff first... Lesson learnt 🥲).
 
-So... to avoid throwing all that beautifully handcrafted code, I thought giving the project a more 'educational' focus.
+_So..._ to avoid throwing all that beautifully handcrafted code, I thought giving the project a more "educational" focus.
 
-**Note:** This project merely attemps to illustrate a concept that you should previously have a bare minimal idea, I hardly believe you can learn in depth the inner workings of this DS by just playing around _(to actually learn more, take a look at how the [DS is structured](/srs/modules/DoublyLinkedList.js), look the [tests](/test/index.test.js) too)_. Use it to reinforce that (or better, to classify shinobis).
+**Note:** This project merely attempts to illustrate a concept that you should already be familiar with. I hardly believe you can learn in depth the inner workings of this DS by just playing around _(to actually learn more, take a look at how the [DS is structured](/srs/modules/DoublyLinkedList.js), look the [tests](/test/index.test.js) too)_. Use the app to reinforce that existing knowledge (or better, to classify shinobis).
 
 ## Demo:
 
@@ -48,10 +48,10 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 API used: https://naruto-api.herokuapp.com/api/v1/characters
 (Credits: https://github.com/Gustavonobreza/naruto-api) 🙌
 
-Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms).
+**Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms).
 
 Tests were made with Mocha (Chai).
 
 MIT license
 
-_Disclaimer: Project is intended to be used for educational purposes exclusively. Fork the repo and change it accordingly to meet your needs._
+_Disclaimer: Project is intended to be used for educational/recreational purposes exclusively. Fork the repo and change it accordingly to meet your needs if otherwise._
