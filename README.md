@@ -38,7 +38,7 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 - All operations will be seen there, and a brief description of each tier components will be display on real-time.
 - That's it. Go play!
 
-<img src="/src/public/demo.mov" data-canonical-src="/src/public/demo.mov" width="600" height="400" />
+<img src="/src/public/demo.mp4" data-canonical-src="/src/public/demo.mpf" />
 
 ## Additional info:
 
