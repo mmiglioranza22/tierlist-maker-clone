@@ -73,10 +73,10 @@ export function handleDrop(event) {
             tier[0].shift()
             console.log(`%c${tier[0].name}.shift()`, `background: #111113; color: ${tier[1]}`)
           } else {
-            // poppedTier.remove(dragged.name) // could be used just fine
-            const index = poppedTier.getIndex(dragged.name)
-            poppedTier.removeByIndex(index)
-            console.log(`%c${poppedTier.name}.removeByIndex(${index}, ${dragged.name})`, `background: #111113; color: ${tier[1]}`)
+            poppedTier.remove(dragged.name) // could be used just fine
+            // const index = poppedTier.getIndex(dragged.name)
+            // poppedTier.removeByIndex(index)
+            console.log(`%c${poppedTier.name}.remove(${dragged.name})`, `background: #111113; color: ${tier[1]}`)
           }
         }
       }
