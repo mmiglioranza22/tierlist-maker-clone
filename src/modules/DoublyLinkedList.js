@@ -82,7 +82,7 @@ class DoublyLinkedList {
 
 	/**
 	 * Looks for a given node by its name and returns that node.
-	 * This DS is 0-indexed
+	 * This DS simulates being "0-indexed"
 	 * @param { String } nodeName
 	 * @return { Node } 
 	 */
@@ -106,23 +106,23 @@ class DoublyLinkedList {
 	 * @return { Node }
 	 */
 	getNodeByIndex(index) {
+		// * This method could be optimized to N / 2 like remove or insert.
 		this._checkIndex(index)
 		this._checkNodes()
 
 		let current = 0
 		let headPointer = this.head
-		// This method could be optimized to N/2 like remove or insert.
 		while (current !== index) {
 			headPointer = headPointer.next
-			current++
+			current++	
 		}
 		return headPointer
 	}
 
 	/**
-	 * Searchs a given node and returns its index.
+	 * Searchs for given node and returns its figurative "index".
 	 * @param { String } nodeName
-	 * @memberof DoublyLinkedList
+	 * @return { Number }
 	 */
 	getIndex(nodeName) {
 		this._checkValue(nodeName)	
@@ -141,7 +141,7 @@ class DoublyLinkedList {
 	} 
 
 	/**
-	 * Add a node at the beginning of the list.
+	 * Adds a node at the beginning of the list.
 	 * @param { Node } value 
 	 * @returns { DoublyLinkedList } instance 
 	 */
@@ -169,7 +169,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Add a node at the end of the list.
+	 * Adds a node at the end of the list.
 	 * @param { Node } value 
 	 * @returns { DoublyLinkedList } instance
 	 */
@@ -192,7 +192,7 @@ class DoublyLinkedList {
 		this.head = headPointer
 
 		this._length++
-		return
+		return this
 	}
 	
 	/**
@@ -252,10 +252,41 @@ class DoublyLinkedList {
 			tailPointer.next = node
 			this._length++
 		}
+		return this
 	}
+
+/**
+ * Adds a node before a given existing node in the list.
+ * @param { Node } value
+ * @param { String} nodeName
+ * @memberof DoublyLinkedList
+ */
+insertBefore(value, nodeName) {
+	this._checkNodes()
+	this._checkValue(value)
+	const node = new Node(value)
+	let headPointer = this.search(nodeName)
+
+	if (headPointer) {
+		let previousPointer = headPointer.previous
+
+		// case: only 1 node
+		if (!previousPointer) {
+			this.prepend()
+			return this
+		} else {
+			node.previous = previousPointer
+			node.next = headPointer
+			previousPointer.next = node
+			headPointer.previous = node
+			this._length++
+			return this
+		}
+	}
+}
 	
 	/**
-	 * Removes last node from list.
+	 * Removes last node from the list and returns it.
 	 * @returns { Node }
 	 */
 	pop() {
@@ -281,7 +312,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Removes first node from list.
+	 * Removes first node from the list and returns it.
 	 * @returns { Node }
 	 */
 	shift() {
@@ -307,7 +338,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Remove a node at a given place/index and returns it.
+	 * Removes a node at a given place/index and returns it.
 	 * @param { Number } index
 	 * @return { Node } 
 	 */
@@ -365,7 +396,7 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 * Remove a node and returns it.
+	 * Removes a node and returns it.
 	 * @param { String } 
 	 * @return { Node } 
 	 */

@@ -514,7 +514,7 @@ describe('Test suite:', function () {
         expect(list.head).to.be.null
         expect(list.tail).to.be.null
       })
-      it('it should return the node that exists in the index passed as argument', function () {
+      it('it should return the node that exists in the index passed as argument, and throw if index is invalid', function () {
         list.append('A')
         list.append('B')
         list.append('C')
