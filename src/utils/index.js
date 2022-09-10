@@ -69,4 +69,5 @@ export function insertListSummary(tier, scrollContent) {
   span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
   p.appendChild(span)
   scrollContent.appendChild(p)
+  p.scrollIntoView()
 }
