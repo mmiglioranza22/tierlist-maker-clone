@@ -15,7 +15,6 @@ class DoublyLinkedList {
 	}
 
 	// utility methods
-	// ? add tests for these? Extra credit
 	printList(log = false) {
 		this._checkNodes()
 		const nodes = []
@@ -275,7 +274,6 @@ class DoublyLinkedList {
 		}
 
 		temp = tailPointer
-		// tailPointer.previous = null -> check for this later in DOM implementation use cases
 		prevPointer.next = null
 		this.tail = prevPointer
 		this._length--
@@ -302,7 +300,6 @@ class DoublyLinkedList {
 		}
 
 		temp = headPointer
-		// headPointer.next = null -> check for this later in DOM implementation use cases
 		prevPointer.previous = null
 		this.head = prevPointer
 		this._length--
@@ -389,7 +386,6 @@ class DoublyLinkedList {
 			return this.pop()
 		}
 
-		// todo: check this for certain cases with drag drop api
 		while (headPointer && headPointer.data !== nodeName) {
 			prevPointer = headPointer
 			headPointer = headPointer.next
