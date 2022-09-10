@@ -38,7 +38,7 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 - All operations will be seen there, and a brief description of each tier components will be display on real-time.
 - That's it. Go play!
 
-![demo](https://gfycat.com/slipperyclosedapatosaur)
+![demo](/src/public/demo.gif)
 
 ## Additional info:
 
