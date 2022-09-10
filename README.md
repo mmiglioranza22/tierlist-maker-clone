@@ -38,7 +38,7 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 - All operations will be seen on the console, and a brief description of each tier components will be shown as operations occur.
 - That's it. Go play!
 
-<img src="/src/public/demo.gif" width="550" height="400" alt="demo">
+<img src="/src/public/demo.gif" width="650" height="400" alt="demo">
 
 ## Additional info:
 
