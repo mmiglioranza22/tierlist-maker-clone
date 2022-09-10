@@ -7,18 +7,18 @@ And lots of Naruto characters.
 
 ## About:
 
-_Have you ever tried to ACTUALLY understand how does a **doubly linked list** ?_
+_Have you ever tried to ACTUALLY understand how does a **doubly linked list** work?_
 
-_Surely there are plenty of good resources out there with accurate information (or you might already have a grasp of how this DS works), but how about learning **INTERACTIVELY** ?_
+_Surely there are plenty of good resources out there with accurate information (or you might already have a grasp of how it works), but how about learning **INTERACTIVELY** ?_
 
 ![google search](/src/public/google_search.png)*
 \_*Its funny what Google understands by "interactive" or "fun"... a whiteboard video explanation\_ 🙄.
 
-_Ok, there MIGHT be out there a couple decent resources with code examples you can click, press play, pause, rewind... but let's be honest,are any of those actually **FUN** ?_
+_Ok, there MIGHT be out there a couple decent resources with code examples you can click, press play, pause, rewind... but let's be honest, are any of those actually **FUN** ?_
 
-_Of course not!_
+_Of course not. But don't give up just yet!_
 
-_However, now you will have EXACTLY that... and with Naruto characters!!_ 🥷 🍃 🍥
+_Now you will have EXACTLY that... and with Naruto characters!!_ 🥷 🍃 🍥
 
 Now, self promotion and bad jokes aside, this is a very simple project that tries to clone how a [tierlist](https://tiermaker.com) works.
 It gives a nice visual of how a doubly linked list structure can be applied to a real example and understand its internal working. (_Open your browser's console, you are in for a ride..._)
@@ -34,8 +34,8 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 
 ## Demo:
 
-- A `DoublyLinkedList` data structure is created for every tier with which you can interact with from the your browser's console.
-- All operations will be seen there, and a brief description of each tier components will be display on real-time.
+- A ```DoublyLinkedList``` is created for every tier with which you can interact with from the your browser's console (Try typing its name).
+- All operations will be seen on the console, and a brief description of each tier components will be shown as operations occur.
 - That's it. Go play!
 
 <img src="/src/public/demo.gif" width="550" height="400" alt="demo">
