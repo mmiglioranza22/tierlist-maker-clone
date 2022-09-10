@@ -59,7 +59,14 @@ export function opLogger(tier, operation, node, index) {
       break
     default:
       console.error('Unexpected operation type invoked', operation)
-
-
   }
+}
+
+export function insertListSummary(tier, scrollContent) {
+  const p = document.createElement('p')
+  const span = document.createElement('span')    
+  span.setAttribute('id', `${tier[0].name}-span`)
+  span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
+  p.appendChild(span)
+  scrollContent.appendChild(p)
 }

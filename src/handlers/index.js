@@ -1,6 +1,6 @@
 // best explanation: https://developer.mozilla.org/en-US/docs/Web/API/Document/drop_event
 import { tiers, scrollContent } from '../init.js'
-import { opLogger } from '../utils/index.js'
+import { opLogger, insertListSummary } from '../utils/index.js'
 // reference variables for API & DS logic
 let dragged
 let belowDragged
@@ -72,9 +72,9 @@ export function handleDrop(event) {
             opLogger(tier, 'shift')
           } else {
             poppedTier.remove(dragged.name)
+            opLogger(tier, 'remove', dragged.name)
             // const index = poppedTier.getIndex(dragged.name)
             // poppedTier.removeByIndex(index)
-            opLogger(tier, 'remove', dragged.name)
           }
         }
       }
@@ -101,14 +101,7 @@ export function handleDrop(event) {
 
 
         // append node to list for data structure operations console // todo convert to util fn
-        const p = document.createElement('p')
-        const span = document.createElement('span')    
-        span.setAttribute('id', `${tier[0].name}-span`)
-        span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
-        p.appendChild(span)
-        scrollContent.appendChild(p)
-
-
+        insertListSummary(tier, scrollContent)
       }
     })
 
