@@ -116,6 +116,66 @@ describe('Test suite:', function () {
         expect(list._length).to.equal(3)
       })
     })
+    describe('# insertBefore(node, referenceNode):', function () {
+      it('it should do nothing and throw an error if an invalid values are passed', function () {
+        expect(list.insertBefore.bind(list)).to.throw()
+
+        function wrapper1() {
+          list.insertBefore()
+        }
+        function wrapper2() {
+          list.insertBefore(null, objA)
+        }
+        function wrapper3() {
+          list.insertBefore(undefined, {})
+        }
+
+        function wrapper4() {
+          list.insertBefore('example', )
+        }
+
+        expect(wrapper1).to.throw()
+        expect(wrapper2).to.throw()
+        expect(wrapper3).to.throw()
+        expect(list._length).to.equal(0)
+        expect(list.head).to.be.null
+        expect(list.tail).to.be.null
+      })
+      it('it should do nothing and throw an error if an invalid reference node is passed', function() {
+        expect(list.insertBefore.bind(list)).to.throw()
+
+        list.append(objA)
+
+        function wrapper1() {
+          list.insertBefore({}, objB)
+        }
+
+        const exists = list.hasNode(objB)
+
+        expect(wrapper1).to.throw()
+        expect(exists).to.be.false
+
+        expect(list._length).to.equal(1)
+        expect(list.head.data).to.deep.equal(objA)
+        expect(list.tail.data).to.deep.equal(objA)
+        expect(list.tail).to.deep.equal(list.head)
+      })
+      it('it should insert nodes correctly when reference nodes exist', function () {
+        list.append(objA)
+        
+        list.insertBefore(objB, objA)
+
+        expect(list._length).to.equal(2)
+        expect(list.head.data).to.deep.equal(objB)
+        expect(list.tail.previous).to.deep.equal(list.head)
+        
+        list.insertBefore(objC, objB)
+
+        expect(list._length).to.equal(3)
+        expect(list.head.data).to.deep.equal(objC)
+        expect(list.tail.previous.previous).to.deep.equal(list.head)
+      })
+    })
     describe('# insert(index, node):', function () {
       it('it should do nothing and throw an error if an invalid value is passed', function () {
         expect(list.insert.bind(list)).to.throw()

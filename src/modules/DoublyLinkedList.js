@@ -272,7 +272,7 @@ insertBefore(value, nodeName) {
 
 		// case: only 1 node
 		if (!previousPointer) {
-			this.prepend()
+			this.prepend(value)
 			return this
 		} else {
 			node.previous = previousPointer
