@@ -41,6 +41,25 @@ export function createImgElements(array, assets) {
 }
 
 // https://stackoverflow.com/questions/41898612/format-console-log-with-color-and-variables-surrounding-non-formatted-text
-export function opLogger(tier, operation) {
-  console.log(`%c${tier[0].name}.${operation}()`, `background: #111113; color: ${tier[1]}`)
+export function opLogger(tier, operation, node, index) {
+
+  switch (operation) {
+    // todo modify insert when insertBefore method is set
+    case "insert":
+      console.log(`%c${tier[0].name}.${operation}(${index}, ${node})`, `background: #111113; color: ${tier[1]}`)
+      break
+    case "append":
+    case "prepend":
+    case "remove":
+      console.log(`%c${tier[0].name}.${operation}(${node})`, `background: #111113; color: ${tier[1]}`)
+      break
+    case "pop":
+    case "shift":
+      console.log(`%c${tier[0].name}.${operation}()`, `background: #111113; color: ${tier[1]}`)
+      break
+    default:
+      console.error('Unexpected operation type invoked', operation)
+
+
+  }
 }

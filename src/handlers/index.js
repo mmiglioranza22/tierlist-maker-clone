@@ -30,14 +30,12 @@ export function handleDragOver(event) {
 }
 
 export function handleDrop(event) {
-  // prevent default action (open as link for some elements) // todo should use stopProp or other for erro cases?
+  // prevent default action (open as link for some elements) // todo should use stopProp or other for error cases?
   event.preventDefault()
 
   try {
     let list = document.getElementById(event.target.id)
-    const p = document.createElement('p')
-    const span = document.createElement('span')
-
+   
     // flow control: move dragged element to the selected drop target
     // append at the end of the list if dropped in drop area
     if (event.target.className === 'container-tierlist') {
@@ -68,15 +66,15 @@ export function handleDrop(event) {
           // removing nodes
             if (poppedTier.tail && poppedTier.tail.data === dragged.name) {
             tier[0].pop()
-            console.log(`%c${tier[0].name}.pop()`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, 'pop')
           } else if (poppedTier.head && poppedTier.head.data === dragged.name) {
             tier[0].shift()
-            console.log(`%c${tier[0].name}.shift()`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, 'shift')
           } else {
-            poppedTier.remove(dragged.name) // could be used just fine
+            poppedTier.remove(dragged.name)
             // const index = poppedTier.getIndex(dragged.name)
             // poppedTier.removeByIndex(index)
-            console.log(`%c${poppedTier.name}.remove(${dragged.name})`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, 'remove', dragged.name)
           }
         }
       }
@@ -86,29 +84,35 @@ export function handleDrop(event) {
         switch (operation) {
           case 'append':
             tier[0].append(dragged.name)
-            console.log(`%c${tier[0].name}.append(${dragged.name})`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, operation, dragged.name)
             break
           case 'prepend':
             tier[0].prepend(dragged.name) 
-            console.log(`%c${tier[0].name}.prepend(${dragged.name})`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, operation, dragged.name)
             break
           case 'insert':
             const index = tier[0].getIndex(previousNode)
             tier[0].insert(index ,dragged.name) 
-            console.log(`%c${tier[0].name}.insert(${index}, ${dragged.name})`, `background: #111113; color: ${tier[1]}`)
+            opLogger(tier, operation, dragged.name, index)
             break
           default:
-            console.error('Unexpected operation type invoked', operation)
+            opLogger(tier, operation, dragged.name, index)
         }
+
+
         // append node to list for data structure operations console // todo convert to util fn
+        const p = document.createElement('p')
+        const span = document.createElement('span')    
         span.setAttribute('id', `${tier[0].name}-span`)
         span.innerText = `${tier[0].name}: ${tier[0].printList().join(' <=> ')}`
         p.appendChild(span)
         scrollContent.appendChild(p)
+
+
       }
     })
 
-    // reset belowDragged to avoid conflicts on new hover over images // todo check this
+    // reset belowDragged to avoid conflicts on new hover over images 
     belowDragged = undefined
     previousNode = undefined
     list = undefined
