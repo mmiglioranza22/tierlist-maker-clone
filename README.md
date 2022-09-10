@@ -1,11 +1,11 @@
-# Learn Doubly Linked List INTERACTIVE with ACTUAL and FUN examples!
+# INTERACTIVE Doubly Linked Lists with FUN examples!
 
 [Update 09/07/22]: I will be adding `insertBefore` method so there is no need for indexes to be used for `insert` operations.
 
 A basic tierlist-maker "clone" with vanilla JS and pure HTML/CSS. **No frameworks.**
 And lots of Naruto characters.
 
-## About
+## About:
 
 _Have you ever tried to ACTUALLY understand how does a **doubly linked list** ?_
 
@@ -40,12 +40,12 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 
 ![demo](/src/public/demo.gif)
 
-## Aditional info
+## Additional info:
 
 API used: https://naruto-api.herokuapp.com/api/v1/characters
 (Credits: https://github.com/Gustavonobreza/naruto-api) 🙌
 
-Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms)
+Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms).
 
 Tests were made with Mocha (Chai).
 
