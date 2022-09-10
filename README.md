@@ -11,8 +11,9 @@ _Have you ever tried to ACTUALLY understand how does a **doubly linked list** wo
 
 _Surely there are plenty of good resources out there with accurate information (or you might already have a grasp of how it works), but how about learning **INTERACTIVELY** ?_
 
-![google search](/src/public/google_search.png)*
-\_*Its funny what Google understands by "interactive" or "fun"... a whiteboard video explanation\_ 🙄.
+![google search](/src/public/google_search.png)
+
+_*Its funny what Google understands by "interactive" or "fun"... a whiteboard video explanation\_ 🙄.
 
 _Ok, there MIGHT be out there a couple decent resources with code examples you can click, press play, pause, rewind... but let's be honest, are any of those actually **FUN** ?_
 
