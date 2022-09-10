@@ -41,12 +41,12 @@ export function createImgElements(array, assets) {
 }
 
 // https://stackoverflow.com/questions/41898612/format-console-log-with-color-and-variables-surrounding-non-formatted-text
-export function opLogger(tier, operation, node, index) {
+export function opLogger(tier, operation, node, referenceNode) {
 
   switch (operation) {
     // todo modify insert when insertBefore method is set
-    case "insert":
-      console.log(`%c${tier[0].name}.${operation}(${index}, ${node})`, `background: #111113; color: ${tier[1]}`)
+    case "insertBefore":
+      console.log(`%c${tier[0].name}.${operation}(${node}, ${referenceNode})`, `background: #111113; color: ${tier[1]}`)
       break
     case "append":
     case "prepend":

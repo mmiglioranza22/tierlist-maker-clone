@@ -48,7 +48,7 @@ export function handleDrop(event) {
     if (event.target.tagName === 'IMG') {
       list = belowDragged.parentNode
       previousNode = belowDragged.name
-      operation = belowDragged.previousSibling ? 'insert' : 'prepend'
+      operation = belowDragged.previousSibling ? 'insertBefore' : 'prepend'
       dragged.parentNode.removeChild(dragged)
       event.target.parentNode.insertBefore(dragged, event.target)
     }
@@ -81,26 +81,22 @@ export function handleDrop(event) {
 
       // adding nodes
       if (tier[0].name.includes(list.id)) {
+        opLogger(tier, operation, dragged.name, previousNode)
         switch (operation) {
           case 'append':
             tier[0].append(dragged.name)
-            opLogger(tier, operation, dragged.name)
             break
           case 'prepend':
             tier[0].prepend(dragged.name) 
-            opLogger(tier, operation, dragged.name)
             break
-          case 'insert':
-            const index = tier[0].getIndex(previousNode)
-            tier[0].insert(index ,dragged.name) 
-            opLogger(tier, operation, dragged.name, index)
+          case 'insertBefore':
+            tier[0].insertBefore(dragged.name, previousNode) 
             break
           default:
-            opLogger(tier, operation, dragged.name, index)
+            console.error('Invalid operation', operation)
+            return
         }
 
-
-        // append node to list for data structure operations console // todo convert to util fn
         insertListSummary(tier, scrollContent)
       }
     })
