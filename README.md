@@ -21,7 +21,10 @@ _Of course not. But don't give up just yet!_
 
 _Now you will have EXACTLY that... and with Naruto characters!!_ 🥷 🍃 🍥
 
-Now, self promotion and bad jokes aside, this is a very simple project that tries to clone how a [tierlist](https://tiermaker.com) works.
+<img src="/src/public/placeholder.png" width="150" height="200" alt="shinobis united">
+
+
+Now, shameless self promotion and bad jokes aside, this is a very simple project that tries to clone how a [tierlist](https://tiermaker.com) works.
 It gives a nice visual of how a doubly linked list structure can be applied to a real example and understand its internal working. (_Open your browser's console, you are in for a ride..._)
 
 ### Fun fact:
