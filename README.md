@@ -38,8 +38,8 @@ So... to avoid throwing all that beautifully handcrafted code, I thought giving 
 - All operations will be seen there, and a brief description of each tier components will be display on real-time.
 - That's it. Go play!
 
-![demo](/src/public/demo.gif | width=500)
-<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+![demo](/src/public/demo.gif)
+<img src="/src/public/demo.gif" data-canonical-src="/src/public/demo.gif" width="600" height="400" />
 
 ## Additional info:
 
