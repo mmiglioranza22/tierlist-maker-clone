@@ -91,6 +91,7 @@ img {
   background-color: rgb(17 17 19);
   border-bottom: 2px solid #333;
   align-items: center;
+  overflow: scroll;
 }
 
 .container-options {

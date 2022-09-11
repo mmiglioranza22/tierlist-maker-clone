@@ -44,6 +44,7 @@ export function handleDrop(event) {
       operation = 'append'
       dragged.parentNode.removeChild(dragged)
       event.target.appendChild(dragged)
+      dragged.scrollIntoView()
       handleTierOperations(list, tiers, dragged, operation, previousNode, scrollContent)
     }
 
@@ -57,6 +58,7 @@ export function handleDrop(event) {
       if (dragged !== event.target) {
         dragged.parentNode.removeChild(dragged)
         event.target.parentNode.insertBefore(dragged, event.target)
+        dragged.scrollIntoView()
         handleTierOperations(list, tiers, dragged, operation, previousNode, scrollContent)
       }
     }
