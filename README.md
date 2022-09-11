@@ -34,7 +34,7 @@ However, the HTML [`Drag and Drop API`](https://developer.mozilla.org/en-US/docs
 
 _So..._ to avoid throwing all that beautifully handcrafted code, I thought giving the project a more "educational" focus.
 
-**Note:** This project merely attempts to illustrate a concept that you should already be familiar with. I hardly believe you can learn in depth the inner workings of this DS by just playing around _(to actually learn more, take a look at how the [DS is structured](/srs/modules/DoublyLinkedList.js), look the [tests](/test/index.test.js) too)_. Use the app to reinforce that existing knowledge (or better, to classify shinobis).
+**Note:** This project merely attempts to illustrate a concept that you should already be familiar with. I hardly believe you can learn in depth the inner workings of this DS by just playing around _(to actually learn more, take a look at how the [DS is structured](https://github.com/mmiglioranza22/tierlist-maker-clone/blob/main/src/modules/DoublyLinkedList.js), look the [tests](https://github.com/mmiglioranza22/tierlist-maker-clone/blob/main/test/index.test.js) too)_. Use the app to reinforce that existing knowledge (or better, to classify shinobis).
 
 ## Demo:
 
