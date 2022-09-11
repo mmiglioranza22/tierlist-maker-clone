@@ -12,7 +12,7 @@ _Surely there are plenty of good resources out there with accurate information (
 
 ![google search](/src/public/google_search.png)
 
-_It's funny what Google understands by "interactive" or "fun"... a whiteboard video explanation_ 🙄.
+_(It's funny what Google understands by "interactive" or "fun"... a whiteboard video explanation)_ 🙄
 
 _Ok, there MIGHT be out there a couple decent resources with code examples you can click, press play, pause, rewind... but let's be honest, are any of those actually **FUN** ?_
 
