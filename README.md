@@ -2,6 +2,7 @@
 
 A basic tierlist-maker "clone" with vanilla JS and pure HTML/CSS. 
 **No frameworks.**
+
 And lots of Naruto characters.
 
 ## About:
@@ -23,11 +24,12 @@ _Now you will have EXACTLY that... and with Naruto characters!!_ 🥷 🍃 🍥
 <img src="/src/public/placeholder.png" width="170" height="200" alt="shinobis united">
 
 Now, shameless self promotion and bad jokes aside, this is a very simple project that tries to clone how a [tierlist](https://tiermaker.com) works.
-It gives a nice visual of how a doubly linked list structure can be applied to a real example and understand its internal working. (_Open your browser's console, you are in for a ride..._)
+It gives a nice visual of how a doubly linked list structure can be applied to a real example and understand its internal working. (_Open your browser's console, you are in for a ride_)
 
 ### Some (amusing) context:
 
 When I started this project, I was convinced that I needed a _doubly linked list_ DS in addition to all the javascript code I needed to simulate a tierlist's behaviour, being that part the first I developed with the corresponding tests. I also wanted to work with good ol' vanilla javascript and try learn a couple new tricks along the process.
+
 However, the HTML [`Drag and Drop API`](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) provides all thats needed to create a fully functional tierlist, rendering all my previous code useless. (I will google stuff first... Lesson learnt 🥲).
 
 _So..._ to avoid throwing all that beautifully handcrafted code, I thought giving the project a more "educational" focus.
