@@ -1,6 +1,7 @@
 # [INTERACTIVE Doubly Linked Lists with FUN examples!](https://tierlist-maker-clone.vercel.app/)
 
-A basic tierlist-maker "clone" with vanilla JS and pure HTML/CSS. **No frameworks.**
+A basic tierlist-maker "clone" with vanilla JS and pure HTML/CSS. 
+**No frameworks.**
 And lots of Naruto characters.
 
 ## About:
