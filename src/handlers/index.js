@@ -30,7 +30,7 @@ export function handleDragOver(event) {
 }
 
 export function handleDrop(event) {
-  // prevent default action (open as link for some elements) // todo should use stopProp or other for error cases?
+  // prevent default action (open as link for some elements)
   event.preventDefault()
 
   try {

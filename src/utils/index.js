@@ -8,6 +8,9 @@ export function initDataStructures(tiers, dataStructure) {
   for (let i = 0; i < TIERS.length; i++) {
     let tierEl = document.getElementById(TIERS[i])
     tiers[i] = [new dataStructure(tierEl.id), colors[i]]
+
+    // TODO tiers are accesible through browser's console
+    // it could be possible to add/remove nodes from there. (Extra feat)
     window[`${tierEl.id}_tier`] = tiers[i][0]
   }
 }
@@ -40,9 +43,17 @@ export function createImgElements(array, assets) {
   }
 }
 
+export function exposeElements() {
+  const nodes = document.querySelector('.container-options').childNodes
+  let elements = []
+  for (let node of nodes) {
+    node.name && elements.push(node.name)
+  }
+  return elements
+}
+
 // https://stackoverflow.com/questions/41898612/format-console-log-with-color-and-variables-surrounding-non-formatted-text
 function opLogger(tier, operation, node, referenceNode) {
-
   switch (operation) {
     // todo modify insert when insertBefore method is set
     case "insertBefore":

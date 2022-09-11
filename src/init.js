@@ -1,6 +1,6 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
 import { handleDragStart, handleDragOver, handleDrop, handleDragEnter, handleDragEnd } from './handlers/index.js'
-import { initDataStructures, createImgElements } from './utils/index.js'
+import { initDataStructures, createImgElements, exposeElements } from './utils/index.js'
 import { assets } from './constants/constants.js'
 
 export const scrollContent = document.querySelector('.scroll-content')
@@ -11,11 +11,6 @@ export const tiers = [S_Tier, A_Tier, B_Tier, C_tier, D_tier]
 
 initDataStructures(tiers, DoublyLinkedList)
 
-// logging for console control
-console.log('Initializing tiers data structures...')
-tiers.forEach(el => console.log(`%c${el[0].name} done`, `background: #111113; color: ${el[1]}`))
-console.log('Completed.')
-
 // loading spinner logic 
 let isLoading = true
 const containerOptionsEl = document.querySelector('.container-options')
@@ -24,7 +19,6 @@ spinner.classList.add('spinner')
 containerOptionsEl.classList.add('loader')
 containerOptionsEl.appendChild(spinner)
 
-// API call
 async function apiCall() {
   try {
     const response = await fetch('https://naruto-api.herokuapp.com/api/v1/characters')
@@ -39,7 +33,13 @@ const shinobis = await apiCall()
 // create elements with API & default imgs
 await createImgElements(shinobis, assets)
 
-// todo check loading logic
+window.shinobis = exposeElements()
+
+// logging for console control
+console.log('Initializing tiers data structures...')
+tiers.forEach(el => console.log(`%c${el[0].name} done`, `background: #111113; color: ${el[1]}`))
+console.log('Completed! \n\nYou can check all tiers inner structure by typing their respective name in the console.\n\nEnjoy!')
+
 isLoading = false
 
 if(!isLoading) {
