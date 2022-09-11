@@ -1,4 +1,5 @@
 import DoublyLinkedList from './modules/DoublyLinkedList.js'
+import BrowserControlledDLL from './modules/BrowserControlledDLL.js'
 import { handleDragStart, handleDragOver, handleDrop, handleDragEnter, handleDragEnd } from './handlers/index.js'
 import { initDataStructures, createImgElements, exposeElements } from './utils/index.js'
 import { assets } from './constants/constants.js'
@@ -9,7 +10,7 @@ export const scrollContent = document.querySelector('.scroll-content')
 let S_Tier, A_Tier, B_Tier, C_tier, D_tier
 export const tiers = [S_Tier, A_Tier, B_Tier, C_tier, D_tier]
 
-initDataStructures(tiers, DoublyLinkedList)
+initDataStructures(tiers, BrowserControlledDLL)
 
 // loading spinner logic 
 let isLoading = true
