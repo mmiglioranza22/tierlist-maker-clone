@@ -41,7 +41,7 @@ export function createImgElements(array, assets) {
 }
 
 // https://stackoverflow.com/questions/41898612/format-console-log-with-color-and-variables-surrounding-non-formatted-text
-export function opLogger(tier, operation, node, referenceNode) {
+function opLogger(tier, operation, node, referenceNode) {
 
   switch (operation) {
     // todo modify insert when insertBefore method is set
@@ -62,7 +62,7 @@ export function opLogger(tier, operation, node, referenceNode) {
   }
 }
 
-export function insertListSummary(tier, scrollContent) {
+function insertListSummary(tier, scrollContent) {
   const p = document.createElement('p')
   const span = document.createElement('span')    
   span.setAttribute('id', `${tier[0].name}-span`)
@@ -70,4 +70,56 @@ export function insertListSummary(tier, scrollContent) {
   p.appendChild(span)
   scrollContent.appendChild(p)
   p.scrollIntoView()
+}
+
+export function handleTierOperations(list, tiers, dragged, operation, previousNode, scrollContent) {
+  if (list) {
+    tiers.forEach(tier => {
+      // store reference of the list the node will be removed from
+      let poppedTier
+
+      // * Removing nodes
+
+      if (tier[0]._length && tier[0].hasNode(dragged.name)) {
+        poppedTier =  tier[0]
+        if(poppedTier) {
+            if (poppedTier.tail && poppedTier.tail.data === dragged.name) {
+            tier[0].pop()
+            opLogger(tier, 'pop')
+          } else if (poppedTier.head && poppedTier.head.data === dragged.name) {
+            tier[0].shift()
+            opLogger(tier, 'shift')
+          } else {
+            poppedTier.remove(dragged.name)
+            opLogger(tier, 'remove', dragged.name)
+          }
+        }
+      }
+
+      // * Adding nodes
+
+      if (tier[0].name.includes(list.id)) {
+        opLogger(tier, operation, dragged.name, previousNode)
+        switch (operation) {
+          case 'append':
+            tier[0].append(dragged.name)
+            break
+          case 'prepend':
+            tier[0].prepend(dragged.name) 
+            break
+          case 'insertBefore':
+            tier[0].insertBefore(dragged.name, previousNode) 
+            break
+          default:
+            console.error('Invalid operation', operation)
+            return
+        }
+        
+        insertListSummary(tier, scrollContent)
+
+      }
+    }) 
+  } else {
+    throw new Error('No valid tierlist was selected')
+  }
 }
