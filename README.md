@@ -7,7 +7,7 @@ And lots of Naruto characters.
 
 ## About:
 
-_Have you ever tried to ACTUALLY understand how does a **doubly linked list** work?_
+_Have you ever tried to ACTUALLY understand how does a **doubly linked list** works?_
 
 _Surely there are plenty of good resources out there with accurate information (or you might already have a grasp of how it works), but how about learning **INTERACTIVELY** ?_
 
