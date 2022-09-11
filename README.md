@@ -46,7 +46,7 @@ _So..._ to avoid throwing all that beautifully handcrafted code, I thought givin
 API used: https://naruto-api.herokuapp.com/api/v1/characters
 (Credits: https://github.com/Gustavonobreza/naruto-api) 🙌
 
-\*\*Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms).
+**Interested in DS and algorithms ? Check the awesome work of [trekhleb](https://github.com/trekhleb/javascript-algorithms).**
 
 Tests were made with Mocha (Chai).
 
